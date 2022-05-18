@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-home',
+  selector: 'home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
@@ -273,6 +273,6 @@ export class HomeComponent implements OnInit {
     console.log("cardName: " + this.registerForm.get('cardName')?.value);
     console.log("cardExpiration: " + this.registerForm.get('cardExpiration')?.value);
     console.log("cardCVV: " + this.registerForm.get('cardCVV')?.value);
-    
+
   }
 }
