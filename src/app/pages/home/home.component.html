@@ -1,1 +1,196 @@
-<p>home works!</p>
+<div class="container" style="margin-top:10%;">
+  <div class="row justify-content-center">
+    <div class="card" style="width: 36rem;">
+      <p class="h4 text-center" style="margin-top:5%;">Register form</p>
+      <div class="card-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" style="height: 12rem;">
+
+          <!--<ng-container *ngIf="foo === 1;else second"></ng-container>
+          <ng-template #second>
+            <ng-container *ngIf="foo === 2;else third"></ng-container>
+          </ng-template>
+          <ng-template #third></ng-template>-->
+
+          <ng-container *ngIf="pageF === 1; else second">
+            <div class="row">
+              <div class="form-group">
+                <label for="exampleInputEmail1" style="margin-top:5px;">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" formControlName="email">
+              </div>
+              </div>
+            <div calss="row">
+              <div class="form-group" style="margin-top:5px;">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" formControlName="password">
+              </div>
+            </div>
+            <div calss="row">
+              <div class="form-group" style="margin-top:5px;">
+                <label for="exampleInputPassword2">Confirm Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" formControlName="confirmPassword">
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-template #second>
+            <ng-container *ngIf="pageF === 2; else third">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group" style="margin-top:5px;">
+                    <label for="exampleInputName">Name</label>
+                    <input type="text" class="form-control" id="exampleInputName" placeholder="Name" formControlName="name">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group" style="margin-top:5px;">
+                    <label for="exampleInputLastName">Last Name</label>
+                    <input type="text" class="form-control" id="exampleInputLastName" placeholder="Last Name" formControlName="lastName">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group" style="margin-top:5px;">
+                    <label for="birthday">Birthday</label>
+                    <input type="date" class="form-control" id="birthday" placeholder="Birthday" formControlName="birthday">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group" style="margin-top:5px;">
+                    <label for="exampleInputPhone">Phone</label>
+                    <input type="text" class="form-control" id="exampleInputPhone" placeholder="Phone" formControlName="phone">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-top:5px;">
+                <label for="identification">ID:</label>
+                <input type="text" class="form-control" id="identification" placeholder="National number of identification" formControlName="identification">
+              </div>
+
+            </ng-container>
+          </ng-template>
+
+          <ng-template #third>
+            <ng-container *ngIf="pageF === 3; else fourth">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group" style="margin-top:5px;">
+                    <label for="exampleInputAddress">Address</label>
+                    <input type="text" class="form-control" id="exampleInputAddress" placeholder="Address" formControlName="address">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group" style="margin-top:5px;">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city" placeholder="City" formControlName="city">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group" style="margin-top:5px;">
+                    <label for="state">State</label>
+                    <input type="text" class="form-control" id="state" placeholder="State" formControlName="state">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group" style="margin-top:5px;">
+                    <label for="zip">Zip</label>
+                    <input type="text" class="form-control" id="zip" placeholder="Zip" formControlName="zip">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group" style="margin-top:5px;">
+                    <label for="country">Country</label>
+                    <input type="text" class="form-control" id="country" placeholder="Country" formControlName="country">
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </ng-template>
+
+          <ng-template #fourth>
+
+            <div class="row">
+              <div class="col-md-4">
+                <h3>Payment</h3>
+              </div>
+              <div class="col-md-8">
+                <div class="form-group" style="margin-top:5px;">
+                  <select class="form-select" formControlName="paymentMethod">
+                    <option [selected]="true" [hidden]="true">Select Payment Method</option>
+                    <option>Paypal</option>
+                    <option>Credit Card</option>
+                    <option>Debit Card</option>
+                    <option>Net Banking</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group" style="margin-top:5px;">
+                  <label class="form-label" for="formNameOnCard">Name on card</label>
+                  <input type="text" id="formNameOnCard" class="form-control" formControlName="cardName" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group" style="margin-top:5px;">
+                  <label class="form-label" for="formCardNumber">Credit card number</label>
+                  <input type="text" id="formCardNumber" class="form-control" formControlName="cardNumber"/>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group" style="margin-top:13px;">
+                  <label class="form-group" for="formExpiration">Expiration</label>
+                  <input type="text" id="formExpiration" class="form-control" formControlName="cardExpiration"/>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group" style="margin-top:5px;">
+                  <label class="form-label" for="formCVV">CVV</label>
+                  <input type="text" id="formCVV" class="form-control" formControlName="cardCvv" />
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </form>
+        <div class="pagination" style="margin-left: 28.5%;">
+          <div class="p8">
+            <ul>
+              <button (click)="ChangePage('prev')" class="flechasB"><li class="flechas"><</li></button>
+            </ul>
+          </div>
+          <div class="p4" >
+            <ul>
+              <a id="P1" role="button" (click)="GoToPage(1)" class="is-active"><li></li></a>
+              <a id="P2" role="button" (click)="GoToPage(2)"><li></li></a>
+              <a id="P3" role="button" (click)="GoToPage(3)"><li></li></a>
+              <a id="P4" role="button" (click)="GoToPage(4)"><li></li></a>
+            </ul>
+          </div>
+          <div class="p8">
+            <ul>
+              <button (click)="ChangePage('next')" class="flechasB"><li class="flechas">></li></button>
+            </ul>
+          </div>
+        </div>
+
+
+
+        <div class="row">
+          <button (click)="SubmitNewUser()" class="btn btn-proyecto" style="margin-left: auto; margin-right: auto">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
