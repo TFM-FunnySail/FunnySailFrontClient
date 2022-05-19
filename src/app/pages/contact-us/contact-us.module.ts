@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {ContactUsComponent} from "./containers/contact-us.component";
 import {ContactUsRoutingModule} from "./contact-us-routing.module";
 import {ReactiveFormsModule} from "@angular/forms";
-import {MaterialModule} from "../../core/components/material/material.module";
+import {MaterialModule} from "../../core/material/material.module";
 import {AgmCoreModule} from "@agm/core";
 
 
