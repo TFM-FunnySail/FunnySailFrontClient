@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {LoginModule} from "./pages/login/login.module";
 import {HomeModule} from "./pages/home/home.module";
 import {ContactUsModule} from "./pages/contact-us/contact-us.module";
+import {SignUpModule} from "./pages/sign-up/sign-up.module";
 
 
 const routes: Routes = [
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: 'contact-us',
         loadChildren: () => ContactUsModule
+      },
+      {
+        path: 'sign-up',
+        loadChildren: () => SignUpModule
       }
     ]
   }
