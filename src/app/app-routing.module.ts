@@ -4,6 +4,8 @@ import {LoginModule} from "./pages/login/login.module";
 import {HomeModule} from "./pages/home/home.module";
 import {ContactUsModule} from "./pages/contact-us/contact-us.module";
 import {SignUpModule} from "./pages/sign-up/sign-up.module";
+import {ProfileModule} from "./pages/profile/profile.module";
+import {BoatPageModule} from "./pages/boat-page/boat-page.module";
 
 
 const routes: Routes = [
@@ -26,6 +28,14 @@ const routes: Routes = [
       {
         path: 'sign-up',
         loadChildren: () => SignUpModule
+      },
+      {
+        path: 'profile',
+        loadChildren: () => ProfileModule
+      },
+      {
+        path: 'boat',
+        loadChildren: () => BoatPageModule
       }
     ]
   }
