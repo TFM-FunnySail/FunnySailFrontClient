@@ -5,9 +5,12 @@ import {HomeRoutingModule} from './home-routing.module';
 import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
-    declarations: [
-        HomeComponent
-    ],
+  declarations: [
+    HomeComponent
+  ],
+  exports: [
+    HomeComponent
+  ],
   imports: [
     CommonModule,
     HomeRoutingModule,

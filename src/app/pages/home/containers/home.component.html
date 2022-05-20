@@ -5,12 +5,6 @@
       <div class="card-body">
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" style="height: 12rem;">
 
-          <!--<ng-container *ngIf="foo === 1;else second"></ng-container>
-          <ng-template #second>
-            <ng-container *ngIf="foo === 2;else third"></ng-container>
-          </ng-template>
-          <ng-template #third></ng-template>-->
-
           <ng-container *ngIf="pageF === 1; else second">
             <div class="row">
               <div class="form-group">

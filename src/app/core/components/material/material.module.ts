@@ -47,7 +47,7 @@ import {MatMenuModule} from '@angular/material/menu';
         MatExpansionModule,
         MatBadgeModule,
         MatSidenavModule,
-        MatMenuModule
+        MatMenuModule,
     ],
     exports: [
         MatButtonModule,
