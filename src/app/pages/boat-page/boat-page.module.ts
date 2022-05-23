@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {BoatPageComponent} from "./containers/boat-page.component";
 import {BoatPageRoutingModule} from "./boat-page-routing.module";
 import {ReactiveFormsModule} from "@angular/forms";
-import {MaterialModule} from "../../core/components/material/material.module";
+import {CoreModule} from "../../core/core.module";
 
 @NgModule({
   declarations: [
@@ -13,7 +13,7 @@ import {MaterialModule} from "../../core/components/material/material.module";
     CommonModule,
     BoatPageRoutingModule,
     ReactiveFormsModule,
-    MaterialModule
+    CoreModule
   ]
 })
 export class BoatPageModule {

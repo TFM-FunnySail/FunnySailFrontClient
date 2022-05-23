@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MaterialModule} from "../../../core/components/material/material.module";
 
 @Component({
   selector: 'boat-page',

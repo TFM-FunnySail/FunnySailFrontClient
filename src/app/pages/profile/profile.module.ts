@@ -1,22 +1,20 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ProfileComponent } from "./containers/profile.component";
 import { ProfileRoutingModule } from "./profile-routing.module";
-import {MaterialModule} from "../../core/components/material/material.module";
-import {RentalHistoryCardComponent} from "../../core/components/rental-history-card/rental-history-card.component";
+import { CoreModule } from "../../core/core.module";
 
 @NgModule({
   declarations: [
-    ProfileComponent,
-    RentalHistoryCardComponent
+    ProfileComponent
   ],
   imports: [
     CommonModule,
     ProfileRoutingModule,
-    MaterialModule
+    CoreModule
   ],
   exports: [
-    RentalHistoryCardComponent
+    ProfileComponent
   ]
 })
 export class ProfileModule {
