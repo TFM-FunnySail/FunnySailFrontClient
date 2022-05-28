@@ -1,18 +1,151 @@
-<div class="container" style="margin-top:10%;">
-  <div class="row bg-black">
-    <button type="button" mat-raised-button color="primary" (click)="activity()">
-      <span class="mat-body-2">Actividades</span>
-    </button>
+<div class="container" style="margin-top:4%;">
+  <div class="row justify-content-center" style="padding: 0;">
+    <carousel style="padding: 0;"></carousel>
   </div>
   <div class="row justify-content-center">
     <div class="card bg-light" style="max-width: 50rem; margin: 20px auto;">
       <div class="card-body">
-        <h1>FUNNY SAIL!!</h1>
-        <p>Bienvenidos a nuestra SUPER PAGINA WEB!</p>
+        <h1>La mejor solución para alquilar un barco</h1>
+        <p>Más de 40.000 embarcaciones para alquilar al mejor precio y en todo el mundo</p>
+        <form [formGroup]="form" class="justify-content-center form">
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Choose a date</mat-label>
+              <input matInput [matDatepicker]="initialDate">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matSuffix [for]="initialDate"></mat-datepicker-toggle>
+              <mat-datepicker #initialDate></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="endDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+            <mat-datepicker #endDate></mat-datepicker>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Tipo de embarcación</mat-label>
+              <mat-select>
+                <mat-option value="one">Velero</mat-option>
+                <mat-option value="two">Moto de agua</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </p>
+          <button class="btn btn-proyecto" mat-raised-button color="primary" (click)="find()">
+            <span class="mat-body-2">Enviar</span>
+          </button>
+        </form>
       </div>
     </div>
   </div>
   <div class="row">
-<!--    <card-product></card-product>-->
+    <div class="col-12 justify-content-center" style="text-align: center">
+      <h1> La selección de la comunidad</h1>
+    </div>
+    <div class="col m-5" >
+      <mat-grid-list cols="4" rowHeight = "200px">
+        <mat-grid-tile [colspan] = "3"
+                       [rowspan] = "1">
+          <mat-grid-tile-footer style="background: none;"><strong>Titulo</strong></mat-grid-tile-footer>
+          <img class="card-img-top img-card" src="https://picsum.photos/id/62/500/500" alt="Card image cap">
+        </mat-grid-tile>
+        <mat-grid-tile [colspan] = "1"
+                       [rowspan] = "2">
+          <img class="card-img-top img-card" src="https://picsum.photos/id/64/500/500" alt="Card image cap">
+          <mat-grid-tile-footer style="background: none;"><strong>Titulo2</strong></mat-grid-tile-footer>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan] = "1"
+                       [rowspan] = "1">
+          <mat-grid-tile-footer style="background: none;"><strong>Titulo3</strong></mat-grid-tile-footer>
+          <img class="card-img-top img-card" src="https://picsum.photos/id/65/500/500" alt="Card image cap">
+        </mat-grid-tile>
+        <mat-grid-tile [colspan] = "2"
+                       [rowspan] = "1">
+          <mat-grid-tile-footer style="background: none;"><strong>Titulo4</strong></mat-grid-tile-footer>
+          <img class="card-img-top img-card" src="https://picsum.photos/id/66/500/500" alt="Card image cap">
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
   </div>
+  <div class="row justify-content-center" *ngFor="let linkMenu of linksMenus">
+    <card-menu [linkMenu]="linkMenu"></card-menu>
+  </div>
+
+  <div class="row justify-content-center" *ngFor="let comment of comments">
+    <comment [comment]="comment"></comment>
+  </div>
+
+  <div class="row mt-5" style="border-top-color: #555555; border-top-style:solid; border-top-width: 1px;">
+    <div class="col-12 col-sm-12 col-md-6 p-5">
+      <div style="text-align: center;">
+        <h1>Propietario</h1>
+      </div>
+      <ul>
+        <li class="d-flex">
+          <mat-icon class="m-3" aria-hidden="false" aria-label="Example home icon" style="color: #04AA6D">star_rate</mat-icon>
+          <p>
+            Crea un anuncio gratuitamente para alquilar tu barco. Veleros, neumáticas, lanchas, catamaranes, ¡todos son bienvenidos en Click&Boat!
+          </p>
+        </li>
+        <li class="d-flex">
+          <mat-icon class="m-3" aria-hidden="false" aria-label="Example home icon" style="color: #04AA6D">star_rate</mat-icon>
+          <p>
+            Alquila a quien desees, cuando quieras y al precio que veas conveniente. Click&Boat te ayuda a rentabilizar tu barco al permitirte cubrir los gastos de mantenimiento y uso.
+          </p>
+        </li>
+        <li class="d-flex">
+          <mat-icon class="m-3" aria-hidden="false" aria-label="Example home icon" style="color: #04AA6D">star_rate</mat-icon>
+          <p>
+            Seguro a todo riesgo opcional de hasta ocho millones de euros de cobertura y plataforma de pago segura para la fianza. Confíanos el alquiler de tu velero, barco a motor o catamarán.
+          </p>
+        </li>
+      </ul>
+      <div style="text-align: center;">
+        <button class="btn btn-proyecto" mat-raised-button color="primary" (click)="rent()">
+          <span class="mat-body-2">Encuentra tu barco</span>
+        </button>
+      </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-6 p-5">
+      <div style="text-align: center;">
+        <h1>Arrendatario</h1>
+      </div>
+      <ul>
+        <li class="d-flex">
+          <mat-icon class="m-3" aria-hidden="false" aria-label="Example home icon" style="color: #04AA6D">star_rate</mat-icon>
+          <p>
+            Consulta todos los anuncios a través del motor de búsqueda. Encuentra un barco o un velero en alquiler en cualquier lugar de Europa y al mejor precio. Disfruta de nuestro seguro incluído para alquilar y navegar con total seguridad.
+          </p>
+        </li>
+        <li class="d-flex">
+          <mat-icon class="m-3" aria-hidden="false" aria-label="Example home icon" style="color: #04AA6D">star_rate</mat-icon>
+          <p>
+            Ponte en contacto con los propietarios de las embarcaciones de manera gratuita y pregúntales sobre cuestiones relativas a la embarcación: disponibilidad , equipamiento, etc. a través del servicio de mensajería incorporado.
+          </p>
+        </li>
+        <li class="d-flex">
+          <mat-icon class="m-3" aria-hidden="false" aria-label="Example home icon" style="color: #04AA6D">star_rate</mat-icon>
+          <p>
+            Reserva directamente online con total seguridad y alquila el barco o velero de tus sueños en tan solo unos clics. Únicamente se te realizará el cargo en caso de que el propietario de la embarcación acepte tu solicitud de alquiler. Pago seguro al 100 %. Click&Boat Es tu intermediario de confianza.
+          </p>
+        </li>
+      </ul>
+      <div style="text-align: center;">
+        <button class="btn btn-proyecto" mat-raised-button color="primary" (click)="find()">
+          <span class="mat-body-2">Encuentra tu barco</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center m-5">
+    <div class="col" style="text-align: center;">
+       <h1>Navega con total seguridad</h1>
+        <img class="card-img-top img-card" src="https://www.allianz-partners.es/content/dam/onemarketing/awp/allianz-partners-es/Allianz_Partners_Spain.png" alt="Card image cap" style="max-height: 250px; max-width: 500px;">
+    </div>
+  </div>
+
+
 </div>
