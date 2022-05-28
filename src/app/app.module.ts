@@ -10,6 +10,7 @@ import {SharedModule} from "./shared/shared.module";
 import {sdkApiConfigurationProvider} from "./shared/services/sdkApiConfigFactory";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AppHttpInterceptor} from "./shared/interceptors/app-http.interceptor";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -17,12 +18,13 @@ import {AppHttpInterceptor} from "./shared/interceptors/app-http.interceptor";
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
     HttpClientModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    NgbModule
   ],
   providers: [sdkApiConfigurationProvider,{
     provide: HTTP_INTERCEPTORS,

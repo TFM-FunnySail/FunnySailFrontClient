@@ -1,0 +1,21 @@
+<div class="col-12 col-sm-12 col-md-6 col-lg-4">
+  <div class="card m-2">
+    <div class="row p-3">
+      <div class="col-3">
+        <img class="card-img-top img-card" src="https://picsum.photos/id/1/500/500" alt="Card image cap" >
+      </div>
+      <div class="col">
+        <p>
+          <strong>{{comment.user}}</strong>
+        </p>
+        <p class="date">{{comment.date}}</p>
+        <span *ngFor="let star of [0,1,2,3,4]">
+          <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon">star_rate</mat-icon>
+        </span>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="card-text">{{comment.comment}}</p>
+    </div>
+  </div>
+</div>

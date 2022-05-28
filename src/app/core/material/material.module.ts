@@ -20,6 +20,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
     imports: [
@@ -48,6 +49,7 @@ import {MatMenuModule} from '@angular/material/menu';
         MatBadgeModule,
         MatSidenavModule,
         MatMenuModule,
+        MatGridListModule
     ],
     exports: [
         MatButtonModule,
@@ -72,7 +74,8 @@ import {MatMenuModule} from '@angular/material/menu';
         MatExpansionModule,
         MatBadgeModule,
         MatSidenavModule,
-        MatMenuModule
+        MatMenuModule,
+        MatGridListModule
     ],
     providers: [
         MatDatepickerModule
