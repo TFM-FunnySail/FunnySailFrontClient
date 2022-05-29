@@ -1,0 +1,49 @@
+<div class="container" style="margin-top:8%;">
+  <div class="row justify-content-center">
+    <div class="card bg-light" style="max-width: 50rem; margin: 20px auto;">
+      <div class="card-body">
+        <h1>Buscar tú actividad favorita!</h1>
+        <form [formGroup]="form" class="justify-content-center form">
+          <mat-form-field appearance="outline">
+            <mat-label>Precio mínimo</mat-label>
+            <input matInput type="number" formControlName="minPrice">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Precio máximo</mat-label>
+            <input matInput type="number" formControlName="maxPrice">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Fecha inicial</mat-label>
+            <input matInput formControlName="initialDate" [matDatepicker]="initialDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="initialDate"></mat-datepicker-toggle>
+            <mat-datepicker #initialDate></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Fecha final</mat-label>
+            <input matInput formControlName="endDate" [matDatepicker]="endDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+            <mat-datepicker #endDate></mat-datepicker>
+          </mat-form-field>
+          <button class="btn btn-proyecto" mat-raised-button color="primary" (click)="searchAct()">
+            <span class="mat-body-2">Buscar</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-4 col-lg-3" *ngFor="let activity of activities">
+      <div class="card mb-3">
+        <img class="card-img-top img-card" src="https://picsum.photos/id/62/500/500" alt="Card image cap">
+        <div class="card-body">
+          <h2 class="card-title" [routerLink]="['boat/{{activity.id}}']"><strong>{{activity.name}}</strong></h2>
+          <p class="card-text">Descripción: {{activity.description}}</p>
+          <p class="card-text">Precio: {{activity.price}} €</p>
+          <p class="card-text">Fecha: {{activity.activityDate}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,18 +2,20 @@ import { NgModule } from '@angular/core';
 import { MaterialModule } from '../core/material/material.module';
 import { RouterModule } from '@angular/router';
 import {SinfotoPipe} from "./pipes/sinfoto.pipe";
-
+import {TranslateModule} from "@ngx-translate/core";
 @NgModule({
   imports: [
     MaterialModule,
-    RouterModule
+    RouterModule,
+    TranslateModule
   ],
   providers: [
   ],
   exports: [
     MaterialModule,
     RouterModule,
-    SinfotoPipe
+    SinfotoPipe,
+    TranslateModule
   ],
   declarations: [SinfotoPipe]
 })

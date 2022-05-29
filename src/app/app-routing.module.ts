@@ -7,6 +7,9 @@ import {SignUpModule} from "./pages/sign-up/sign-up.module";
 import {ProfileModule} from "./pages/profile/profile.module";
 import {BoatPageModule} from "./pages/boat-page/boat-page.module";
 import {PaymentModule} from "./pages/payment/payment.module";
+import {BoatsModule} from "./pages/boats/boats.module";
+import {ActivitiesModule} from "./pages/activities/activities.module";
+import {ServicesModule} from "./pages/services/services.module";
 
 const routes: Routes = [
   {
@@ -40,6 +43,18 @@ const routes: Routes = [
       {
         path: 'payment',
         loadChildren: () => PaymentModule
+      },
+      {
+        path: 'boats',
+        loadChildren: () => BoatsModule
+      },
+      {
+        path: 'activities',
+        loadChildren: () => ActivitiesModule
+      },
+      {
+        path: 'services',
+        loadChildren: () => ServicesModule
       },
     ]
   }
