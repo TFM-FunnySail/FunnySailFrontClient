@@ -6,12 +6,12 @@ import {MaterialModule} from "../../core/material/material.module";
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     CommonModule,
     LoginRoutingModule,
-    MaterialModule
+    MaterialModule,
   ]
 })
 export class LoginModule {

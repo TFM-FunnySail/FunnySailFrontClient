@@ -32,10 +32,10 @@ export class AppHttpInterceptor implements HttpInterceptor {
       tap(evt => {
         if (evt instanceof HttpResponse) {
           if ([201].includes(evt.status)) {
-            alert("Se creó el elemento hijueputa");
+            alert("Se creó el elemento");
           }
           if ([204].includes(evt.status)) {
-            alert("Se actualizó el elemento hijueputa");
+            alert("Se actualizó el elemento");
           }
         }
       }),
