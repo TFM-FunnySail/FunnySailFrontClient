@@ -34,7 +34,7 @@
             </mat-form-field>
           </p>
           <button class="btn btn-proyecto" mat-raised-button color="primary" (click)="find()">
-            <span class="mat-body-2">Enviar</span>
+            <span class="mat-body-2">Buscar</span>
           </button>
         </form>
       </div>
@@ -69,12 +69,16 @@
       </mat-grid-list>
     </div>
   </div>
-  <div class="row justify-content-center" *ngFor="let linkMenu of linksMenus">
-    <card-menu [linkMenu]="linkMenu"></card-menu>
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-12 col-md-4 col-lg-3" *ngFor="let linkMenu of linksMenus">
+      <card-menu [linkMenu]="linkMenu"></card-menu>
+    </div>
   </div>
 
-  <div class="row justify-content-center" *ngFor="let comment of comments">
-    <comment [comment]="comment"></comment>
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4"  *ngFor="let comment of comments">
+      <comment [comment]="comment"></comment>
+    </div>
   </div>
 
   <div class="row mt-5" style="border-top-color: #555555; border-top-style:solid; border-top-width: 1px;">
@@ -104,7 +108,7 @@
       </ul>
       <div style="text-align: center;">
         <button class="btn btn-proyecto" mat-raised-button color="primary" (click)="rent()">
-          <span class="mat-body-2">Encuentra tu barco</span>
+          <span class="mat-body-2">Alquila tú barco</span>
         </button>
       </div>
     </div>

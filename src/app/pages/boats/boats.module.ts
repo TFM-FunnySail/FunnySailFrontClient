@@ -1,23 +1,23 @@
 import {NgModule} from '@angular/core';
-import {HomeComponent} from './containers/home.component';
-import {HomeRoutingModule} from './home-routing.module';
+import {BoatsComponent} from "./containers/boats.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {CoreModule} from "../../core/core.module";
 import {SharedModule} from "../../shared/shared.module";
+import {BoatsRoutingModule} from "./boats-routing.module";
 
 @NgModule({
   declarations: [
-    HomeComponent
+    BoatsComponent
   ],
   exports: [
-    HomeComponent
+    BoatsComponent
   ],
   imports: [
-    HomeRoutingModule,
+    BoatsRoutingModule,
     ReactiveFormsModule,
     CoreModule,
     SharedModule
   ]
 })
-export class HomeModule {
+export class BoatsModule {
 }

@@ -8,23 +8,32 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {CoreModule} from "./core/core.module";
 import {SharedModule} from "./shared/shared.module";
 import {sdkApiConfigurationProvider} from "./shared/services/sdkApiConfigFactory";
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 import {AppHttpInterceptor} from "./shared/interceptors/app-http.interceptor";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
     CoreModule,
     SharedModule,
-    NgbModule
+    NgbModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/'),
+        deps: [HttpClient]
+      }
+    }),
   ],
   providers: [sdkApiConfigurationProvider,{
     provide: HTTP_INTERCEPTORS,
