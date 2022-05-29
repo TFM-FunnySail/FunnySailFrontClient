@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AuthService} from "../../../shared/services/auth/auth.service";
+import {UsersService} from "../../../shared/sdk";
+
+import {User} from "../../../shared/data/users";
+import {StorageService} from "../../../shared/services/storage/storage.service";
 
 @Component({
   selector: 'app-login',
@@ -15,29 +19,42 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
-              protected authService:AuthService) {
+              protected authService:AuthService,
+              protected userService: UsersService,
+              protected storageService:StorageService) {
+    this.form = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+    });
 
   }
 
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
-    });
+
   }
 
   login() {
     if (!this.form.invalid){
         this.authService.login(this.form.value,()=>{
+          this.userService.apiUsersGet("",this.form.value.email).subscribe(resp=>{
+            if (resp.items) {
+              this.storageService.setItem("User",resp.items[0].firstName);
+              this.storageService.setItem("userEmail",resp.items[0].email);
+            }
+          });
           this.router.navigate(['']);
         },(err: { error: { esMessage: any; }; message: any; })=>{
           const errorMessage = err.error.esMessage ?? err.message ;
+          this.form.reset();
         });
-      // this.router.navigateByUrl('/');
     }else
     {
       this.showAlert = true;
     }
+  }
+
+  goSignUp() {
+    this.router.navigate(['sign-up']);
   }
 }

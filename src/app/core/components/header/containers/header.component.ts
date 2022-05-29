@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
 
+import {AuthService} from "../../../../shared/services/auth/auth.service";
+import {StorageService} from "../../../../shared/services/storage/storage.service";
 
 @Component({
   selector: 'app-header',
@@ -8,12 +9,30 @@ import {Router} from "@angular/router";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  router: Router;
-  constructor(router: Router) {
-    this.router = router;
+
+  user: string | null;
+  login: string | null;
+  private adminRole: string;
+  public userLogged: any;
+
+  constructor(
+              protected authService:AuthService,
+              protected storageService:StorageService) {
+    this.adminRole = 'admin';
+    this.userLogged = null;
+    this.user = "";
+    this.login = "Log in";
   }
+
 
   ngOnInit(): void {
+    this.userLogged = this.authService.isUserLogged.subscribe(resp => {
+      if (resp) {
+        alert(this.storageService.getItem("User"));
+        this.user = this.storageService.getItem("User");
+        this.login = "";
+      }
+    });
   }
-
 }
+

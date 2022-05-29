@@ -2,11 +2,15 @@ import { Injectable } from '@angular/core';
 import {StorageService} from "../storage/storage.service";
 import {AccountService, AuthenticateResponseDTO} from "../../sdk";
 import {Router} from "@angular/router";
+import {BehaviorSubject, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  private userLogged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isUserLogged: Observable<boolean> = this.userLogged.asObservable();
 
   private tokenStorageKey:string = "tokenInfo";
 
@@ -17,9 +21,12 @@ export class AuthService {
   public login(data: any,callback: any,callbackErr: any){
     return this.accountApiService.apiAccountAdminLoginPost(data).subscribe(resp =>{
         this.saveToken(resp);
+        this.userLogged.next(true);
         callback(resp);
     },
-      error => callbackErr(error))
+      error => {
+        callbackErr(error)
+      })
   }
 
   private saveToken(data: AuthenticateResponseDTO) {
@@ -30,7 +37,7 @@ export class AuthService {
     }));
   }
 
-  isLoggedIn() {
+  public isLoggedIn() {
     const tokenInfo = this.getTokenInfo();
 
     return tokenInfo && tokenInfo.token && this.isValidExpiresIn(tokenInfo.tokenExpiresIn);
