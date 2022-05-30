@@ -4,18 +4,36 @@
   </div>
   <div class="row">
     <div class="col-4">
-        <h3><strong>Teléfono</strong></h3>
-        <p>6666666666</p>
+      <div class="card">
+        <div class="card-header">
+          <h3><strong>Teléfono</strong></h3>
+        </div>
+        <div class="card-body">
+          <a href="tel:+34666666666">6666666666</a>
+        </div>
+      </div>
     </div>
     <div class="col-4">
-      <h3><strong>Dirección</strong></h3>
-      <p>C/ Prof. José García</p>
-      <p>Santesmases, 9. 28040 Madrid</p>
-      <a href="#">Mapa</a>
+      <div class="card">
+        <div class="card-header">
+          <h3><strong>Dirección</strong></h3>
+        </div>
+        <div class="card-body">
+          <p>C/ Prof. José García</p>
+          <p>Santesmases, 9. 28040 Madrid</p>
+          <a href="#">Mapa</a>
+        </div>
+      </div>
     </div>
     <div class="col-4">
-      <h3><strong>Email</strong></h3>
-      <p>info@funnysail.es</p>
+      <div class="card">
+        <div class="card-header">
+          <h3><strong>Email</strong></h3>
+        </div>
+        <div class="card-body">
+          <a href="mailto:info@funnysail.es">info@funnysail.es</a>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row">
@@ -43,7 +61,7 @@
       </button>
     </form>
   </div>
-  <div class="row">
+  <div class="row mb-5">
     <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
       <agm-marker [latitude]="lat" [longitude]="lng">
         <agm-info-window>

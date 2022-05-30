@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'home',
@@ -13,17 +14,17 @@ export class HomeComponent implements OnInit {
     {
       name: 'ACTIVIDADES',
       description: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.',
-      linkPage: 'activity'
+      linkPage: 'activities'
     },
     {
       name: 'SERVICIOS',
       description: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.',
-      linkPage: 'service'
+      linkPage: 'services'
     },
     {
       name: 'ALQUILER DE BARCOS',
       description: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.',
-      linkPage: 'search-boat'
+      linkPage: 'boats'
     }
   ];
 
@@ -53,7 +54,7 @@ export class HomeComponent implements OnInit {
       comment: 'excelente servicio!!!'
     }
   ];
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private router: Router) {
    // This is intentional
   }
 
@@ -66,13 +67,28 @@ export class HomeComponent implements OnInit {
   }
 
   find() {
-    console.log('find some boat');
+    let type = '';
+    if (this.form.get('typeBoat').value) {
+      type = this.form.get('typeBoat').value;
+    }
+    let initialDate = '';
+    if (this.form.get('initialDate').value) {
+      console.log(this.form.get('initialDate').value);
+      initialDate = (this.form.get('initialDate').value as unknown as Date).toISOString();
+    }
+    let endDate = '';
+    if (this.form.get('endDate').value) {
+      console.log(this.form.get('endDate').value);
+      endDate = (this.form.get('endDate').value as unknown as Date).toISOString();
+    }
+
+    this.router.navigate(['/boats'], { queryParams: { type, initialDate , endDate } });
   }
 
   rent() {
-    console.log('find some boat');
+    this.router.navigate(['/rent-boat']);
   }
-  activity(){
-    console.log('go to activity');
+  boats(){
+    this.router.navigate(['/boats']);
   }
 }
