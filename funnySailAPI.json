@@ -1,10 +1,10 @@
 {
-  "openapi": "3.0.3",
+  "openapi": "3.0.1",
   "info": {
     "title": "FunnySail API",
     "description": "Api para administración y venta de servicios, actividades y embarcaciones.",
     "contact": {
-      "name": "Client funnySail",
+      "name": "Admin funnySail",
       "email": ""
     },
     "version": "v1"
@@ -1015,6 +1015,52 @@
       }
     },
     "/api/Boats/requiredTitles": {
+      "post": {
+        "tags": [
+          "Boats"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddBoatTitleInputDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddBoatTitleInputDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddBoatTitleInputDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BoatTitleOutputDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BoatTitleOutputDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BoatTitleOutputDTO"
+                }
+              }
+            }
+          }
+        }
+      },
       "get": {
         "tags": [
           "Boats"
@@ -1073,72 +1119,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/BoatTitleOutputDTO"
-                  }
+                  "$ref": "#/components/schemas/BoatTitleOutputDTOGenericResponseDTO"
                 }
               },
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/BoatTitleOutputDTO"
-                  }
+                  "$ref": "#/components/schemas/BoatTitleOutputDTOGenericResponseDTO"
                 }
               },
               "text/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/BoatTitleOutputDTO"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Boats"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddBoatTitleInputDTO"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddBoatTitleInputDTO"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddBoatTitleInputDTO"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/BoatTitleOutputDTO"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BoatTitleOutputDTO"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BoatTitleOutputDTO"
+                  "$ref": "#/components/schemas/BoatTitleOutputDTOGenericResponseDTO"
                 }
               }
             }
@@ -4227,8 +4218,23 @@
           "requiredBoatTitles": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/AddRequiredBoatTitleInputDTO"
+              "type": "integer",
+              "format": "int32"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddBoatTitleInputDTO": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
             "nullable": true
           }
         },
@@ -4346,36 +4352,6 @@
         },
         "additionalProperties": false
       },
-      "AddRequiredBoatTitleInputDTO": {
-        "type": "object",
-        "properties": {
-          "title": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "AddBoatTitleInputDTO": {
-        "required": [
-          "description",
-          "name"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "maxLength": 200,
-            "minLength": 0,
-            "type": "string"
-          },
-          "description": {
-            "maxLength": 500,
-            "minLength": 0,
-            "type": "string"
-          }
-        },
-        "additionalProperties": false
-      },
       "AddServiceDTO": {
         "required": [
           "description",
@@ -4451,6 +4427,36 @@
             "nullable": true
           },
           "returnUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "maxLength": 500,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "state": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "country": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "zipCode": {
+            "maxLength": 5,
+            "minLength": 0,
             "type": "string",
             "nullable": true
           }
@@ -4637,14 +4643,48 @@
         },
         "additionalProperties": false
       },
-      "BoatTiteEnum": {
-        "enum": [
-          0,
-          1,
-          2
-        ],
-        "type": "integer",
-        "format": "int32"
+      "BoatTitleOutputDTO": {
+        "type": "object",
+        "properties": {
+          "titleId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BoatTitleOutputDTOGenericResponseDTO": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BoatTitleOutputDTO"
+            },
+            "nullable": true
+          },
+          "limit": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
       },
       "BoatTypeOutputDTO": {
         "type": "object",
@@ -4901,6 +4941,26 @@
           "phoneNumber": {
             "maxLength": 20,
             "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "adress": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "nullable": true
+          },
+          "state": {
+            "type": "string",
+            "nullable": true
+          },
+          "zipCode": {
             "type": "string",
             "nullable": true
           }
@@ -5250,24 +5310,6 @@
           "titleId": {
             "type": "integer",
             "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "BoatTitleOutputDTO": {
-        "type": "object",
-        "properties": {
-          "titleId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -5682,6 +5724,24 @@
         },
         "additionalProperties": false
       },
+      "UpdateBoatTitleDTO": {
+        "type": "object",
+        "properties": {
+          "titleId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "UpdateBookingInputDTO": {
         "type": "object",
         "properties": {
@@ -5775,24 +5835,6 @@
             "nullable": true
           },
           "location": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "UpdateBoatTitleDTO": {
-        "type": "object",
-        "properties": {
-          "titleId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "description": {
             "type": "string",
             "nullable": true
           }
@@ -5902,6 +5944,26 @@
             "nullable": true
           },
           "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "state": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "nullable": true
+          },
+          "zipCode": {
             "type": "string",
             "nullable": true
           },

@@ -12,7 +12,7 @@
 
 
 export interface AddBoatTitleInputDTO { 
-    name: string;
-    description: string;
+    name?: string | null;
+    description?: string | null;
 }
 

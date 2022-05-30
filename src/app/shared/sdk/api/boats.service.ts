@@ -29,6 +29,8 @@ import { BoatOutputDTOGenericResponseDTO } from '../model/boatOutputDTOGenericRe
 // @ts-ignore
 import { BoatTitleOutputDTO } from '../model/boatTitleOutputDTO';
 // @ts-ignore
+import { BoatTitleOutputDTOGenericResponseDTO } from '../model/boatTitleOutputDTOGenericResponseDTO';
+// @ts-ignore
 import { BoatTypeOutputDTO } from '../model/boatTypeOutputDTO';
 // @ts-ignore
 import { DisapproveBoatInputDTO } from '../model/disapproveBoatInputDTO';
@@ -786,9 +788,9 @@ export class BoatsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public apiBoatsRequiredTitlesGet(titleId?: number, name?: string, description?: string, limit?: number, offset?: number, page?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<Array<BoatTitleOutputDTO>>;
-    public apiBoatsRequiredTitlesGet(titleId?: number, name?: string, description?: string, limit?: number, offset?: number, page?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<HttpResponse<Array<BoatTitleOutputDTO>>>;
-    public apiBoatsRequiredTitlesGet(titleId?: number, name?: string, description?: string, limit?: number, offset?: number, page?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<HttpEvent<Array<BoatTitleOutputDTO>>>;
+    public apiBoatsRequiredTitlesGet(titleId?: number, name?: string, description?: string, limit?: number, offset?: number, page?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<BoatTitleOutputDTOGenericResponseDTO>;
+    public apiBoatsRequiredTitlesGet(titleId?: number, name?: string, description?: string, limit?: number, offset?: number, page?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<HttpResponse<BoatTitleOutputDTOGenericResponseDTO>>;
+    public apiBoatsRequiredTitlesGet(titleId?: number, name?: string, description?: string, limit?: number, offset?: number, page?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<HttpEvent<BoatTitleOutputDTOGenericResponseDTO>>;
     public apiBoatsRequiredTitlesGet(titleId?: number, name?: string, description?: string, limit?: number, offset?: number, page?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<any> {
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
@@ -850,7 +852,7 @@ export class BoatsService {
             }
         }
 
-        return this.httpClient.get<Array<BoatTitleOutputDTO>>(`${this.configuration.basePath}/api/Boats/requiredTitles`,
+        return this.httpClient.get<BoatTitleOutputDTOGenericResponseDTO>(`${this.configuration.basePath}/api/Boats/requiredTitles`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters,

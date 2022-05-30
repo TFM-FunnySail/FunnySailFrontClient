@@ -19,7 +19,7 @@ export class AuthService {
               protected router:Router,) { }
 
   public login(data: any,callback: any,callbackErr: any){
-    return this.accountApiService.apiAccountAdminLoginPost(data).subscribe(resp =>{
+    return this.accountApiService.apiAccountLoginPost(data).subscribe(resp =>{
         this.saveToken(resp);
         this.userLogged.next(true);
         callback(resp);

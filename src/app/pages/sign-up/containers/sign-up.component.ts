@@ -17,24 +17,24 @@ export class SignUpComponent implements OnInit {
               private formBuilder: FormBuilder,
               protected userService: UsersService,) {
     this.registerForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]{8,25}$')]],
-      confirmPassword: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]{8,25}$')]],
+      password: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9_@./#&+-]{8,25}$')]],
+      confirmPassword: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9_@./#&+-]{8,25}$')]],
       lastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
-      birthday: ['', [/*Validators.required*/,]],
-      phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
-      address: ['', [/*Validators.required*/, Validators.minLength(3), Validators.maxLength(50)]],
-      city: ['', [/*Validators.required*/, Validators.minLength(3), Validators.maxLength(20)]],
-      state: ['', [/*Validators.required*/, Validators.minLength(3), Validators.maxLength(20)]],
-      zip: ['', [/*Validators.required*/, Validators.pattern('^[0-9]{5}$')]],
-      country: ['', [/*Validators.required*/, Validators.minLength(3), Validators.maxLength(20)]],
-      identification: ['', [/*Validators.required*/, Validators.pattern('^[0-9A-Z]{10}$')]],
+      birthDay: ['', [Validators.required,]],
+      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      Address: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+      City: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      State: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      ZipCode: ['', [Validators.required, Validators.pattern('^[0-9]{5}$')]],
+      Country: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      /*identification: ['', [/!*Validators.required*!/, Validators.pattern('^[0-9A-Z]{10}$')]],
       paymentMethod: ['', []],
       cardName: ['', [Validators.minLength(3), Validators.maxLength(20)]],
       cardNumber: ['', [Validators.pattern('^[0-9]{16}$')]],
       cardExpiration: ['', [Validators.pattern('^[0-9]{2}/[0-9]{2}$')]],
-      cardCvv: ['', [Validators.pattern('^[0-9]{3}$')]],
+      cardCvv: ['', [Validators.pattern('^[0-9]{3}$')]],*/
     });
   }
 
@@ -88,27 +88,14 @@ export class SignUpComponent implements OnInit {
   }
 
   SubmitNewUser(){
-    const datos : AddUserInputDTO = {
-      firstName: this.registerForm.value.name,
-      email: this.registerForm.value.email,
-      password: this.registerForm.value.password,
-      confirmPassword: this.registerForm.value.confirmPassword,
-      lastName: this.registerForm.value.lastName,
-      phoneNumber: this.registerForm.value.phone,
-      birthDay: null,
-      receivePromotion: false,
-      returnUrl: '',
-    }
-    /*
-    receivePromotion?: boolean | null;
-    returnUrl?: string | null;
-    * */
     //Now that all the fields are valid, we can send the data to the server
     console.log(this.registerForm.get('birthday')?.value);
-    console.log((document.getElementById('birthday') as HTMLInputElement).value);
-    console.log(datos);
-    this.userService.apiUsersPost(datos).subscribe(resp=>{
-      console.log(resp);
+    /*console.log((document.getElementById('birthday') as HTMLInputElement).value);*/
+    console.log(this.registerForm.value);
+    this.userService.apiUsersPost(this.registerForm.value).subscribe(()=>{
+      this.router.navigate(['']);
+    }, (error) => {
+      console.log(error);
     });
   }
 }

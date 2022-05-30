@@ -31,7 +31,6 @@ model/addBookingInputDTO.ts
 model/addMooringDTO.ts
 model/addOwnerInvoiceInputDTO.ts
 model/addPortInputDTO.ts
-model/addRequiredBoatTitleInputDTO.ts
 model/addServiceDTO.ts
 model/addUserInputDTO.ts
 model/authenticateResponseDTO.ts
@@ -39,8 +38,8 @@ model/boatBookingOutputDTO.ts
 model/boatOutputDTO.ts
 model/boatOutputDTOGenericResponseDTO.ts
 model/boatResourcesOutputDTO.ts
-model/boatTiteEnum.ts
 model/boatTitleOutputDTO.ts
+model/boatTitleOutputDTOGenericResponseDTO.ts
 model/boatTypeOutputDTO.ts
 model/bookingOutputDTO.ts
 model/bookingOutputDTOGenericResponseDTO.ts

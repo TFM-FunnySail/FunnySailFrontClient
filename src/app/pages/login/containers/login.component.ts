@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AuthService} from "../../../shared/services/auth/auth.service";
-import {UsersService} from "../../../shared/sdk";
+import { UsersService} from "../../../shared/sdk";
 
 import {User} from "../../../shared/data/users";
 import {StorageService} from "../../../shared/services/storage/storage.service";
@@ -36,13 +36,16 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (!this.form.invalid){
-        this.authService.login(this.form.value,()=>{
-          this.userService.apiUsersGet("",this.form.value.email).subscribe(resp=>{
-            if (resp.items) {
-              this.storageService.setItem("User",resp.items[0].firstName);
-              this.storageService.setItem("userEmail",resp.items[0].email);
-            }
-          });
+        this.authService.login(this.form.value,(resp: any)=>{
+          console.log(resp)
+          if(resp){
+            this.userService.apiUsersIdGet(resp.id).subscribe(resp=>{
+              console.log(resp);
+              this.storageService.setItem("userId",resp.userId);
+              this.storageService.setItem("User",resp.firstName);
+              this.storageService.setItem("userEmail",resp.email);
+            });
+          }
           this.router.navigate(['']);
         },(err: { error: { esMessage: any; }; message: any; })=>{
           const errorMessage = err.error.esMessage ?? err.message ;

@@ -24,6 +24,11 @@ export interface UserOutputDTO {
     email?: string | null;
     userName?: string | null;
     phoneNumber?: string | null;
+    address?: string | null;
+    state?: string | null;
+    city?: string | null;
+    country?: string | null;
+    zipCode?: string | null;
     roles?: Array<string> | null;
     bookings?: Array<BookingOutputDTO> | null;
     invoices?: Array<ClientInvoiceOutputDTO> | null;

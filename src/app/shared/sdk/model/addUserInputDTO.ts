@@ -21,5 +21,10 @@ export interface AddUserInputDTO {
     birthDay?: string | null;
     phoneNumber?: string | null;
     returnUrl?: string | null;
+    address?: string | null;
+    state?: string | null;
+    city?: string | null;
+    country?: string | null;
+    zipCode?: string | null;
 }
 
