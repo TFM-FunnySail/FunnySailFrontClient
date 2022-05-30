@@ -81,26 +81,10 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6">
-            <p class="h6">Change password</p>
-            <mat-form-field appearance="outline">
-              <mat-label>Password</mat-label>
-              <input matInput formControlName="password" type="password" placeholder="Password" required>
-              <mat-error *ngIf="dataForm.get('password')?.errors?.['pattern']">
-                The password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter and one number.
-              </mat-error>
-            </mat-form-field>
+          <div class="col-md-3">
+            <change-password-card></change-password-card>
           </div>
-          <div class="col-md-6">
-            <p class="h6">Confirm password</p>
-            <mat-form-field appearance="outline">
-              <mat-label>Confirm password</mat-label>
-              <input matInput formControlName="confirmPassword" type="password" placeholder="Confirm password" required>
-              <mat-error *ngIf="dataForm.get('password')?.value != dataForm.get('confirmPassword')?.value">
-                Password mismatch
-              </mat-error>
-            </mat-form-field>
-          </div>
+
         </div>
         <div class="row" style="margin-top: 2.5%;">
           <p class="h3">Address</p>
@@ -202,7 +186,7 @@
   </div>
   <div class="row">
     <div class="col-md" style="margin-top:20px; padding-bottom: 50px;">
-      <button class="logout-button" >Log out</button>
+      <button class="logout-button" (click)="logout()">Log out</button>
     </div>
   </div>
 </div>

@@ -5,6 +5,7 @@ import { RentalHistoryCardModule } from "./rental-history-card/rental-history-ca
 import {CarouselModule} from "./carousel/carousel.module";
 import {CommentModule} from "./comment/comment.module";
 import {CardMenuModule} from "./card-menu/card-menu.module";
+import {ChangePasswordCardModule} from "./change-password-card/change-password-card.module";
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import {CardMenuModule} from "./card-menu/card-menu.module";
     RentalHistoryCardModule,
     CarouselModule,
     CommentModule,
-    CardMenuModule
+    CardMenuModule,
+    ChangePasswordCardModule
   ],
   exports: [
     FooterModule,
@@ -21,7 +23,8 @@ import {CardMenuModule} from "./card-menu/card-menu.module";
     RentalHistoryCardModule,
     CarouselModule,
     CommentModule,
-    CardMenuModule
+    CardMenuModule,
+    ChangePasswordCardModule
   ]
 })
 export class ComponentsModule {

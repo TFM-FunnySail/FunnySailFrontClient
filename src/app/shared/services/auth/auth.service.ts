@@ -53,7 +53,6 @@ export class AuthService {
 
   logout() {
     this.logoutAction();
-    alert("Pinche culero");
   }
 
   getTokenIfLoggedIn() {
@@ -70,6 +69,6 @@ export class AuthService {
 
   private logoutAction() {
     this.storageService.deleteItem(this.tokenStorageKey);
-    this.router.navigateByUrl('auth/login');
+    this.router.navigate(['login']);
   }
 }
