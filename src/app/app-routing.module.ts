@@ -10,6 +10,7 @@ import {PaymentModule} from "./pages/payment/payment.module";
 import {BoatsModule} from "./pages/boats/boats.module";
 import {ActivitiesModule} from "./pages/activities/activities.module";
 import {ServicesModule} from "./pages/services/services.module";
+import {RefundsModule} from "./pages/refunds/refunds.module";
 
 const routes: Routes = [
   {
@@ -56,6 +57,10 @@ const routes: Routes = [
         path: 'services',
         loadChildren: () => ServicesModule
       },
+      {
+        path: 'refunds',
+        loadChildren: () => RefundsModule
+      }
     ]
   }
 ];

@@ -186,8 +186,8 @@
       <hr>
     </div>
     <div class="row flex-row flex-nowrap" style="overflow: scroll; overflow-y: hidden">
-      <div class="col-3">
-        <app-rental-history-card></app-rental-history-card>
+      <div class="col-3" *ngFor="let booking of bookings">
+        <app-rental-history-card [booking]="booking"></app-rental-history-card>
       </div>
     </div>
   </div>

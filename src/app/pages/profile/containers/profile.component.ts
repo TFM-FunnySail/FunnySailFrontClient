@@ -1,9 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {UserOutputDTO, UsersService} from "../../../shared/sdk";
+import {
+  BookingOutputDTO,
+  BookingOutputDTOGenericResponseDTO,
+  BookingService,
+  UserOutputDTO,
+  UsersService,
+  EditUserInputDTO} from "../../../shared/sdk";
+
 import {StorageService} from "../../../shared/services/storage/storage.service";
-import {EditUserInputDTO} from "../../../shared/sdk";
 
 @Component({
   selector: 'profile',
@@ -15,10 +21,13 @@ export class ProfileComponent implements OnInit {
   user: any;
   userData: UserOutputDTO;
 
+  bookings?: Array<BookingOutputDTO>;
+
   constructor(private router: Router,
               private formBuilder: FormBuilder,
               protected userService: UsersService,
-              protected storageService:StorageService) {
+              protected storageService:StorageService,
+              private bookingService: BookingService) {
     this.dataForm = this.formBuilder.group({
       name: ['', [Validators.minLength(3), Validators.maxLength(20)]],
       email: ['', [Validators.email]],
@@ -78,6 +87,14 @@ export class ProfileComponent implements OnInit {
         }
       });
 
+      const clientId = this.storageService.getItem("userId") as string;
+      this.bookingService.apiBookingGet(undefined, clientId).subscribe(resp => {
+        this.bookings = this.handlerBookings(resp).items as  Array<BookingOutputDTO>;
+      });
+  }
+
+  handlerBookings(resp: BookingOutputDTOGenericResponseDTO) {
+    return resp;
   }
 
   onSubmit() {

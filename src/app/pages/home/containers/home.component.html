@@ -5,36 +5,34 @@
   <div class="row justify-content-center">
     <div class="card bg-light" style="max-width: 50rem; margin: 20px auto;">
       <div class="card-body">
-        <h1>La mejor solución para alquilar un barco</h1>
-        <p>Más de 40.000 embarcaciones para alquilar al mejor precio y en todo el mundo</p>
+        <h1>{{'home.form.title' | translate}}</h1>
+        <p>{{'home.form.subTitle' | translate}}</p>
         <form [formGroup]="form" class="justify-content-center form">
           <p>
             <mat-form-field appearance="outline">
-              <mat-label>Choose a date</mat-label>
-              <input matInput [matDatepicker]="initialDate">
-              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-label>{{'home.form.initialDate' | translate}}</mat-label>
+              <input matInput formControlName="initialDate"  [matDatepicker]="initialDate">
               <mat-datepicker-toggle matSuffix [for]="initialDate"></mat-datepicker-toggle>
               <mat-datepicker #initialDate></mat-datepicker>
             </mat-form-field>
             <mat-form-field appearance="outline">
-            <mat-label>Choose a date</mat-label>
-            <input matInput [matDatepicker]="endDate">
-            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-label>{{'home.form.endDate' | translate}}</mat-label>
+            <input matInput formControlName="endDate"  [matDatepicker]="endDate">
             <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
             <mat-datepicker #endDate></mat-datepicker>
             </mat-form-field>
           </p>
           <p>
             <mat-form-field appearance="outline">
-              <mat-label>Tipo de embarcación</mat-label>
-              <mat-select>
-                <mat-option value="one">Velero</mat-option>
-                <mat-option value="two">Moto de agua</mat-option>
+              <mat-label>{{'home.form.typeBoat' | translate}}</mat-label>
+              <mat-select formControlName="typeBoat" >
+                <mat-option value="1">Velero</mat-option>
+                <mat-option value="2">Moto de agua</mat-option>
               </mat-select>
             </mat-form-field>
           </p>
           <button class="btn btn-proyecto" mat-raised-button color="primary" (click)="find()">
-            <span class="mat-body-2">Buscar</span>
+            <span class="mat-body-2">{{'home.form.search' | translate}}</span>
           </button>
         </form>
       </div>
@@ -42,28 +40,28 @@
   </div>
   <div class="row">
     <div class="col-12 justify-content-center" style="text-align: center">
-      <h1> La selección de la comunidad</h1>
+      <h1>{{'home.section.title' | translate}}</h1>
     </div>
     <div class="col m-5" >
       <mat-grid-list cols="4" rowHeight = "200px">
         <mat-grid-tile [colspan] = "3"
                        [rowspan] = "1">
-          <mat-grid-tile-footer style="background: none;"><strong>Titulo</strong></mat-grid-tile-footer>
+          <mat-grid-tile-footer style="background: none;"><strong>{{'home.section.title1' | translate}}</strong></mat-grid-tile-footer>
           <img class="card-img-top img-card" src="https://picsum.photos/id/62/500/500" alt="Card image cap">
         </mat-grid-tile>
         <mat-grid-tile [colspan] = "1"
                        [rowspan] = "2">
           <img class="card-img-top img-card" src="https://picsum.photos/id/64/500/500" alt="Card image cap">
-          <mat-grid-tile-footer style="background: none;"><strong>Titulo2</strong></mat-grid-tile-footer>
+          <mat-grid-tile-footer style="background: none;"><strong>{{'home.section.title2' | translate}}</strong></mat-grid-tile-footer>
         </mat-grid-tile>
         <mat-grid-tile [colspan] = "1"
                        [rowspan] = "1">
-          <mat-grid-tile-footer style="background: none;"><strong>Titulo3</strong></mat-grid-tile-footer>
+          <mat-grid-tile-footer style="background: none;"><strong>{{'home.section.title3' | translate}}</strong></mat-grid-tile-footer>
           <img class="card-img-top img-card" src="https://picsum.photos/id/65/500/500" alt="Card image cap">
         </mat-grid-tile>
         <mat-grid-tile [colspan] = "2"
                        [rowspan] = "1">
-          <mat-grid-tile-footer style="background: none;"><strong>Titulo4</strong></mat-grid-tile-footer>
+          <mat-grid-tile-footer style="background: none;"><strong>{{'home.section.title4' | translate}}</strong></mat-grid-tile-footer>
           <img class="card-img-top img-card" src="https://picsum.photos/id/66/500/500" alt="Card image cap">
         </mat-grid-tile>
       </mat-grid-list>
@@ -71,7 +69,7 @@
   </div>
   <div class="row justify-content-center">
     <div class="col-12 col-sm-12 col-md-4 col-lg-3" *ngFor="let linkMenu of linksMenus">
-      <card-menu [linkMenu]="linkMenu"></card-menu>
+      <card-menu [linkMenu]="linkMenu" [link]="linkMenu.linkPage"></card-menu>
     </div>
   </div>
 
@@ -84,61 +82,61 @@
   <div class="row mt-5" style="border-top-color: #555555; border-top-style:solid; border-top-width: 1px;">
     <div class="col-12 col-sm-12 col-md-6 p-5">
       <div style="text-align: center;">
-        <h1>Propietario</h1>
+        <h1>{{'home.aboutUs.owner.title' | translate}}</h1>
       </div>
       <ul>
         <li class="d-flex">
           <mat-icon class="m-3" aria-hidden="false" aria-label="Example home icon" style="color: #04AA6D">star_rate</mat-icon>
           <p>
-            Crea un anuncio gratuitamente para alquilar tu barco. Veleros, neumáticas, lanchas, catamaranes, ¡todos son bienvenidos en Click&Boat!
+            {{'home.aboutUs.owner.paragraph1' | translate}}
           </p>
         </li>
         <li class="d-flex">
           <mat-icon class="m-3" aria-hidden="false" aria-label="Example home icon" style="color: #04AA6D">star_rate</mat-icon>
           <p>
-            Alquila a quien desees, cuando quieras y al precio que veas conveniente. Click&Boat te ayuda a rentabilizar tu barco al permitirte cubrir los gastos de mantenimiento y uso.
+            {{'home.aboutUs.owner.paragraph2' | translate}}
           </p>
         </li>
         <li class="d-flex">
           <mat-icon class="m-3" aria-hidden="false" aria-label="Example home icon" style="color: #04AA6D">star_rate</mat-icon>
           <p>
-            Seguro a todo riesgo opcional de hasta ocho millones de euros de cobertura y plataforma de pago segura para la fianza. Confíanos el alquiler de tu velero, barco a motor o catamarán.
+            {{'home.aboutUs.owner.paragraph3' | translate}}
           </p>
         </li>
       </ul>
       <div style="text-align: center;">
         <button class="btn btn-proyecto" mat-raised-button color="primary" (click)="rent()">
-          <span class="mat-body-2">Alquila tú barco</span>
+          <span class="mat-body-2">{{'home.aboutUs.owner.button' | translate}}</span>
         </button>
       </div>
     </div>
     <div class="col-12 col-sm-12 col-md-6 p-5">
       <div style="text-align: center;">
-        <h1>Arrendatario</h1>
+        <h1>{{'home.aboutUs.lessee.title' | translate}}</h1>
       </div>
       <ul>
         <li class="d-flex">
           <mat-icon class="m-3" aria-hidden="false" aria-label="Example home icon" style="color: #04AA6D">star_rate</mat-icon>
           <p>
-            Consulta todos los anuncios a través del motor de búsqueda. Encuentra un barco o un velero en alquiler en cualquier lugar de Europa y al mejor precio. Disfruta de nuestro seguro incluído para alquilar y navegar con total seguridad.
+            {{'home.aboutUs.lessee.paragraph1' | translate}}
           </p>
         </li>
         <li class="d-flex">
           <mat-icon class="m-3" aria-hidden="false" aria-label="Example home icon" style="color: #04AA6D">star_rate</mat-icon>
           <p>
-            Ponte en contacto con los propietarios de las embarcaciones de manera gratuita y pregúntales sobre cuestiones relativas a la embarcación: disponibilidad , equipamiento, etc. a través del servicio de mensajería incorporado.
+            {{'home.aboutUs.lessee.paragraph2' | translate}}
           </p>
         </li>
         <li class="d-flex">
           <mat-icon class="m-3" aria-hidden="false" aria-label="Example home icon" style="color: #04AA6D">star_rate</mat-icon>
           <p>
-            Reserva directamente online con total seguridad y alquila el barco o velero de tus sueños en tan solo unos clics. Únicamente se te realizará el cargo en caso de que el propietario de la embarcación acepte tu solicitud de alquiler. Pago seguro al 100 %. Click&Boat Es tu intermediario de confianza.
+            {{'home.aboutUs.lessee.paragraph3' | translate}}
           </p>
         </li>
       </ul>
       <div style="text-align: center;">
-        <button class="btn btn-proyecto" mat-raised-button color="primary" (click)="find()">
-          <span class="mat-body-2">Encuentra tu barco</span>
+        <button class="btn btn-proyecto" mat-raised-button color="primary" (click)="boats()">
+          <span class="mat-body-2">{{'home.aboutUs.lessee.button' | translate}}</span>
         </button>
       </div>
     </div>
@@ -146,7 +144,7 @@
 
   <div class="row justify-content-center m-5">
     <div class="col" style="text-align: center;">
-       <h1>Navega con total seguridad</h1>
+       <h1>{{'home.insurance.title' | translate}}</h1>
         <img class="card-img-top img-card" src="https://www.allianz-partners.es/content/dam/onemarketing/awp/allianz-partners-es/Allianz_Partners_Spain.png" alt="Card image cap" style="max-height: 250px; max-width: 500px;">
     </div>
   </div>

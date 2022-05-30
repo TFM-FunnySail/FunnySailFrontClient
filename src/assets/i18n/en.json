@@ -6,5 +6,41 @@
     "language": "Language",
     "spanish": "Spanish",
     "english": "English"
+  },
+  "home": {
+    "form": {
+      "title": "The best solution to rent a boat",
+      "subTitle": "More than 40,000 boats to rent at the best price and all over the world",
+      "initialDate": "Initial date",
+      "endDate": "End date",
+      "typeBoat": "Type of boat",
+      "search": "Search"
+    },
+    "section": {
+      "title": "La selección de la comunidad",
+      "title1": "Titulo1",
+      "title2": "Titulo2",
+      "title3": "Titulo3",
+      "title4": "Titulo4"
+    },
+    "aboutUs": {
+      "owner": {
+        "title": "Owner",
+        "paragraph1": "Create an ad for free to rent your boat. Sailboats, ribs, boats, catamarans, everyone is welcome at Click&Boat!",
+        "paragraph2": "Rent to whoever you want, when you want and at the price you see fit. Click&Boat helps you make your boat profitable by allowing you to cover maintenance and use costs.",
+        "paragraph3": "Optional comprehensive insurance of up to eight million euros of coverage and a secure payment platform for the deposit. Entrust us with the rental of your sailboat, motor boat or catamaran.",
+        "button" : "Rent your boat"
+      },
+      "lessee": {
+        "title": "Lessee",
+        "paragraph1": "Check all the ads through the search engine. Find a boat or sailboat for rent anywhere in Europe and at the best price. Enjoy our insurance included to rent and navigate with total security.",
+        "paragraph2": "Get in touch with the owners of the boats for free and ask them about questions related to the boat: availability, equipment, etc. through the built-in messaging service.",
+        "paragraph3": "Book directly online with total security and rent the boat or sailboat of your dreams in just a few clicks. You will only be charged if the owner of the boat accepts your rental request. 100% secure payment. Click&Boat is your trusted intermediary.",
+        "button": "Find your boat"
+      }
+    },
+    "insurance": {
+      "title": "Browse in complete safety"
+    }
   }
 }

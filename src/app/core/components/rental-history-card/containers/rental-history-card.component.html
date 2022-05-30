@@ -1,10 +1,10 @@
 <div class="card" style="width: 18rem;">
   <img src="../../../../../assets/defaultBoat.jpg" class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title">BoatName</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <h5 class="card-title">{{name}}</h5>
+    <p class="card-text">Date: {{createdDate}}</p>
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      Launch demo modal
+      {{'booking.card.detail' | translate}}
     </button>
   </div>
 </div>
@@ -14,19 +14,21 @@
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <p class="modal-title h4" id="exampleModalLabel">BoatName</p>
+        <p class="modal-title h4" id="exampleModalLabel">{{name}}</p>
+        <p class="h6">{{createdDate}}</p>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="container">
+        <p class="h5">Rental detail</p>
+        <div class="container" *ngFor="let book of boatBookings">
           <div class="row">
             <div class="col-md">
-              <p class="h5">Rental date</p>
+              <p class="h5">{{book.name}}</p>
             </div>
           </div>
           <div class="row">
             <div class="col-md">
-              <p class="h6">09/07/2022 - 15/07/2022</p>
+              <p class="h6">{{entryDate}} - {{departureDate}}</p>
             </div>
             <hr>
           </div>
@@ -35,55 +37,71 @@
               <p class="h5">Base price</p>
             </div>
             <div class="col-md">
-              <p class="h5">200€/day</p>
+              <p class="h5">{{book.price}}€/day</p>
+            </div>
+            <hr>
+          </div>
+        </div>
+        <div class="container" *ngFor="let book of serviceBookings">
+          <div class="row">
+            <div class="col-md">
+              <p class="h5">{{book.name}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md">
+              <p class="h6">{{entryDate}} - {{departureDate}}</p>
             </div>
             <hr>
           </div>
           <div class="row">
             <div class="col-md">
-              <p class="h5">Extras</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md">
-              <p class="h6">Extra 1</p>
+              <p class="h5">Base price</p>
             </div>
             <div class="col-md">
-              <p class="h6">Extra 2</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md">
-              <p class="h6">Extras' price</p>
-            </div>
-            <div class="col-md">
-              <p class="h6">60€</p>
+              <p class="h5">{{book.price}}€/day</p>
             </div>
             <hr>
           </div>
+        </div>
+        <div class="container" *ngFor="let book of activityBookings">
+          <div class="row">
+            <div class="col-md">
+              <p class="h5">{{book.name}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md">
+              <p class="h6">{{entryDate}} - {{departureDate}}</p>
+            </div>
+            <hr>
+          </div>
+          <div class="row">
+            <div class="col-md">
+              <p class="h5">Base price</p>
+            </div>
+            <div class="col-md">
+              <p class="h5">{{book.price}}€/day</p>
+            </div>
+            <hr>
+          </div>
+        </div>
+        <div class="container">
           <div class="row">
             <div class="col-md">
               <p class="h5">Total price</p>
             </div>
             <div class="col-md">
-              <p class="h5">1260€</p>
+              <p class="h5">{{total}}€</p>
             </div>
             <hr>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <p class="h5">Payment method</p>
-            </div>
-            <div class="col-md">
-              <p class="h6">Credit card ended on 3456</p>
-            </div>
           </div>
           <div class="row">
             <div class="col-md-6">
               <p class="h5">Rental status</p>
             </div>
             <div class="col-md">
-              <p class="h6">Done/Booked/Cancelled</p>
+              <p class="h6">{{status}}</p>
             </div>
           </div>
           <div class="row">
@@ -91,7 +109,7 @@
               <p class="h5">Payment status</p>
             </div>
             <div class="col-md">
-              <p class="h6">Paid / X pendant terms</p>
+              <p class="h6">{{paid}}</p>
             </div>
           </div>
         </div>
