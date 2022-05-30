@@ -44,5 +44,4 @@ export class RentalHistoryCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
 }

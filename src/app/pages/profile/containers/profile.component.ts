@@ -10,6 +10,7 @@ import {
   EditUserInputDTO} from "../../../shared/sdk";
 
 import {StorageService} from "../../../shared/services/storage/storage.service";
+import {AuthService} from "../../../shared/services/auth/auth.service";
 
 @Component({
   selector: 'profile',
@@ -20,6 +21,7 @@ export class ProfileComponent implements OnInit {
   dataForm: FormGroup;
   user: any;
   userData: UserOutputDTO;
+  counter: number;
 
   bookings?: Array<BookingOutputDTO>;
 
@@ -27,6 +29,7 @@ export class ProfileComponent implements OnInit {
               private formBuilder: FormBuilder,
               protected userService: UsersService,
               protected storageService:StorageService,
+              protected authService:AuthService,
               private bookingService: BookingService) {
     this.dataForm = this.formBuilder.group({
       name: ['', [Validators.minLength(3), Validators.maxLength(20)]],
@@ -45,24 +48,10 @@ export class ProfileComponent implements OnInit {
     });
     this.userData = {};
     this.dataForm.disable();
+    this.counter = 90;
   }
 
   ngOnInit(): void {
-    /*this.userService.apiUsersGet("",this.dataForm.value.email).subscribe(resp=>{
-      if (resp.items) {
-        console.log(resp.items[0]);
-        this.user={
-          name: resp.items[0].firstName,
-          lastName: resp.items[0].lastName,
-        };
-        this.dataForm.get(['name'])?.setValue(resp.items[0].firstName);
-        this.dataForm.get(['lastName'])?.setValue(resp.items[0].lastName);
-        this.dataForm.get(['email'])?.setValue(resp.items[0].email);
-        this.dataForm.get(['phone'])?.setValue(resp.items[0].phoneNumber);
-        this.dataForm.get(['identification'])?.setValue(resp.items[0].userId);
-      }
-    });*/
-
     const id = this.storageService.getItem('userId');
     if(id)
       this.userService.apiUsersIdGet(id).subscribe(resp=>{
@@ -183,5 +172,22 @@ export class ProfileComponent implements OnInit {
       this.userService.apiUsersIdPut(id,datosActualizados).subscribe(resp=>{
         console.log(resp);
       });
+  }
+
+  openChangePassword() {
+
+  }
+
+  logout() {
+    this.storageService.deleteItem('userId');
+    this.storageService.deleteItem("User");
+    this.storageService.deleteItem("userEmail");
+    this.authService.logout();
+    this.router.navigate(['home']);
+      setTimeout(() => {
+        window.location.reload();
+      },  400)
+
+
   }
 }

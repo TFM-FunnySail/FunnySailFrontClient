@@ -18,10 +18,17 @@ export class HeaderComponent implements OnInit {
   constructor(
               protected authService:AuthService,
               protected storageService:StorageService) {
-    this.adminRole = 'admin';
-    this.userLogged = null;
-    this.perfil = "";
-    this.login = "Log in";
+    if(!this.storageService.getItem("userId")){
+      this.adminRole = 'admin';
+      this.userLogged = null;
+      this.perfil = "";
+      this.login = "Log in";
+    }else{
+      this.login = "";
+      this.perfil = "Perfil";
+      this.adminRole = 'admin';
+    }
+
   }
 
 
