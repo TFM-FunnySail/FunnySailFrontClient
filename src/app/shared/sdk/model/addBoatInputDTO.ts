@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { AddRequiredBoatTitleInputDTO } from './addRequiredBoatTitleInputDTO';
 
 
 export interface AddBoatInputDTO { 
@@ -28,6 +27,6 @@ export interface AddBoatInputDTO {
     mooringId?: number;
     ownerId?: string | null;
     resourcesIdList?: Array<number> | null;
-    requiredBoatTitles?: Array<AddRequiredBoatTitleInputDTO> | null;
+    requiredBoatTitles?: Array<number> | null;
 }
 

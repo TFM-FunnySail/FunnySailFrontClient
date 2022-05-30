@@ -9,9 +9,13 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { BoatTitleOutputDTO } from './boatTitleOutputDTO';
 
 
-export interface AddRequiredBoatTitleInputDTO { 
-    title?: number;
+export interface BoatTitleOutputDTOGenericResponseDTO { 
+    items?: Array<BoatTitleOutputDTO> | null;
+    limit?: number;
+    offset?: number;
+    total?: number;
 }
 

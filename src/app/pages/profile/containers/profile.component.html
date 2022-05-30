@@ -35,9 +35,6 @@
             <mat-form-field appearance="outline" style="margin-right: 20px;">
               <mat-label>First Name</mat-label>
               <input matInput formControlName="name" type="text" placeholder="First name" required>
-              <mat-error *ngIf="dataForm.get('name')?.errors?.['required']">
-                First name is required
-              </mat-error>
               <mat-error *ngIf="dataForm.get('name')?.errors?.['minLength']">
                 First name must contain at least 3 characters.
               </mat-error>
@@ -48,9 +45,6 @@
             <mat-form-field appearance="outline" style="width: 280px;">
               <mat-label>Last name</mat-label>
               <input matInput formControlName="lastName" type="text" placeholder="Last name" required>
-              <mat-error *ngIf="dataForm.get('lastName')?.errors?.['required']">
-                Last name is required
-              </mat-error>
               <mat-error *ngIf="dataForm.get('lastName')?.errors?.['minLength']">
                 Last name must contain at least 3 characters.
               </mat-error>
@@ -64,9 +58,6 @@
             <mat-form-field appearance="outline" style="width: 400px;">
               <mat-label>Email address</mat-label>
               <input matInput formControlName="email" type="email" placeholder="Email address" required>
-              <mat-error *ngIf="dataForm.get('email')?.errors?.['required']">
-                Email is required
-              </mat-error>
             </mat-form-field>
           </div>
         </div>
@@ -76,9 +67,6 @@
             <mat-form-field appearance="outline">
               <mat-label>Birthday</mat-label>
               <input matInput formControlName="birthday" type="date" placeholder="Birthday" required>
-              <mat-error *ngIf="dataForm.get('birthday')?.errors?.['required']">
-                Birthday is required
-              </mat-error>
             </mat-form-field>
           </div>
           <div class="col-md-6">
@@ -86,9 +74,6 @@
             <mat-form-field>
               <mat-label>Phone</mat-label>
               <input matInput formControlName="phone" type="text" placeholder="Phone" required>
-              <mat-error *ngIf="dataForm.get('phone')?.errors?.['required']">
-                Phone is required
-              </mat-error>
               <mat-error *ngIf="dataForm.get('phone')?.errors?.['pattern']">
                 Phone must contain 10 characters.
               </mat-error>
@@ -97,39 +82,20 @@
         </div>
         <div class="row">
           <div class="col-md-6">
-            <p class="h6">ID</p>
-            <mat-form-field>
-              <mat-label>ID</mat-label>
-              <input matInput formControlName="identification" type="text" placeholder="ID" required>
-              <mat-error *ngIf="dataForm.get('identification')?.errors?.['required']">
-                ID is required
-              </mat-error>
-              <mat-error *ngIf="dataForm.get('identification')?.errors?.['pattern']">
-                ID must contain 9 numbers and 1 letter
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <div class="col-md-3">
             <p class="h6">Change password</p>
             <mat-form-field appearance="outline">
               <mat-label>Password</mat-label>
               <input matInput formControlName="password" type="password" placeholder="Password" required>
-              <mat-error *ngIf="dataForm.get('password')?.errors?.['required']">
-                Password is required
-              </mat-error>
               <mat-error *ngIf="dataForm.get('password')?.errors?.['pattern']">
                 The password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter and one number.
               </mat-error>
             </mat-form-field>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-6">
             <p class="h6">Confirm password</p>
             <mat-form-field appearance="outline">
               <mat-label>Confirm password</mat-label>
               <input matInput formControlName="confirmPassword" type="password" placeholder="Confirm password" required>
-              <mat-error *ngIf="dataForm.get('confirmPassword')?.errors?.['required']">
-                Confirm password is required
-              </mat-error>
               <mat-error *ngIf="dataForm.get('password')?.value != dataForm.get('confirmPassword')?.value">
                 Password mismatch
               </mat-error>
@@ -146,9 +112,6 @@
             <mat-form-field appearance="outline">
               <mat-label>Email address</mat-label>
               <input matInput formControlName="address" type="text" placeholder="Address" required>
-              <mat-error *ngIf="dataForm.get('address')?.errors?.['required']">
-                Address is required
-              </mat-error>
               <mat-error *ngIf="dataForm.get('address')?.errors?.['minLength']">
                 Address must have at least 3 characters
               </mat-error>
@@ -159,9 +122,6 @@
             <mat-form-field appearance="outline">
               <mat-label>City</mat-label>
               <input matInput formControlName="city" type="text" placeholder="City" required>
-              <mat-error *ngIf="dataForm.get('city')?.errors?.['required']">
-                City is required
-              </mat-error>
               <mat-error *ngIf="dataForm.get('city')?.errors?.['minLength']">
                 City must have at least 3 characters.
               </mat-error>
@@ -175,9 +135,6 @@
             <mat-form-field appearance="outline">
               <mat-label>ZIP Code</mat-label>
               <input matInput formControlName="zip" type="text" placeholder="ZIP Code" required>
-              <mat-error *ngIf="dataForm.get('zip')?.errors?.['required']">
-                ZIP Code is required
-              </mat-error>
               <mat-error *ngIf="dataForm.get('zip')?.errors?.['pattern']">
                 ZIP Code must contain 5 numbers.
               </mat-error>
@@ -190,9 +147,6 @@
             <mat-form-field appearance="outline">
               <mat-label>Country</mat-label>
               <input matInput formControlName="country" type="text" placeholder="Country" required>
-              <mat-error *ngIf="dataForm.get('country')?.errors?.['required']">
-                Country is required
-              </mat-error>
               <mat-error *ngIf="dataForm.get('country')?.errors?.['minLength']">
                 Country must have at least 3 characters.
               </mat-error>
@@ -206,9 +160,6 @@
             <mat-form-field appearance="outline">
               <mat-label>State</mat-label>
               <input matInput formControlName="state" type="text" placeholder="State" required>
-              <mat-error *ngIf="dataForm.get('state')?.errors?.['required']">
-                State is required
-              </mat-error>
               <mat-error *ngIf="dataForm.get('state')?.errors?.['minLength']">
                 State must have at least 3 characters.
               </mat-error>
@@ -222,63 +173,7 @@
             <p class="h5">PortName</p>
           </div>
         </div>
-        <div class="row" style="margin-top: 2.5%;">
-          <p class="h3">Payment method</p>
-          <hr>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <p class="h6">Card owner</p>
-            <mat-form-field appearance="outline">
-              <mat-label>Name on card</mat-label>
-              <input matInput formControlName="cardName" type="text" placeholder="Name on card">
 
-              <mat-error *ngIf="dataForm.get('cardName')?.errors?.['minLength']">
-                Card on name must have at least 3 characters.
-              </mat-error>
-              <mat-error *ngIf="dataForm.get('cardName')?.errors?.['maxLength']">
-                Card on name must have at least 20 characters.
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <div class="col-md-6">
-            <p class="h6">Card number</p>
-            <mat-form-field appearance="outline">
-              <mat-label>Card number</mat-label>
-              <input matInput formControlName="cardNumber" type="text" placeholder="Card number" required>
-              <mat-error *ngIf="dataForm.get('cardNumber')?.errors?.['required']">
-                Card number is required
-              </mat-error>
-              <mat-error *ngIf="dataForm.get('cardNumber')?.errors?.['pattern']">
-                Card number must contain 16 numbers.
-              </mat-error>
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md">
-            <p class="h6">CVV</p>
-            <mat-form-field appearance="outline">
-              <mat-label>Card CVV</mat-label>
-              <input matInput formControlName="cardCvv" type="number" placeholder="Card CVV">
-
-              <mat-error *ngIf="dataForm.get('cardCvv')?.errors?.['pattern']">
-                Card number must be 9 numbers long.
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <div class="col-md">
-            <p class="h6">Expiration date</p>
-            <mat-form-field appearance="outline">
-              <mat-label>Card expiration</mat-label>
-              <input matInput formControlName="cardExpiration" type="number" placeholder="Card expiration">
-
-              <mat-error *ngIf="dataForm.get('cardNumber')?.errors?.['pattern']">
-                Card number must be 16 numbers long.
-              </mat-error>
-            </mat-form-field>
-          </div>
-        </div>
       </form>
     </div>
 
@@ -287,13 +182,22 @@
 
   <div class="row">
     <div class="row" style="margin-top: 2.5%;">
-      <p class="h3">Rented boats</p>
+      <p class="h3">Bookings</p>
       <hr>
     </div>
     <div class="row flex-row flex-nowrap" style="overflow: scroll; overflow-y: hidden">
       <div class="col-3">
         <app-rental-history-card></app-rental-history-card>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="row" style="margin-top: 2.5%;">
+      <p class="h3">Refunds</p>
+      <hr>
+    </div>
+    <div class="row flex-row flex-nowrap" style="overflow: scroll; overflow-y: hidden">
+      <h1>Holiwi</h1>
     </div>
   </div>
   <div class="row">
