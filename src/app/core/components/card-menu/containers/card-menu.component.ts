@@ -8,6 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 export class CardMenuComponent implements OnInit {
   @Input() linkMenu: any;
   @Input() link: string | undefined;
+
   constructor() {
   }
 

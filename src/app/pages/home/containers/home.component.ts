@@ -12,17 +12,17 @@ export class HomeComponent implements OnInit {
 
   linksMenus: any[] = [
     {
-      name: 'ACTIVIDADES',
+      name: 'home.linksMenus.activities',
       description: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.',
       linkPage: 'activities'
     },
     {
-      name: 'SERVICIOS',
+      name: 'home.linksMenus.services',
       description: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.',
       linkPage: 'services'
     },
     {
-      name: 'ALQUILER DE BARCOS',
+      name: 'home.linksMenus.boatRental',
       description: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.',
       linkPage: 'boats'
     }
@@ -30,31 +30,36 @@ export class HomeComponent implements OnInit {
 
   comments: any[] = [
     {
-      user: 'USUARIO1',
+      user: 'home.comments.user',
       date: '05/02/21',
       stars: 5,
-      comment: 'excelente servicio!!!'
+      comment: 'home.comments.comment'
     },
     {
-      user: 'USUARIO2',
+      user: 'home.comments.user',
       date: '05/02/21',
       stars: 5,
-      comment: 'excelente servicio!!!'
+      comment: 'home.comments.comment'
     },
     {
-      user: 'USUARIO3',
+      user: 'home.comments.user',
       date: '05/02/21',
       stars: 5,
-      comment: 'excelente servicio!!!'
+      comment: 'home.comments.comment'
     },
     {
-      user: 'USUARIO4',
+      user: 'home.comments.user',
       date: '05/02/21',
       stars: 5,
-      comment: 'excelente servicio!!!'
+      comment: 'home.comments.comment'
     }
   ];
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+
+
+  activities: string | undefined = '';
+
+  constructor(private formBuilder: FormBuilder,
+              private router: Router) {
    // This is intentional
     window.scroll({
       top: 0,
@@ -96,4 +101,8 @@ export class HomeComponent implements OnInit {
   boats(){
     this.router.navigate(['/boats']);
   }
+
+
+
+
 }

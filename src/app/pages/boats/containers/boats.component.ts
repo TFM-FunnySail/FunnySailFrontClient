@@ -22,7 +22,11 @@ export class BoatsComponent implements OnInit {
               protected router: Router,
               private activatedRoute: ActivatedRoute) {
     this.setBoatTypes();
-
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
 
   ngOnInit(): void {

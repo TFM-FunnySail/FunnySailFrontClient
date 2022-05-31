@@ -1,6 +1,10 @@
 {
   "header": {
-    "home": "Home"
+    "home": "Home",
+    "contactUs": "Contact Us",
+    "boats": "Boats",
+    "services": "Services",
+    "activities": "Activities"
   },
   "language": {
     "language": "Language",
@@ -14,14 +18,18 @@
       "initialDate": "Initial date",
       "endDate": "End date",
       "typeBoat": "Type of boat",
-      "search": "Search"
+      "search": "Search",
+      "typeBoatOptions": {
+        "boat": "Boat",
+        "jetSki": "Jet ski"
+      }
     },
     "section": {
-      "title": "La selección de la comunidad",
-      "title1": "Titulo1",
-      "title2": "Titulo2",
-      "title3": "Titulo3",
-      "title4": "Titulo4"
+      "title": "Community selection",
+      "title1": "Title 1",
+      "title2": "Title 2",
+      "title3": "Title 3",
+      "title4": "Title 4"
     },
     "aboutUs": {
       "owner": {
@@ -41,6 +49,132 @@
     },
     "insurance": {
       "title": "Browse in complete safety"
+    },
+    "linksMenus": {
+      "activities": "Activities",
+      "services": "Services",
+      "boatRental": "Boat rental"
+    },
+    "comments": {
+      "user": "Random user",
+      "comment": "Random comment"
     }
+  },
+  "login": {
+    "title": "Log in",
+    "email": "Email",
+    "password": "Password",
+    "error": "Error",
+    "required": "Required field",
+    "enter": "Enter",
+    "signUp": "Sign up"
+  },
+  "signup": {
+    "title": "Sign up",
+    "name": "First name",
+    "lastName": "Last name",
+    "email": "Email address",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "error": "Error",
+    "required": "Required field",
+    "enter": "Enter",
+    "signIn": "Sign in",
+    "pwdError": "The password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number and one character of this collection _@./#&+-.",
+    "mismatch": "The passwords do not match",
+    "3chrt": "The field must be at least 3 characters long",
+    "20chrt": "The field cannot be longer than 20 characters",
+    "10chrt": "The field must be 20 characters long",
+    "birthday": "Birthday",
+    "phone": "Phone number",
+    "address": "Address",
+    "city": "City",
+    "country": "Country",
+    "zipCode": "Zip code",
+    "zipLength": "The field must be 5 characters long",
+    "state": "State",
+    "submit":  "Submit"
+  },
+  "boats": {
+    "formTitle": "Search for your boat",
+    "chooseDate": "Choose a date",
+    "boatType": "Boat type",
+    "search": "Search",
+    "description": "Description",
+    "capacity": "Capacity",
+    "length": "Length",
+    "beam": "Beam",
+    "captain": "Captain",
+    "people": "People",
+    "meters": "Meters"
+  },
+  "boat": {
+    "power": "Power",
+    "day": "Day",
+    "hour": "Hour",
+    "extras": "Included extras",
+    "float": "Float",
+    "fishing": "Fishing rod",
+    "bimini": "Bimini top",
+    "refrigerator": "Refrigerator",
+    "sideTable": "Side table",
+    "book": "BOOK NOW"
+  },
+  "services": {
+    "title": "Look for the service you need!",
+    "name": "Name",
+    "minPrice": "Min price",
+    "maxPrice": "Max price",
+    "search": "Search",
+    "description": "Description",
+    "price": "Price"
+  },
+  "activities": {
+    "title": "Look for your favourite activity!",
+    "name": "Name",
+    "minPrice": "Min price",
+    "maxPrice": "Max price",
+    "iniDate": "Initial date",
+    "endDate": "End date",
+    "search": "Search",
+    "description": "Description",
+    "price": "Price",
+    "date": "Date"
+  },
+  "contactUs": {
+    "title": "Contact us",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send",
+    "error": "Error",
+    "required": "Required field",
+    "enter": "Enter",
+    "success": "Success",
+    "messageSent": "Message sent successfully",
+    "phone": "Phone number",
+    "address": "Address",
+    "map": "Map"
+  },
+  "profile": {
+    "personalData": "Personal data",
+    "edit": "Edit",
+    "save": "Save",
+    "preferredPort": "Preferred port",
+    "portName": "Port name",
+    "bookings": "Bookings",
+    "refunds": "Refunds",
+    "logOut": "Log out",
+    "changePwd": "Change password",
+    "newPwd": "New password",
+    "confirmPwd": "Confirm password",
+    "close": "Close",
+    "saveChanges": "Save changes"
+  },
+  "rentalHC": {
+    "basePrice": "Base price",
+    "totalPrice": "Total price",
+    "rentalStatus": "Rental status",
+    "paymentStatus": "Payment status"
   }
 }

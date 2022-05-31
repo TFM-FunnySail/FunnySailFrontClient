@@ -19,7 +19,11 @@ export class ActivitiesComponent implements OnInit {
               protected activitiesService: ActivitiesService,
               protected http: HttpClient,
               protected router: Router) {
-
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
 
   ngOnInit(): void {

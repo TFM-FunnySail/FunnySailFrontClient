@@ -4,6 +4,7 @@ import {ChangePasswordCardComponent} from "./containers/change-password-card.com
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {SharedModule} from "../../../shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import {MatInputModule} from "@angular/material/input";
         CommonModule,
         ReactiveFormsModule,
         MatFormFieldModule,
-        MatInputModule
+        MatInputModule,
+        SharedModule
     ],
   exports: [
     ChangePasswordCardComponent

@@ -2,31 +2,31 @@
     <div class="row justify-content-center">
       <div class="card bg-light" style="max-width: 50rem; margin: 20px auto;">
         <div class="card-body">
-          <h1>Buscar tú barco</h1>
+          <h1>{{'boats.formTitle' | translate}}</h1>
           <form [formGroup]="form" class="justify-content-center form">
               <mat-form-field appearance="outline">
-                <mat-label>Choose a date</mat-label>
+                <mat-label>{{'boats.chooseDate' | translate}}</mat-label>
                 <input matInput formControlName="initialDate" [matDatepicker]="initialDate">
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matSuffix [for]="initialDate"></mat-datepicker-toggle>
                 <mat-datepicker #initialDate></mat-datepicker>
               </mat-form-field>
               <mat-form-field appearance="outline">
-                <mat-label>Choose a date</mat-label>
+                <mat-label>{{'boats.chooseDate' | translate}}</mat-label>
                 <input matInput formControlName="endDate" [matDatepicker]="endDate">
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
                 <mat-datepicker #endDate></mat-datepicker>
               </mat-form-field>
               <mat-form-field appearance="outline">
-                <mat-label>Tipo de embarcación</mat-label>
+                <mat-label>{{'boats.boatType' | translate}}</mat-label>
                 <mat-select formControlName="typeBoat">
                   <mat-option value=""></mat-option>
                   <mat-option value="{{type.id}}" *ngFor="let type of boatTypes">{{type.name}}</mat-option>
                 </mat-select>
               </mat-form-field>
               <button class="btn btn-proyecto" mat-raised-button color="primary" (click)="searchAct()">
-                <span class="mat-body-2">Buscar</span>
+                <span class="mat-body-2">{{'boats.search' | translate}}</span>
               </button>
           </form>
         </div>
@@ -37,11 +37,11 @@
         <div class="card mb-3">
           <img class="card-img-top img-card" src="https://picsum.photos/id/62/500/500" alt="Card image cap">
           <div class="card-body">
-            <h2 class="card-title" [routerLink]="['boat/{{boat.id}}']"><strong>{{boat.name}}</strong></h2>
-            <p class="card-text">Descripción: {{boat.description}}</p>
-            <p class="card-text">Capacidad: {{boat.capacity}} personas</p>
-            <p class="card-text">Eslora: {{boat.sleeve}} metros</p>
-            <p class="card-text">Capitán: {{boat.requiredBoatTitles ? boat.requiredBoatTitles[0].titleId : 'NO'}}</p>
+            <a class="card-title" [routerLink]="['/boat/'+boat.id]"><h2><strong>{{boat.name}}</strong></h2></a>
+            <p class="card-text">{{'boats.description' | translate}}: {{boat.description}}</p>
+            <p class="card-text">{{'boats.capacity' | translate}}: {{boat.capacity}} {{'boats.people' | translate}}</p>
+            <p class="card-text">{{'boats.length' | translate}}: {{boat.sleeve}} {{'boats.meters' | translate}}</p>
+            <p class="card-text">{{'boats.captain' | translate}}: {{boat.requiredBoatTitles ? boat.requiredBoatTitles[0].titleId : 'NO'}}</p>
           </div>
         </div>
       </div>
