@@ -1,0 +1,52 @@
+<div class="container" style="margin-top:100px; padding-bottom: 70px;">
+  <div class="row" *ngIf="exist">
+    <div class="col-md">
+      <img src="assets/defaultBoat.jpg" alt="boat" style="width:90%;">
+    </div>
+    <div class="col-md">
+      <p class="h2">{{activity.name}}</p>
+      <hr>
+      <p>
+        {{activity.description}}
+      </p>
+      <hr>
+      <div class="container">
+        <div class="row">
+          <div class="col-md" style="text-align: center;">
+            <img alt='Capacity icon' src="assets/capacity.png" width="35" style="margin-bottom:10px;">
+            <p>{{activity.activityDate}}</p>
+          </div>
+          <div class="col-md" style="text-align: center;">
+            <img alt="price icon" src="assets/price-tag.png" width="35" style="margin-bottom:10px;">
+            <p>{{activity.price}} €</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="margin-top:20px;">
+    <p class="h4">Contact us</p>
+    <hr>
+    <div class="col-md">
+      <p><strong>Phone: </strong>  <a href="tel:+34666666666">+123456789</a></p>
+    </div>
+    <div class="col-md">
+      <p><strong>Email: </strong><a href="mailto:info@funnysail.es">info@funnysail.es </a></p>
+    </div>
+    <div class="col-md">
+      <p><strong>Enterprise: </strong> FunnySail</p>
+    </div>
+    <div class="col-md">
+      <p><strong>Office hours: </strong> 8:00 - 17:00</p>
+    </div>
+  </div>
+  <div class="row" style="margin-top:20px;">
+    <div class="row" style="margin-top:25px;">
+      <div class="col-md" style="text-align: center;">
+        <button class="btn btn-proyecto" style="margin-left: auto; margin-right: auto" (click)="booking()" >
+          BOOK NOW
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
