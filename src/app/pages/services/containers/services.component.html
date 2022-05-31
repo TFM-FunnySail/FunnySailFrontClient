@@ -28,7 +28,7 @@
       <div class="card mb-3">
         <img class="card-img-top img-card" src="https://picsum.photos/id/62/500/500" alt="Card image cap">
         <div class="card-body">
-          <h2 class="card-title" [routerLink]="['service/{{service.id}}']"><strong>{{service.name}}</strong></h2>
+          <h2 class="card-title"><a [routerLink]="['/service/'+service.id]"><strong>{{service.name}}</strong></a></h2>
           <p class="card-text">{{'services.description' | translate}}: {{service.description}}</p>
           <p class="card-text">{{'services.price' | translate}}: {{service.price}} €</p>
         </div>

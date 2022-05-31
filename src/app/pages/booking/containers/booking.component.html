@@ -1,0 +1,41 @@
+<div class="container" style="margin-top: 15%">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Booking Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Price</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let activity of activities; let i = index">
+      <th scope="row">{{i}}</th>
+      <td>{{activity.id}}</td>
+      <td>{{activity.name}}</td>
+      <td>{{activity.description}}</td>
+      <td>{{activity.price}}</td>
+    </tr>
+    <tr *ngFor="let boat of boats; let i = index">
+      <th scope="row">{{i}}</th>
+      <td>{{boat.id}}</td>
+      <td>{{boat.name}}</td>
+      <td>{{boat.description}}</td>
+      <td>{{boat.hourBasePrice}}</td>
+    </tr>
+    <tr *ngFor="let service of services; let i = index">
+      <th scope="row">{{i}}</th>
+      <td>{{service.id}}</td>
+      <td>{{service.name}}</td>
+      <td>{{service.description}}</td>
+      <td>{{service.price}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <button (click)="booking()"> PAGAR </button>
+  <ng-template #notRefunds>
+    <h1>No tienes devoluciones</h1>
+  </ng-template>
+</div>

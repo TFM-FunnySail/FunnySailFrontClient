@@ -38,7 +38,7 @@
       <div class="card mb-3">
         <img class="card-img-top img-card" src="https://picsum.photos/id/62/500/500" alt="Card image cap">
         <div class="card-body">
-          <h2 class="card-title" [routerLink]="['boat/{{activity.id}}']"><strong>{{activity.name}}</strong></h2>
+          <h2 class="card-title"><a [routerLink]="['/activity/'+ activity.id]"><strong>{{activity.name}}</strong></a></h2>
           <p class="card-text">{{'activities.description' | translate}}: {{activity.description}}</p>
           <p class="card-text">{{'activities.price' | translate}}: {{activity.price}} €</p>
           <p class="card-text">{{'activities.date' | translate}}: {{activity.activityDate}}</p>
