@@ -1,12 +1,12 @@
 <div class="container" style="text-align: center;">
   <div class="row">
-    <h1><strong>Contacto</strong></h1>
+    <h1><strong>{{'contactUs.title' | translate}}</strong></h1>
   </div>
   <div class="row">
     <div class="col-4">
       <div class="card">
         <div class="card-header">
-          <h3><strong>Teléfono</strong></h3>
+          <h3><strong>{{'contactUs.phone' | translate}}</strong></h3>
         </div>
         <div class="card-body">
           <a href="tel:+34666666666">6666666666</a>
@@ -16,19 +16,19 @@
     <div class="col-4">
       <div class="card">
         <div class="card-header">
-          <h3><strong>Dirección</strong></h3>
+          <h3><strong>{{'contactUs.address' | translate}}</strong></h3>
         </div>
         <div class="card-body">
           <p>C/ Prof. José García</p>
           <p>Santesmases, 9. 28040 Madrid</p>
-          <a href="#">Mapa</a>
+          <a href="#">{{'contactUs.map' | translate}}</a>
         </div>
       </div>
     </div>
     <div class="col-4">
       <div class="card">
         <div class="card-header">
-          <h3><strong>Email</strong></h3>
+          <h3><strong>{{'contactUs.email' | translate}}</strong></h3>
         </div>
         <div class="card-body">
           <a href="mailto:info@funnysail.es">info@funnysail.es</a>
@@ -39,25 +39,25 @@
   <div class="row">
     <form [formGroup]="form" class="card d-flex justify-content-center form">
       <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
+        <mat-label>{{'contactUs.email' | translate}}</mat-label>
         <input matInput placeholder="Email" formControlName="email" required>
-        <mat-error>Campo requerido</mat-error>
+        <mat-error>{{'contactUs.required' | translate}}</mat-error>
       </mat-form-field>
       <br/>
       <mat-form-field appearance="outline">
-        <mat-label>Nombre</mat-label>
+        <mat-label>{{'contactUs.name' | translate}}</mat-label>
         <input matInput placeholder="Nombre" formControlName="name" required>
-        <mat-error>Campo requerido</mat-error>
+        <mat-error>{{'contactUs.required' | translate}}</mat-error>
       </mat-form-field>
       <br/>
       <mat-form-field appearance="outline">
-        <mat-label>Mensaje</mat-label>
+        <mat-label>{{'contactUs.message' | translate}}</mat-label>
         <input matInput type="input" placeholder="Mensaje" formControlName="message" required>
-        <mat-error>Campo requerido</mat-error>
+        <mat-error>{{'contactUs.required' | translate}}</mat-error>
       </mat-form-field>
       <br/>
       <button class="btn btn-success" mat-raised-button color="primary" (click)="send()">
-        <span class="mat-body-2">Enviar</span>
+        <span class="mat-body-2">{{'contactUs.send' | translate}}</span>
       </button>
     </form>
   </div>

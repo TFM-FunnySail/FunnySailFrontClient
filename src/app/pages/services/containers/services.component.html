@@ -2,22 +2,22 @@
   <div class="row justify-content-center">
     <div class="card bg-light" style="max-width: 50rem; margin: 20px auto;">
       <div class="card-body">
-        <h1>Busca el servicio que necesitas!</h1>
+        <h1>{{'services.title' | translate}}</h1>
         <form [formGroup]="form" class="justify-content-center form">
           <mat-form-field appearance="outline">
-            <mat-label>Nombre</mat-label>
+            <mat-label>{{'services.name' | translate}}</mat-label>
             <input matInput formControlName="maxPrice">
           </mat-form-field>
           <mat-form-field appearance="outline">
-            <mat-label>Precio mínimo</mat-label>
+            <mat-label>{{'services.minPrice' | translate}}</mat-label>
             <input matInput type="number" formControlName="minPrice">
           </mat-form-field>
           <mat-form-field appearance="outline">
-            <mat-label>Precio máximo</mat-label>
+            <mat-label>{{'services.maxPrice' | translate}}</mat-label>
             <input matInput type="number" formControlName="maxPrice">
           </mat-form-field>
           <button class="btn btn-proyecto" mat-raised-button color="primary" (click)="searchAct()">
-            <span class="mat-body-2">Buscar</span>
+            <span class="mat-body-2">{{'services.search' | translate}}</span>
           </button>
         </form>
       </div>
@@ -29,8 +29,8 @@
         <img class="card-img-top img-card" src="https://picsum.photos/id/62/500/500" alt="Card image cap">
         <div class="card-body">
           <h2 class="card-title" [routerLink]="['service/{{service.id}}']"><strong>{{service.name}}</strong></h2>
-          <p class="card-text">Descripción: {{service.description}}</p>
-          <p class="card-text">Precio: {{service.price}} €</p>
+          <p class="card-text">{{'services.description' | translate}}: {{service.description}}</p>
+          <p class="card-text">{{'services.price' | translate}}: {{service.price}} €</p>
         </div>
       </div>
     </div>

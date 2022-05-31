@@ -1,10 +1,180 @@
 {
   "header": {
-    "home": "Inicio"
+    "home": "Inicio",
+    "contactUs": "Contacto",
+    "boats": "Barcos",
+    "services": "Servicios",
+    "activities": "Actividades"
   },
   "language": {
     "language": "Idioma",
     "spanish": "Español",
-    "english": "Ingles"
+    "english": "Inglés"
+  },
+  "home": {
+    "form": {
+      "title": "¡La mejor solución para alquilar un barco!",
+      "subTitle": "Más de 40,000 barcos que alquilar al mejor precio y en todo el mundo.",
+      "initialDate": "Fecha inicial",
+      "endDate": "Fecha fin",
+      "typeBoat": "Tipo de embarcación",
+      "search": "Buscar",
+      "typeBoatOptions": {
+        "boat": "Barco",
+        "jetSki": "Moto de agua"
+      }
+    },
+    "section": {
+      "title": "Selección de la comunidad",
+      "title1": "Título 1",
+      "title2": "Título 2",
+      "title3": "Título 3",
+      "title4": "Título 4"
+    },
+    "aboutUs": {
+      "owner": {
+        "title": "Propietario",
+        "paragraph1": "Crea un anuncio gratuito para alquilar tu barco. Barcos, zodiacs, lanchas, catamaranes, todos son bienvenidos en FunnySail!",
+        "paragraph2": "Alquila a quien desees, cuando quieras y al precio que veas conveniente. Click&Boat te ayuda a rentabilizar tu barco al permitirte cubrir los gastos de mantenimiento y uso.",
+        "paragraph3": "Seguro a todo riesgo opcional de hasta ocho millones de euros de cobertura y plataforma de pago segura para la fianza. Confíanos el alquiler de tu velero, barco a motor o catamarán.",
+        "button" : "Alquila tu barco"
+      },
+      "lessee": {
+        "title": "Arrendatario",
+        "paragraph1": "Consulta todos los anuncios a través del motor de búsqueda. Encuentra un barco o un velero en alquiler en cualquier lugar de Europa y al mejor precio. Disfruta de nuestro seguro incluído para alquilar y navegar con total seguridad.",
+        "paragraph2": "Ponte en contacto con los propietarios de las embarcaciones de manera gratuita y pregúntales sobre cuestiones relativas a la embarcación: disponibilidad , equipamiento, etc. a través del servicio de mensajería incorporado.",
+        "paragraph3": "Reserva directamente online con total seguridad y alquila el barco o velero de tus sueños en tan solo unos clics. Únicamente se te realizará el cargo en caso de que el propietario de la embarcación acepte tu solicitud de alquiler. Pago seguro al 100 %. Click&Boat Es tu intermediario de confianza.",
+        "button": "Encuentra tu barco"
+      }
+    },
+    "insurance": {
+      "title": "Navega con total seguridad"
+    },
+    "linksMenus": {
+      "activities": "Actividades",
+      "services": "Servicios",
+      "boatRental": "Alquiler de barcos"
+    },
+    "comments": {
+      "user": "Usuario aleatorio",
+      "comment": "Comentario aleatorio"
+    }
+  },
+  "login": {
+    "title": "Identifícate",
+    "email": "Email",
+    "password": "Contraseña",
+    "error": "Error",
+    "required": "Campo requerido",
+    "enter": "Entrar",
+    "signUp": "Regístrate"
+  },
+  "signup": {
+    "title": "Registro",
+    "name": "Nombre",
+    "lastName": "Apellidos",
+    "email": "Dirección de email",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "error": "Error",
+    "required": "Campo requerido",
+    "enter": "Entrar",
+    "signIn": "Regístrate",
+    "pwdError": "La contraseña dene contener como mínimo 8 caracteres de longitud, contener una mayúscula, una minúscula, un número y un caracter de la siguiente colección _@./#&+-.",
+    "mismatch": "Las contraseñas no coinciden",
+    "3chrt": "El campo debe contener al menos 3 caracteres",
+    "20chrt": "El campo debe contener 20 caracteres como máximo",
+    "10chrt": "El campo debe contener 10 caracteres como máximo",
+    "birthday": "Cumpleaños",
+    "phone": "Número de teléfono",
+    "address": "Dirección",
+    "city": "Ciudad",
+    "country": "País",
+    "zipCode": "Código postal",
+    "zipLength": "El código postal debe contener 5 caracteres",
+    "state": "Comunidad",
+    "submit":  "Registrarse"
+  },
+  "boats": {
+    "formTitle": "Busca tu barco",
+    "chooseDate": "Elija una fecha",
+    "boatType": "Tipo de barco",
+    "search": "Buscar",
+    "description": "Descripción",
+    "capacity": "Capacidad",
+    "length": "Longitud",
+    "beam": "Manga",
+    "captain": "Capitán",
+    "people": "Personas",
+    "meters": "Metros"
+  },
+  "boat": {
+    "power": "Potencia",
+    "day": "Día",
+    "hour": "Hora",
+    "extras": "Extras incluidos",
+    "float": "FLotador",
+    "fishing": "Caña de pescar",
+    "bimini": "Toldo bimini",
+    "refrigerator": "Nevera",
+    "sideTable": "Mesa",
+    "book": "RESERVA YA"
+  },
+  "services": {
+    "title": "¡Busca el servicio que necesitas!",
+    "name": "Nombre",
+    "minPrice": "Precio mínimo",
+    "maxPrice": "Precio máximo",
+    "search": "Buscar",
+    "description": "Descripción",
+    "price": "Precio"
+  },
+  "activities": {
+    "title": "¡Busca tu actividad favorita!",
+    "name": "Nombre",
+    "minPrice": "Precio mínimo",
+    "maxPrice": "Precio máximo",
+    "iniDate": "Fecha de inicio",
+    "endDate": "Fecha de fin",
+    "search": "Búsqueda",
+    "description": "Descripción",
+    "price": "Precio",
+    "date": "Fecha"
+  },
+  "contactUs": {
+    "title": "Contact",
+    "name": "Nombre",
+    "email": "Email",
+    "message": "Mensaje",
+    "send": "Enviar",
+    "error": "Error",
+    "required": "Campo obligatorio",
+    "enter": "Entrar",
+    "success": "Éxito",
+    "messageSent": "Mensaje enviado",
+    "phone": "Número de teléfono",
+    "address": "Dirección",
+    "map": "Mapa"
+  },
+  "profile": {
+    "personalData": "Información personal",
+    "edit": "Editar",
+    "save": "Guardar",
+    "preferredPort": "Puerto preferido",
+    "portName": "Nombre del puerto",
+    "bookings": "Reservas",
+    "refunds": "Devoluciones",
+    "logOut": "Cerrar sesión",
+    "changePwd": "Cambiar contraseña",
+    "newPwd": "Nueva contraseña",
+    "confirmPwd": "Confirmar contraseña",
+    "close": "Cerrar",
+    "saveChanges": "Guardar cambios"
+  },
+  "rentalHC": {
+    "basePrice": "Precio base",
+    "totalPrice": "Precio total",
+    "rentalStatus": "Estado del alquiler",
+    "paymentStatus": "Estado del pago"
   }
 }

@@ -4,63 +4,41 @@
       <img src="assets/defaultBoat.jpg" alt="boat" style="width:90%;">
     </div>
     <div class="col-md">
-      <p class="h2">Boat name / Boat registration</p>
+      <p class="h2">{{boat.name}} / {{boat.registration}}</p>
       <hr>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum
+        {{boat.description}}
       </p>
       <hr>
       <div class="container">
         <div class="row">
           <div class="col-md" style="text-align: center;">
             <img alt='Capacity icon' src="assets/capacity.png" width="35" style="margin-bottom:10px;">
-            <p>5 people</p>
+            <p>{{boat.capacity}} {{'boats.people' | translate}}</p>
           </div>
           <div class="col-md" style="text-align: center;">
             <img alt='length icon' src="assets/boat-length.png" width="35" style="margin-bottom:10px;">
-            <p>7.5 m long</p>
+            <p>{{boat.length}} m {{'boats.length' | translate}}</p>
           </div>
           <div class="col-md" style="text-align: center;">
             <img alt='width icon' src="assets/boat-width.png" width="35" style="margin-bottom:10px;">
-            <p>2.5 m wide</p>
+            <p>{{boat.sleeve}} m {{'boats.beam' | translate}}</p>
           </div>
           <div class="col-md" style="text-align: center;">
             <img alt="power icon" src="assets/boat-power.png" width="35" style="margin-bottom:10px;">
-            <p>50 HP</p>
+            <p>{{boat.motorPower}} {{'boat.power' | translate}}</p>
           </div>
           <div class="col-md" style="text-align: center;">
             <img alt="price icon" src="assets/price-tag.png" width="35" style="margin-bottom:10px;">
-            <p>200€/day 30€/hour</p>
+            <p>{{boat.dayBasePrice}}€/{{'boat.day' | translate}} {{boat.hourBasePrice}}€/{{'boat.hour' | translate}}</p>
           </div>
         </div>
       </div>
     </div>
   </div>
+
   <div class="row" style="margin-top:20px;">
-    <p class="h4">Ownership</p>
-    <hr>
-    <div class="col-md">
-      <p><strong>Owner: </strong> PersonName</p>
-    </div>
-    <div class="col-md">
-      <p><strong>Phone: </strong> +123456789</p>
-    </div>
-    <div class="col-md">
-      <p><strong>Email: </strong>email@example.com</p>
-    </div>
-    <div class="col-md">
-      <p><strong>Enterprise: </strong> EnterpriseName</p>
-    </div>
-    <div class="col-md">
-      <p><strong>Office hours: </strong> 8:00 - 17:00</p>
-    </div>
-  </div>
-  <div class="row" style="margin-top:20px;">
-    <p class="h4">Available activities</p>
+    <p class="h4">{{'boat.extras' | translate}}</p>
     <hr>
     <div class="col-md">
       <div class="container">
@@ -68,39 +46,34 @@
         <div class="row">
           <div class="col-md" style="text-align: center;">
             <img alt="float icon" src="assets/float-activity.png" width="35" style="margin-bottom:10px;">
-            <p>Float</p>
+            <p>{{'boat.float' | translate}}</p>
           </div>
           <div class="col-md" style="text-align: center;">
             <img alt="fishing-rod icon" src="assets/fishing-activity.png" width="35" style="margin-bottom:10px;">
-            <p>Fishing rod</p>
+            <p>{{'boat.fishing' | translate}}</p>
           </div>
           <div class="col-md" style="text-align: center;">
             <img alt="umbrella icon" src="assets/bimini-top.png" width="35" style="margin-bottom:10px;">
-            <p>Bimini top</p>
+            <p>{{'boat.bimini' | translate}}</p>
           </div>
           <div class="col-md" style="text-align: center;">
             <img alt="ice icon" src="assets/refrigerator.png" width="35" style="margin-bottom:10px;">
-            <p>Refrigerator</p>
+            <p>{{'boat.refrigerator' | translate}}</p>
           </div>
           <div class="col-md" style="text-align: center;">
             <img alt="table icon" src="assets/side-table.png" width="35" style="margin-bottom:10px;">
-            <p>Side table</p>
+            <p>{{'boat.sideTable' | translate}}</p>
           </div>
         </div>
       </div>
     </div>
     <hr>
-  <div class="row" style="margin-top:25px;">
-    <div class="col-md" style="text-align: center;">
-      <button class="btn btn-proyecto" style="margin-left: auto; margin-right: auto">
-        BOOK NOW
-      </button>
+    <div class="row" style="margin-top:25px;">
+      <div class="col-md" style="text-align: center;">
+        <button class="btn btn-proyecto" style="margin-left: auto; margin-right: auto">
+          {{'boat.book' | translate}}
+        </button>
+      </div>
     </div>
-    <div class="col-md" style="text-align: center;">
-      <button class="btn btn-proyecto" style="margin-left: auto; margin-right: auto">
-        RENT NOW
-      </button>
-    </div>
-  </div>
   </div>
 </div>

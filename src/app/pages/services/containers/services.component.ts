@@ -19,6 +19,11 @@ export class ServicesComponent implements OnInit {
               protected serviceApiService: ServicesService,
               protected http: HttpClient,
               protected router: Router) {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
 
   ngOnInit(): void {

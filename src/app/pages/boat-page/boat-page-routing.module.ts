@@ -4,7 +4,7 @@ import {BoatPageComponent} from "./containers/boat-page.component";
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':boatId',
     component: BoatPageComponent
   }
 ];

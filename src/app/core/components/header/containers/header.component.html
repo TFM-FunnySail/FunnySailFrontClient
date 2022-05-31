@@ -16,25 +16,18 @@
           <a class="nav-link" [routerLink]="['profile']">{{perfil}}</a>
         </li>
         <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" aria-current="page" [routerLink]="['contact-us']">Contact us</a>
+          <a class="nav-link" aria-current="page" [routerLink]="['boats']">{{'header.boats' | translate}}</a>
         </li>
         <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" aria-current="page" [routerLink]="['boat']">Boat(provisional)</a>
+          <a class="nav-link" aria-current="page" [routerLink]="['services']">{{'header.services' | translate}}</a>
         </li>
         <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" aria-current="page" [routerLink]="['boats']">Boats</a>
+          <a class="nav-link" aria-current="page" [routerLink]="['activities']">{{'header.activities' | translate}}</a>
         </li>
         <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" aria-current="page" [routerLink]="['services']">Services</a>
-        </li>
-        <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" aria-current="page" [routerLink]="['activities']">Activities</a>
+          <a class="nav-link" aria-current="page" [routerLink]="['contact-us']">{{'header.contactUs' | translate}}</a>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
     </div>
   </div>
 </nav>

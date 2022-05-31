@@ -11,71 +11,71 @@
     <div class="container" id="user_data">
       <form [formGroup]="dataForm" (ngSubmit)="onSubmit()" >
         <div class="row">
-          <div class="col-md-2">
-            <p class="h3">Personal data</p>
+          <div class="col-md-3">
+            <p class="h3">{{'profile.personalData' | translate}}</p>
           </div>
           <div class="col-md-1">
             <button mat-button (click)="show_form()" id="editButton">
               <mat-icon>edit</mat-icon>
-              Edit
+              {{'profile.edit' | translate}}
             </button>
           </div>
           <div class="col-md-1">
 
             <button mat-button (click)="save_form()" style="display:none;" id="saveButton">
               <mat-icon>save</mat-icon>
-              Save
+              {{'profile.save' | translate}}
             </button>
           </div>
           <hr>
         </div>
         <div class="row">
           <div class="col-md-6">
-            <p class="h6">Name</p>
+            <p class="h6">{{'signup.name' | translate}}</p>
             <mat-form-field appearance="outline" style="margin-right: 20px;">
-              <mat-label>First Name</mat-label>
+              <mat-label>{{'signup.name' | translate}}</mat-label>
               <input matInput formControlName="name" type="text" placeholder="First name" required>
               <mat-error *ngIf="dataForm.get('name')?.errors?.['minLength']">
-                First name must contain at least 3 characters.
+                {{'signup.3chrt' | translate}}
               </mat-error>
               <mat-error *ngIf="dataForm.get('name')?.errors?.['maxLength']">
-                First name must contain at most 20 characters.
+                {{'signup.20chrt' | translate}}
               </mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline" style="width: 280px;">
-              <mat-label>Last name</mat-label>
+              <mat-label>{{'signup.lastName' | translate}}</mat-label>
               <input matInput formControlName="lastName" type="text" placeholder="Last name" required>
               <mat-error *ngIf="dataForm.get('lastName')?.errors?.['minLength']">
-                Last name must contain at least 3 characters.
+                {{'signup.3chrt' | translate}}
               </mat-error>
               <mat-error *ngIf="dataForm.get('lastName')?.errors?.['maxLength']">
-                Last name must contain at most 20 characters.
+                {{'signup.20chrt' | translate}}
               </mat-error>
             </mat-form-field>
           </div>
           <div class="col-md-6">
-            <p class="h6">Email</p>
+            <p class="h6">{{'signup.email' | translate}}</p>
             <mat-form-field appearance="outline" style="width: 400px;">
-              <mat-label>Email address</mat-label>
+              <mat-label>{{'signup.email' | translate}}</mat-label>
               <input matInput formControlName="email" type="email" placeholder="Email address" required>
             </mat-form-field>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
-            <p class="h6">Birthday</p>
+            <p class="h6">{{'signup.birthday' | translate}}</p>
             <mat-form-field appearance="outline">
-              <mat-label>Birthday</mat-label>
+              <mat-label>{{'signup.birthday' | translate}}</mat-label>
               <input matInput formControlName="birthday" type="date" placeholder="Birthday" required>
             </mat-form-field>
           </div>
           <div class="col-md-6">
-            <p class="h6">Phone number</p>
+            <p class="h6">{{'signup.phone' | translate}}</p>
             <mat-form-field>
-              <mat-label>Phone</mat-label>
+              <mat-label>{{'signup.phone' | translate}}</mat-label>
               <input matInput formControlName="phone" type="text" placeholder="Phone" required>
               <mat-error *ngIf="dataForm.get('phone')?.errors?.['pattern']">
-                Phone must contain 10 characters.
+                {{'signup.10chrt' | translate}}
               </mat-error>
             </mat-form-field>
           </div>
@@ -87,74 +87,74 @@
 
         </div>
         <div class="row" style="margin-top: 2.5%;">
-          <p class="h3">Address</p>
+          <p class="h3">{{'signup.address' | translate}}</p>
           <hr>
         </div>
         <div class="row" style="margin-top: 2%;">
           <div class="col-md-4">
-            <p class="h6">Address</p>
+            <p class="h6">{{'signup.address' | translate}}</p>
             <mat-form-field appearance="outline">
-              <mat-label>Email address</mat-label>
+              <mat-label>{{'signup.address' | translate}}</mat-label>
               <input matInput formControlName="address" type="text" placeholder="Address" required>
               <mat-error *ngIf="dataForm.get('address')?.errors?.['minLength']">
-                Address must have at least 3 characters
+                {{'signup.3chrt' | translate}}
               </mat-error>
             </mat-form-field>
           </div>
           <div class="col-md-4">
-            <p class="h6">City</p>
+            <p class="h6">{{'signup.city' | translate}}</p>
             <mat-form-field appearance="outline">
-              <mat-label>City</mat-label>
+              <mat-label>{{'signup.city' | translate}}</mat-label>
               <input matInput formControlName="city" type="text" placeholder="City" required>
               <mat-error *ngIf="dataForm.get('city')?.errors?.['minLength']">
-                City must have at least 3 characters.
+                {{'signup.3chrt' | translate}}
               </mat-error>
               <mat-error *ngIf="dataForm.get('city')?.errors?.['maxLength']">
-                City must have at least 20 characters.
+                {{'signup.20chrt' | translate}}
               </mat-error>
             </mat-form-field>
           </div>
           <div class="col-md-4">
-            <p class="h6">ZIP Code</p>
+            <p class="h6">{{'signup.zipCode' | translate}}</p>
             <mat-form-field appearance="outline">
-              <mat-label>ZIP Code</mat-label>
+              <mat-label>{{'signup.zipCode' | translate}}</mat-label>
               <input matInput formControlName="zip" type="text" placeholder="ZIP Code" required>
               <mat-error *ngIf="dataForm.get('zip')?.errors?.['pattern']">
-                ZIP Code must contain 5 numbers.
+                {{'signup.zipLength' | translate}}
               </mat-error>
             </mat-form-field>
           </div>
         </div>
         <div class="row">
           <div class="col-md-4">
-            <p class="h6">Country</p>
+            <p class="h6">{{'signup.country' | translate}}</p>
             <mat-form-field appearance="outline">
-              <mat-label>Country</mat-label>
+              <mat-label>{{'signup.country' | translate}}</mat-label>
               <input matInput formControlName="country" type="text" placeholder="Country" required>
               <mat-error *ngIf="dataForm.get('country')?.errors?.['minLength']">
-                Country must have at least 3 characters.
+                {{'signup.3chrt' | translate}}
               </mat-error>
               <mat-error *ngIf="dataForm.get('country')?.errors?.['maxLength']">
-                Country must have at least 20 characters.
+                {{'signup.20chrt' | translate}}
               </mat-error>
             </mat-form-field>
           </div>
           <div class="col-md-4">
-            <p class="h6">State</p>
+            <p class="h6">{{'signup.state' | translate}}</p>
             <mat-form-field appearance="outline">
-              <mat-label>State</mat-label>
+              <mat-label>{{'signup.state' | translate}}</mat-label>
               <input matInput formControlName="state" type="text" placeholder="State" required>
               <mat-error *ngIf="dataForm.get('state')?.errors?.['minLength']">
-                State must have at least 3 characters.
+                {{'signup.3chrt' | translate}}
               </mat-error>
               <mat-error *ngIf="dataForm.get('state')?.errors?.['maxLength']">
-                State must have at least 20 characters.
+                {{'signup.20chrt' | translate}}
               </mat-error>
             </mat-form-field>
           </div>
           <div class="col-md-4">
-            <p class="h6">Preferred port</p>
-            <p class="h5">PortName</p>
+            <p class="h6">{{'profile.preferredPort' | translate}}</p>
+            <p class="h5">{{'profile.portName' | translate}}</p>
           </div>
         </div>
 
@@ -166,7 +166,7 @@
 
   <div class="row">
     <div class="row" style="margin-top: 2.5%;">
-      <p class="h3">Bookings</p>
+      <p class="h3">{{'profile.bookings' | translate}}</p>
       <hr>
     </div>
     <div class="row flex-row flex-nowrap" style="overflow: scroll; overflow-y: hidden">
@@ -177,7 +177,7 @@
   </div>
   <div class="row">
     <div class="row" style="margin-top: 2.5%;">
-      <p class="h3">Refunds</p>
+      <p class="h3">{{'profile.refunds' | translate}}</p>
       <hr>
     </div>
     <div class="row flex-row flex-nowrap" style="overflow: scroll; overflow-y: hidden">
@@ -186,7 +186,7 @@
   </div>
   <div class="row">
     <div class="col-md" style="margin-top:20px; padding-bottom: 50px;">
-      <button class="logout-button" (click)="logout()">Log out</button>
+      <button class="logout-button" (click)="logout()">{{'profile.logOut' | translate}}</button>
     </div>
   </div>
 </div>
