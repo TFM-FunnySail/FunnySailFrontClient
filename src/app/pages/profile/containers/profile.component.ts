@@ -33,9 +33,9 @@ export class ProfileComponent implements OnInit {
               private bookingService: BookingService) {
     this.dataForm = this.formBuilder.group({
       name: ['', [Validators.minLength(3), Validators.maxLength(20)]],
-      email: ['', [Validators.email]],
+      email: ['', [Validators.email]],/*
       password: ['', [Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]{8,25}$')]],
-      confirmPassword: ['', [Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]{8,25}$')]],
+      confirmPassword: ['', [Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]{8,25}$')]],*/
       lastName: ['', [Validators.minLength(3), Validators.maxLength(20)]],
       birthday: ['', []],
       phone: ['', [Validators.pattern('^[0-9]{10}$')]],
@@ -54,7 +54,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     const id = this.storageService.getItem('userId');
     if(id)
-      this.userService.apiUsersIdGet(id).subscribe(resp=>{
+      this.userService.apiUsersIdGet(id).subscribe((resp: UserOutputDTO)=>{
         console.log(resp);
         if(resp){
           this.userData = resp;
@@ -72,7 +72,6 @@ export class ProfileComponent implements OnInit {
           this.dataForm.get(['state'])?.setValue(resp.state);
           this.dataForm.get(['zip'])?.setValue(resp.zipCode);
           this.dataForm.get(['country'])?.setValue(resp.country);
-
         }
       });
 
@@ -174,10 +173,6 @@ export class ProfileComponent implements OnInit {
       });
   }
 
-  openChangePassword() {
-
-  }
-
   logout() {
     this.storageService.deleteItem('userId');
     this.storageService.deleteItem("User");
@@ -186,8 +181,6 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['home']);
       setTimeout(() => {
         window.location.reload();
-      },  400)
-
-
+      },  400);
   }
 }
