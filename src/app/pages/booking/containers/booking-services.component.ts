@@ -45,21 +45,7 @@ export class BookingServicesComponent implements OnInit {
         if (resp) {
           console.log(resp);
           this.exist = true;
-          if (resp.id) {
-            this.service.id = resp.id;
-          }
-          if (resp.name) {
-            this.service.name = resp.name;
-          }
-          if (resp.active) {
-            this.service.active = resp.active;
-          }
-          if (resp.price) {
-            this.service.price = resp.price;
-          }
-          if (resp.description) {
-            this.service.description = resp.description;
-          }
+          this.service = resp;
         }
       });
     });

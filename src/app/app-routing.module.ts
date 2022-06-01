@@ -85,6 +85,10 @@ const routes: Routes = [
       {
         path: 'booking/service/:id',
         loadChildren: () => BookingServicesModule
+      },
+      {
+        path: 'booking/boat',
+        loadChildren: () => BookingBoatModule
       }
     ]
   }
