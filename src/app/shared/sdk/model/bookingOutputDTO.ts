@@ -21,8 +21,8 @@ export interface BookingOutputDTO {
     id?: number;
     clientId?: string | null;
     createdDate?: string;
-    entryDate?: string;
-    departureDate?: string;
+    entryDate?: string | null;
+    departureDate?: string | null;
     totalPeople?: number;
     paid?: boolean;
     requestCaptain?: boolean;

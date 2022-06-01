@@ -13,6 +13,7 @@ import { BoatResourcesOutputDTO } from './boatResourcesOutputDTO';
 import { RequiredBoatTitleOutputDTO } from './requiredBoatTitleOutputDTO';
 import { MooringOutputDTO } from './mooringOutputDTO';
 import { BoatTypeOutputDTO } from './boatTypeOutputDTO';
+import { UserOutputDTO } from './userOutputDTO';
 
 
 export interface BoatOutputDTO { 
@@ -29,10 +30,12 @@ export interface BoatOutputDTO {
     motorPower?: number;
     dayBasePrice?: number | null;
     hourBasePrice?: number | null;
+    price?: number | null;
     supplement?: number | null;
     boatType?: BoatTypeOutputDTO;
     mooring?: MooringOutputDTO;
     boatResources?: Array<BoatResourcesOutputDTO> | null;
     requiredBoatTitles?: Array<RequiredBoatTitleOutputDTO> | null;
+    owner?: UserOutputDTO;
 }
 

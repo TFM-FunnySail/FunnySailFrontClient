@@ -188,22 +188,6 @@
             }
           },
           {
-            "name": "InitialDate",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "EndDate",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
             "name": "MinPrice",
             "in": "query",
             "schema": {
@@ -547,6 +531,56 @@
         }
       }
     },
+    "/api/Activities/{id}/resource/image": {
+      "post": {
+        "tags": [
+          "Activities"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "main",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "imageFile": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "imageFile": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Boats": {
       "get": {
         "tags": [
@@ -619,6 +653,13 @@
                 "type": "integer",
                 "format": "int32"
               }
+            }
+          },
+          {
+            "name": "OwnerId",
+            "in": "query",
+            "schema": {
+              "type": "string"
             }
           },
           {
@@ -729,6 +770,22 @@
             "schema": {
               "type": "integer",
               "format": "int32"
+            }
+          },
+          {
+            "name": "initialDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
             }
           }
         ],
@@ -4099,7 +4156,6 @@
       },
       "AddActivityInputDTO": {
         "required": [
-          "activityDate",
           "description",
           "name",
           "price"
@@ -4110,10 +4166,6 @@
             "maxLength": 200,
             "minLength": 0,
             "type": "string"
-          },
-          "activityDate": {
-            "type": "string",
-            "format": "date-time"
           },
           "active": {
             "type": "boolean"
@@ -4126,6 +4178,24 @@
             "maxLength": 500,
             "minLength": 0,
             "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddBoatBookingInputDTO": {
+        "type": "object",
+        "properties": {
+          "boatId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "entryDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "departureDate": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "additionalProperties": false
@@ -4242,8 +4312,6 @@
       },
       "AddBookingInputDTO": {
         "required": [
-          "departureDate",
-          "entryDate",
           "totalPeople"
         ],
         "type": "object",
@@ -4252,14 +4320,6 @@
             "type": "string",
             "nullable": true
           },
-          "entryDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "departureDate": {
-            "type": "string",
-            "format": "date-time"
-          },
           "totalPeople": {
             "type": "integer",
             "format": "int32"
@@ -4267,11 +4327,10 @@
           "requestCaptain": {
             "type": "boolean"
           },
-          "boatIds": {
+          "boats": {
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int32"
+              "$ref": "#/components/schemas/AddBoatBookingInputDTO"
             },
             "nullable": true
           },
@@ -4574,6 +4633,11 @@
             "format": "double",
             "nullable": true
           },
+          "price": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
           "supplement": {
             "type": "number",
             "format": "float",
@@ -4598,6 +4662,9 @@
               "$ref": "#/components/schemas/RequiredBoatTitleOutputDTO"
             },
             "nullable": true
+          },
+          "owner": {
+            "$ref": "#/components/schemas/UserOutputDTO"
           }
         },
         "additionalProperties": false
@@ -4721,11 +4788,13 @@
           },
           "entryDate": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "nullable": true
           },
           "departureDate": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "nullable": true
           },
           "totalPeople": {
             "type": "integer",
@@ -4944,7 +5013,7 @@
             "type": "string",
             "nullable": true
           },
-          "adress": {
+          "address": {
             "type": "string",
             "nullable": true
           },
@@ -5022,6 +5091,9 @@
           "alias": {
             "type": "string",
             "nullable": true
+          },
+          "available": {
+            "type": "boolean"
           },
           "type": {
             "$ref": "#/components/schemas/MooringEnum"
@@ -5778,8 +5850,7 @@
           "boatBookingIds": {
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int32"
+              "$ref": "#/components/schemas/AddBoatBookingInputDTO"
             },
             "nullable": true
           },

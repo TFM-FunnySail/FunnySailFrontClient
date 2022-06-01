@@ -208,16 +208,17 @@ export class BoatsService {
      * @param createdDaysRangeEndDate 
      * @param exclusiveBoatId 
      * @param boatIdList 
+     * @param ownerId 
      * @param limit 
      * @param offset 
      * @param page 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public apiBoatsGet(boatId?: number, active?: boolean, pendingToReview?: boolean, boatTypeId?: number, createdDaysRangeInitialDate?: string, createdDaysRangeEndDate?: string, exclusiveBoatId?: Array<number>, boatIdList?: Array<number>, limit?: number, offset?: number, page?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<BoatOutputDTOGenericResponseDTO>;
-    public apiBoatsGet(boatId?: number, active?: boolean, pendingToReview?: boolean, boatTypeId?: number, createdDaysRangeInitialDate?: string, createdDaysRangeEndDate?: string, exclusiveBoatId?: Array<number>, boatIdList?: Array<number>, limit?: number, offset?: number, page?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<HttpResponse<BoatOutputDTOGenericResponseDTO>>;
-    public apiBoatsGet(boatId?: number, active?: boolean, pendingToReview?: boolean, boatTypeId?: number, createdDaysRangeInitialDate?: string, createdDaysRangeEndDate?: string, exclusiveBoatId?: Array<number>, boatIdList?: Array<number>, limit?: number, offset?: number, page?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<HttpEvent<BoatOutputDTOGenericResponseDTO>>;
-    public apiBoatsGet(boatId?: number, active?: boolean, pendingToReview?: boolean, boatTypeId?: number, createdDaysRangeInitialDate?: string, createdDaysRangeEndDate?: string, exclusiveBoatId?: Array<number>, boatIdList?: Array<number>, limit?: number, offset?: number, page?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<any> {
+    public apiBoatsGet(boatId?: number, active?: boolean, pendingToReview?: boolean, boatTypeId?: number, createdDaysRangeInitialDate?: string, createdDaysRangeEndDate?: string, exclusiveBoatId?: Array<number>, boatIdList?: Array<number>, ownerId?: string, limit?: number, offset?: number, page?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<BoatOutputDTOGenericResponseDTO>;
+    public apiBoatsGet(boatId?: number, active?: boolean, pendingToReview?: boolean, boatTypeId?: number, createdDaysRangeInitialDate?: string, createdDaysRangeEndDate?: string, exclusiveBoatId?: Array<number>, boatIdList?: Array<number>, ownerId?: string, limit?: number, offset?: number, page?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<HttpResponse<BoatOutputDTOGenericResponseDTO>>;
+    public apiBoatsGet(boatId?: number, active?: boolean, pendingToReview?: boolean, boatTypeId?: number, createdDaysRangeInitialDate?: string, createdDaysRangeEndDate?: string, exclusiveBoatId?: Array<number>, boatIdList?: Array<number>, ownerId?: string, limit?: number, offset?: number, page?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<HttpEvent<BoatOutputDTOGenericResponseDTO>>;
+    public apiBoatsGet(boatId?: number, active?: boolean, pendingToReview?: boolean, boatTypeId?: number, createdDaysRangeInitialDate?: string, createdDaysRangeEndDate?: string, exclusiveBoatId?: Array<number>, boatIdList?: Array<number>, ownerId?: string, limit?: number, offset?: number, page?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<any> {
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
         if (boatId !== undefined && boatId !== null) {
@@ -255,6 +256,10 @@ export class BoatsService {
                 localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
                   <any>element, 'BoatIdList');
             })
+        }
+        if (ownerId !== undefined && ownerId !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>ownerId, 'OwnerId');
         }
         if (limit !== undefined && limit !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
@@ -441,15 +446,27 @@ export class BoatsService {
 
     /**
      * @param id 
+     * @param initialDate 
+     * @param endDate 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public apiBoatsIdGet(id: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<BoatOutputDTO>;
-    public apiBoatsIdGet(id: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<HttpResponse<BoatOutputDTO>>;
-    public apiBoatsIdGet(id: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<HttpEvent<BoatOutputDTO>>;
-    public apiBoatsIdGet(id: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<any> {
+    public apiBoatsIdGet(id: number, initialDate?: string, endDate?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<BoatOutputDTO>;
+    public apiBoatsIdGet(id: number, initialDate?: string, endDate?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<HttpResponse<BoatOutputDTO>>;
+    public apiBoatsIdGet(id: number, initialDate?: string, endDate?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<HttpEvent<BoatOutputDTO>>;
+    public apiBoatsIdGet(id: number, initialDate?: string, endDate?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling apiBoatsIdGet.');
+        }
+
+        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
+        if (initialDate !== undefined && initialDate !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>initialDate, 'initialDate');
+        }
+        if (endDate !== undefined && endDate !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>endDate, 'endDate');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -488,6 +505,7 @@ export class BoatsService {
         return this.httpClient.get<BoatOutputDTO>(`${this.configuration.basePath}/api/Boats/${encodeURIComponent(String(id))}`,
             {
                 context: localVarHttpContext,
+                params: localVarQueryParameters,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,

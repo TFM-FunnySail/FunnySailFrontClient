@@ -163,7 +163,21 @@
 
 
   </div>
-
+  <div class="row">
+    <div class="row" style="margin-top: 2.5%;">
+      <p class="h3">{{'profile.boats' | translate}}
+        <button class="btn btn-proyecto" mat-raised-button color="primary"  style="margin-top: 15px;">
+          <span class="mat-body-2" [routerLink]="['/create-boat']">{{'profile.createBoat' | translate}}</span>
+        </button>
+      </p>
+      <hr>
+    </div>
+    <div class="row flex-row flex-nowrap" style="overflow: scroll; overflow-y: hidden">
+      <div class="col-3" *ngFor="let booking of bookings">
+        <h1>holi</h1>
+      </div>
+    </div>
+  </div>
   <div class="row">
     <div class="row" style="margin-top: 2.5%;">
       <p class="h3">{{'profile.bookings' | translate}}</p>
