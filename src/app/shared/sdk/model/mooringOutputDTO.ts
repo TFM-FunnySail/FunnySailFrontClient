@@ -17,6 +17,7 @@ export interface MooringOutputDTO {
     id?: number;
     portId?: number;
     alias?: string | null;
+    available?: boolean;
     type?: MooringEnum;
     port?: PortOutputDTO;
 }

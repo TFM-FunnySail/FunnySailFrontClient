@@ -56,6 +56,19 @@ export class ActivitiesService {
         this.encoder = this.configuration.encoder || new CustomHttpParameterCodec();
     }
 
+    /**
+     * @param consumes string[] mime-types
+     * @return true: consumes contains 'multipart/form-data', false: otherwise
+     */
+    private canConsumeForm(consumes: string[]): boolean {
+        const form = 'multipart/form-data';
+        for (const consume of consumes) {
+            if (form === consume) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     private addToHttpParams(httpParams: HttpParams, value: any, key?: string): HttpParams {
         if (typeof value === "object" && value instanceof Date === false) {
@@ -177,8 +190,6 @@ export class ActivitiesService {
     /**
      * @param activityId 
      * @param active 
-     * @param initialDate 
-     * @param endDate 
      * @param minPrice 
      * @param maxPrice 
      * @param name 
@@ -191,10 +202,10 @@ export class ActivitiesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public apiActivitiesGet(activityId?: number, active?: boolean, initialDate?: string, endDate?: string, minPrice?: number, maxPrice?: number, name?: string, description?: string, activityIdList?: Array<number>, activityNotIdList?: Array<number>, limit?: number, offset?: number, page?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<ActivityOutputDTOGenericResponseDTO>;
-    public apiActivitiesGet(activityId?: number, active?: boolean, initialDate?: string, endDate?: string, minPrice?: number, maxPrice?: number, name?: string, description?: string, activityIdList?: Array<number>, activityNotIdList?: Array<number>, limit?: number, offset?: number, page?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<HttpResponse<ActivityOutputDTOGenericResponseDTO>>;
-    public apiActivitiesGet(activityId?: number, active?: boolean, initialDate?: string, endDate?: string, minPrice?: number, maxPrice?: number, name?: string, description?: string, activityIdList?: Array<number>, activityNotIdList?: Array<number>, limit?: number, offset?: number, page?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<HttpEvent<ActivityOutputDTOGenericResponseDTO>>;
-    public apiActivitiesGet(activityId?: number, active?: boolean, initialDate?: string, endDate?: string, minPrice?: number, maxPrice?: number, name?: string, description?: string, activityIdList?: Array<number>, activityNotIdList?: Array<number>, limit?: number, offset?: number, page?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<any> {
+    public apiActivitiesGet(activityId?: number, active?: boolean, minPrice?: number, maxPrice?: number, name?: string, description?: string, activityIdList?: Array<number>, activityNotIdList?: Array<number>, limit?: number, offset?: number, page?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<ActivityOutputDTOGenericResponseDTO>;
+    public apiActivitiesGet(activityId?: number, active?: boolean, minPrice?: number, maxPrice?: number, name?: string, description?: string, activityIdList?: Array<number>, activityNotIdList?: Array<number>, limit?: number, offset?: number, page?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<HttpResponse<ActivityOutputDTOGenericResponseDTO>>;
+    public apiActivitiesGet(activityId?: number, active?: boolean, minPrice?: number, maxPrice?: number, name?: string, description?: string, activityIdList?: Array<number>, activityNotIdList?: Array<number>, limit?: number, offset?: number, page?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<HttpEvent<ActivityOutputDTOGenericResponseDTO>>;
+    public apiActivitiesGet(activityId?: number, active?: boolean, minPrice?: number, maxPrice?: number, name?: string, description?: string, activityIdList?: Array<number>, activityNotIdList?: Array<number>, limit?: number, offset?: number, page?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<any> {
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
         if (activityId !== undefined && activityId !== null) {
@@ -204,14 +215,6 @@ export class ActivitiesService {
         if (active !== undefined && active !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
             <any>active, 'Active');
-        }
-        if (initialDate !== undefined && initialDate !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>initialDate, 'InitialDate');
-        }
-        if (endDate !== undefined && endDate !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>endDate, 'EndDate');
         }
         if (minPrice !== undefined && minPrice !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
@@ -529,6 +532,93 @@ export class ActivitiesService {
             updateAcitivityInputDTO,
             {
                 context: localVarHttpContext,
+                responseType: <any>responseType_,
+                withCredentials: this.configuration.withCredentials,
+                headers: localVarHeaders,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * @param id 
+     * @param main 
+     * @param imageFile 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public apiActivitiesIdResourceImagePost(id: number, main?: boolean, imageFile?: Blob, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext}): Observable<any>;
+    public apiActivitiesIdResourceImagePost(id: number, main?: boolean, imageFile?: Blob, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext}): Observable<HttpResponse<any>>;
+    public apiActivitiesIdResourceImagePost(id: number, main?: boolean, imageFile?: Blob, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext}): Observable<HttpEvent<any>>;
+    public apiActivitiesIdResourceImagePost(id: number, main?: boolean, imageFile?: Blob, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext}): Observable<any> {
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling apiActivitiesIdResourceImagePost.');
+        }
+
+        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
+        if (main !== undefined && main !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>main, 'main');
+        }
+
+        let localVarHeaders = this.defaultHeaders;
+
+        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+        if (localVarHttpHeaderAcceptSelected === undefined) {
+            // to determine the Accept header
+            const httpHeaderAccepts: string[] = [
+            ];
+            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        }
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        let localVarHttpContext: HttpContext | undefined = options && options.context;
+        if (localVarHttpContext === undefined) {
+            localVarHttpContext = new HttpContext();
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'multipart/form-data'
+        ];
+
+        const canConsumeForm = this.canConsumeForm(consumes);
+
+        let localVarFormParams: { append(param: string, value: any): any; };
+        let localVarUseForm = false;
+        let localVarConvertFormParamsToString = false;
+        // use FormData to transmit files using content-type "multipart/form-data"
+        // see https://stackoverflow.com/questions/4007969/application-x-www-form-urlencoded-or-multipart-form-data
+        localVarUseForm = canConsumeForm;
+        if (localVarUseForm) {
+            localVarFormParams = new FormData();
+        } else {
+            localVarFormParams = new HttpParams({encoder: this.encoder});
+        }
+
+        if (imageFile !== undefined) {
+            localVarFormParams = localVarFormParams.append('imageFile', <any>imageFile) as any || localVarFormParams;
+        }
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        return this.httpClient.post<any>(`${this.configuration.basePath}/api/Activities/${encodeURIComponent(String(id))}/resource/image`,
+            localVarConvertFormParamsToString ? localVarFormParams.toString() : localVarFormParams,
+            {
+                context: localVarHttpContext,
+                params: localVarQueryParameters,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,

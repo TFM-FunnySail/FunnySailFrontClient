@@ -11,10 +11,9 @@
  */
 
 
-export interface AddActivityInputDTO { 
-    name: string;
-    active?: boolean;
-    price: number;
-    description: string;
+export interface AddBoatBookingInputDTO { 
+    boatId?: number;
+    entryDate?: string;
+    departureDate?: string;
 }
 

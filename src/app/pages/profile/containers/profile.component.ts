@@ -7,7 +7,8 @@ import {
   BookingService,
   UserOutputDTO,
   UsersService,
-  EditUserInputDTO} from "../../../shared/sdk";
+  EditUserInputDTO, BoatsService
+} from "../../../shared/sdk";
 
 import {StorageService} from "../../../shared/services/storage/storage.service";
 import {AuthService} from "../../../shared/services/auth/auth.service";
@@ -21,7 +22,6 @@ export class ProfileComponent implements OnInit {
   dataForm: FormGroup;
   user: any;
   userData: UserOutputDTO;
-  counter: number;
 
   bookings?: Array<BookingOutputDTO>;
 
@@ -30,7 +30,9 @@ export class ProfileComponent implements OnInit {
               protected userService: UsersService,
               protected storageService:StorageService,
               protected authService:AuthService,
-              private bookingService: BookingService) {
+              private bookingService: BookingService,
+              private boatsService: BoatsService)
+  {
     this.dataForm = this.formBuilder.group({
       name: ['', [Validators.minLength(3), Validators.maxLength(20)]],
       email: ['', [Validators.email]],/*
@@ -48,7 +50,8 @@ export class ProfileComponent implements OnInit {
     });
     this.userData = {};
     this.dataForm.disable();
-    this.counter = 90;
+
+    this.checkBoats();
   }
 
   ngOnInit(): void {
@@ -182,5 +185,11 @@ export class ProfileComponent implements OnInit {
       setTimeout(() => {
         window.location.reload();
       },  400);
+  }
+
+  checkBoats(){
+    this.boatsService.apiBoatsGet().subscribe(resp => {
+      console.log(resp);
+    });
   }
 }

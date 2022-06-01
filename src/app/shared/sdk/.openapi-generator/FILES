@@ -25,6 +25,7 @@ model/activityOutputDTO.ts
 model/activityOutputDTOGenericResponseDTO.ts
 model/activityResourcesOutputDTO.ts
 model/addActivityInputDTO.ts
+model/addBoatBookingInputDTO.ts
 model/addBoatInputDTO.ts
 model/addBoatTitleInputDTO.ts
 model/addBookingInputDTO.ts

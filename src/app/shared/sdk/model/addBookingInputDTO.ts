@@ -9,15 +9,14 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { AddBoatBookingInputDTO } from './addBoatBookingInputDTO';
 
 
 export interface AddBookingInputDTO { 
     clientId?: string | null;
-    entryDate: string;
-    departureDate: string;
     totalPeople: number;
     requestCaptain?: boolean;
-    boatIds?: Array<number> | null;
+    boats?: Array<AddBoatBookingInputDTO> | null;
     serviceIds?: Array<number> | null;
     activityIds?: Array<number> | null;
 }

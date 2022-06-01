@@ -3,6 +3,7 @@ export * from './activityOutputDTO';
 export * from './activityOutputDTOGenericResponseDTO';
 export * from './activityResourcesOutputDTO';
 export * from './addActivityInputDTO';
+export * from './addBoatBookingInputDTO';
 export * from './addBoatInputDTO';
 export * from './addBoatTitleInputDTO';
 export * from './addBookingInputDTO';

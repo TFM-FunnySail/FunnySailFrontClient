@@ -169,12 +169,49 @@
     "newPwd": "New password",
     "confirmPwd": "Confirm password",
     "close": "Close",
-    "saveChanges": "Save changes"
+    "saveChanges": "Save changes",
+    "boats": "Boats",
+    "createBoat": "Create boat"
   },
   "rentalHC": {
     "basePrice": "Base price",
     "totalPrice": "Total price",
     "rentalStatus": "Rental status",
     "paymentStatus": "Payment status"
+  },
+  "createBoat": {
+    "title": "Hi, sailor!",
+    "description": "It seems like you want to set your boat up to rent. Well, we will need to know a little bit about it!",
+    "formTitle": "Boat information",
+    "name": "Name",
+    "length": "Length",
+    "beam": "Beam",
+    "capacity": "Capacity",
+    "power": "Power",
+    "registration": "Registration",
+    "type": "Boat type",
+    "titulation": "Titulation",
+    "Patronja": "Patronja",
+    "NavigationLicence": "Navigation licence",
+    "Captaincy": "Captaincy",
+    "mooring": "Mooring",
+    "dayBasePrice": "Day base price",
+    "hourBasePrice": "Hour base price",
+    "supplement": "Supplement",
+    "descriptionForm": "Description",
+    "required": "Required field",
+    "minLength": "The field must be at least 3 characters long",
+    "maxLength200": "The field cannot be longer than 200 characters",
+    "maxLength50": "The field cannot be longer than 50 characters",
+    "maxLength1000": "The field cannot be longer than 1000 characters",
+    "minValue": "The field must be greater than 0",
+    "maxValue100": "The field must be or be less than 100",
+    "maxValue500": "The field must be or be less than 500",
+    "maxValue1000": "The field must be or be less than 1000",
+    "maxValue3000": "The field must be or be less than 3000",
+    "port": "Port",
+    "submit": "Submit",
+    "image": "Image"
+
   }
 }

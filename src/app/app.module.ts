@@ -17,6 +17,7 @@ import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 @NgModule({
   declarations: [
     AppComponent,
+
   ],
   imports: [
     AppRoutingModule,

@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { AddBoatBookingInputDTO } from './addBoatBookingInputDTO';
 import { BookingStatusEnum } from './bookingStatusEnum';
 
 
@@ -20,7 +21,7 @@ export interface UpdateBookingInputDTO {
     totalPeople?: number | null;
     requestCaptain?: boolean | null;
     status?: BookingStatusEnum;
-    boatBookingIds?: Array<number> | null;
+    boatBookingIds?: Array<AddBoatBookingInputDTO> | null;
     serviceBookingIds?: Array<number> | null;
     activityBookingIds?: Array<number> | null;
 }
