@@ -6,6 +6,7 @@ import {CarouselModule} from "./carousel/carousel.module";
 import {CommentModule} from "./comment/comment.module";
 import {CardMenuModule} from "./card-menu/card-menu.module";
 import {ChangePasswordCardModule} from "./change-password-card/change-password-card.module";
+import {RefundsModule} from "./refunds/refunds.module";
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import {ChangePasswordCardModule} from "./change-password-card/change-password-c
     CarouselModule,
     CommentModule,
     CardMenuModule,
-    ChangePasswordCardModule
+    ChangePasswordCardModule,
+    RefundsModule
   ],
   exports: [
     FooterModule,
@@ -24,7 +26,8 @@ import {ChangePasswordCardModule} from "./change-password-card/change-password-c
     CarouselModule,
     CommentModule,
     CardMenuModule,
-    ChangePasswordCardModule
+    ChangePasswordCardModule,
+    RefundsModule
   ]
 })
 export class ComponentsModule {

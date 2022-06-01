@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {RefundsComponent} from './containers/refunds.component';
+import {RefundsBookingComponent} from './containers/refunds-booking.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: RefundsComponent
+    component: RefundsBookingComponent
   }
 ];
 
@@ -13,6 +13,6 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class RefundsRoutingModule {
+export class RefundsBookingRoutingModule {
 }
 

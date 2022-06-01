@@ -12,9 +12,8 @@ import {
 })
 export class RentalHistoryCardComponent implements OnInit {
 
-  @Input() booking?: BookingOutputDTO;
-
-  name: string = 'Booking';
+  @Input() booking: BookingOutputDTO = {};
+  name: string = 'Booking ';
   createdDate: string = 'create Date';
   entryDate: string = 'entry Date';
   departureDate: string = 'departure Date';
@@ -26,6 +25,10 @@ export class RentalHistoryCardComponent implements OnInit {
   total: number = 0;
 
   constructor() {
+
+  }
+
+  ngOnInit(): void {
     this.name += this.booking?.id as unknown as string;
     this.createdDate = this.booking?.createdDate as string;
     this.entryDate = this.booking?.entryDate as string;
@@ -39,9 +42,6 @@ export class RentalHistoryCardComponent implements OnInit {
     this.boatBookings?.forEach(x => this.total += x.price as number);
     this.activityBookings?.forEach(x => this.total += x.price as number);
     this.serviceBookings?.forEach(x => this.total += x.price as number);
-  }
-
-  ngOnInit(): void {
   }
 
 }

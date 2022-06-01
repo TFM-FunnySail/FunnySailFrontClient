@@ -21,6 +21,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @NgModule({
     imports: [
@@ -49,7 +50,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
         MatBadgeModule,
         MatSidenavModule,
         MatMenuModule,
-        MatGridListModule
+        MatGridListModule,
+        MatButtonToggleModule
     ],
     exports: [
         MatButtonModule,
@@ -75,7 +77,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
         MatBadgeModule,
         MatSidenavModule,
         MatMenuModule,
-        MatGridListModule
+        MatGridListModule,
+        MatButtonToggleModule
     ],
     providers: [
         MatDatepickerModule

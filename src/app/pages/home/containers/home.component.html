@@ -22,15 +22,6 @@
             <mat-datepicker #endDate></mat-datepicker>
             </mat-form-field>
           </p>
-          <p>
-            <mat-form-field appearance="outline">
-              <mat-label>{{'home.form.typeBoat' | translate}}</mat-label>
-              <mat-select formControlName="typeBoat" >
-                <mat-option value="1">{{'home.form.typeBoatOptions.boat' | translate}}</mat-option>
-                <mat-option value="2">{{'home.form.typeBoatOptions.jetSki' | translate}}</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </p>
           <button class="btn btn-proyecto" mat-raised-button color="primary" (click)="find()">
             <span class="mat-body-2">{{'home.form.search' | translate}}</span>
           </button>

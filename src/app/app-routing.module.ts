@@ -10,7 +10,7 @@ import {PaymentModule} from "./pages/payment/payment.module";
 import {BoatsModule} from "./pages/boats/boats.module";
 import {ActivitiesModule} from "./pages/activities/activities.module";
 import {ServicesModule} from "./pages/services/services.module";
-import {RefundsModule} from "./pages/refunds/refunds.module";
+import {RefundsBookingModule} from "./pages/refunds-booking/refunds-booking.module";
 import {CreateBoatModule} from "./pages/create-boat/create-boat.module";
 import {ActivityModule} from "./pages/activity/activity.module";
 import {ServiceModule} from "./pages/service/service.module";
@@ -62,8 +62,8 @@ const routes: Routes = [
         loadChildren: () => ServicesModule
       },
       {
-        path: 'refunds',
-        loadChildren: () => RefundsModule
+        path: 'refunds-booking',
+        loadChildren: () => RefundsBookingModule
       },
       {
         path: 'create-boat',

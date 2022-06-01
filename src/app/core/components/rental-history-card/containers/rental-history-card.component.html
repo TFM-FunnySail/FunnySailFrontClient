@@ -1,5 +1,4 @@
 <div class="card" style="width: 18rem;">
-  <img src="../../../../../assets/defaultBoat.jpg" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">{{name}}</h5>
     <p class="card-text">Date: {{createdDate}}</p>
@@ -20,71 +19,98 @@
       </div>
       <div class="modal-body">
         <p class="h5">Rental detail</p>
-        <div class="container" *ngFor="let book of boatBookings">
-          <div class="row">
-            <div class="col-md">
-              <p class="h5">{{book.name}}</p>
+        <div *ngIf="boatBookings.length > 0">
+          <h1>BOATS</h1>
+          <div class="container" *ngFor="let book of boatBookings">
+            <div class="row">
+              <div class="col-md">
+                <p>Nombre:</p>
+              </div>
+              <div class="col-md">
+                <p>{{book.name}}</p>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-md">
-              <p class="h6">{{entryDate}} - {{departureDate}}</p>
+            <div class="row">
+              <div class="col-md">
+                <p>Id:</p>
+              </div>
+              <div class="col-md">
+                <p>{{book.id}}</p>
+              </div>
             </div>
-            <hr>
-          </div>
-          <div class="row">
-            <div class="col-md">
-              <p class="h5">Base price</p>
+            <div class="row">
+              <div class="col-md">
+                <p>{{'rentalHC.basePrice'|translate}}</p>
+              </div>
+              <div class="col-md">
+                <p>{{book.price}}€/{{'boat.day'|translate}}</p>
+              </div>
+              <hr>
             </div>
-            <div class="col-md">
-              <p class="h5">{{book.price}}€/day</p>
-            </div>
-            <hr>
           </div>
         </div>
-        <div class="container" *ngFor="let book of serviceBookings">
-          <div class="row">
-            <div class="col-md">
-              <p class="h5">{{book.name}}</p>
+        <div *ngIf="serviceBookings.length > 0">
+          <h1>SERVICES</h1>
+          <hr>
+          <div class="container" *ngFor="let service of serviceBookings">
+            <div class="row">
+              <div class="col-md">
+                <p>Nombre:</p>
+              </div>
+              <div class="col-md">
+                <p>{{service.name}}</p>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-md">
-              <p class="h6">{{entryDate}} - {{departureDate}}</p>
+            <div class="row">
+              <div class="col-md">
+                <p>Id:</p>
+              </div>
+              <div class="col-md">
+                <p>{{service.id}}</p>
+              </div>
             </div>
-            <hr>
-          </div>
-          <div class="row">
-            <div class="col-md">
-              <p class="h5">{{'rentalHC.basePrice'|translate}}</p>
+            <div class="row">
+              <div class="col-md">
+                <p>{{'rentalHC.basePrice'|translate}}</p>
+              </div>
+              <div class="col-md">
+                <p>{{service.price}}€/{{'boat.day'|translate}}</p>
+              </div>
+              <hr>
             </div>
-            <div class="col-md">
-              <p class="h5">{{book.price}}€/{{'boat.day'|translate}}</p>
-            </div>
-            <hr>
           </div>
         </div>
-        <div class="container" *ngFor="let book of activityBookings">
-          <div class="row">
-            <div class="col-md">
-              <p class="h5">{{book.name}}</p>
+        <div *ngIf="activityBookings.length > 0">
+          <h1>Activities</h1>
+          <hr>
+          <div class="container" *ngFor="let activity of activityBookings">
+            <div class="row">
+              <div class="col-md">
+                <p>Nombre:</p>
+              </div>
+              <div class="col-md">
+                <p>{{activity.name}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md">
+                <p>Id:</p>
+              </div>
+              <div class="col-md">
+                <p>{{activity.id}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md">
+                <p>{{'rentalHC.basePrice'|translate}}</p>
+              </div>
+              <div class="col-md">
+                <p>{{activity.price}}€/{{'boat.day'|translate}}</p>
+              </div>
+              <hr>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md">
-              <p class="h6">{{entryDate}} - {{departureDate}}</p>
-            </div>
-            <hr>
-          </div>
-          <div class="row">
-            <div class="col-md">
-              <p class="h5">{{'rentalHC.basePrice'|translate}}</p>
-            </div>
-            <div class="col-md">
-              <p class="h5">{{book.price}}€/{{'boat.day'|translate}}</p>
-            </div>
-            <hr>
-          </div>
+          <hr>
         </div>
         <div class="container">
           <div class="row">
@@ -106,7 +132,6 @@
           </div>
           <div class="row">
             <div class="col-md-6">
-              <p class="h5">{{'rentalHC.paymentStatus'|translate}}</p>
               <p class="h5">{{'rentalHC.paymentStatus'|translate}}</p>
             </div>
             <div class="col-md">

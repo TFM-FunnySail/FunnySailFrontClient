@@ -18,13 +18,6 @@
                 <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
                 <mat-datepicker #endDate></mat-datepicker>
               </mat-form-field>
-              <mat-form-field appearance="outline">
-                <mat-label>{{'boats.boatType' | translate}}</mat-label>
-                <mat-select formControlName="typeBoat">
-                  <mat-option value=""></mat-option>
-                  <mat-option value="{{type.id}}" *ngFor="let type of boatTypes">{{type.name}}</mat-option>
-                </mat-select>
-              </mat-form-field>
               <button class="btn btn-proyecto" mat-raised-button color="primary" (click)="searchAct()">
                 <span class="mat-body-2">{{'boats.search' | translate}}</span>
               </button>

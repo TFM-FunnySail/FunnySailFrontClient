@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {
   ActivitiesService,
-  ActivityOutputDTO, AddBookingInputDTO,
+  ActivityOutputDTO, AddBoatBookingInputDTO, AddBookingInputDTO,
   BoatOutputDTO,
   BoatsService,
   BookingService, ServiceOutputDTO,
@@ -59,10 +59,10 @@ export class BookingComponent implements OnInit {
         }
       }
       if(this.bookingCartJSON.boats){
-        this.entryDate = this.bookingCartJSON.boats[0].entryDate;
-        this.endDate = this.bookingCartJSON.boats[0].endDate;
-        this.totalPeople = this.bookingCartJSON.boats[0].totalPeople;
-        this.requestCapitan = this.bookingCartJSON.boats[0].requestCapitan;
+        // this.entryDate = this.bookingCartJSON.boats[0].entryDate;
+        // this.endDate = this.bookingCartJSON.boats[0].endDate;
+        // this.totalPeople = this.bookingCartJSON.boats[0].totalPeople;
+        // this.requestCapitan = this.bookingCartJSON.boats[0].requestCapitan;
         for(let boat of this.bookingCartJSON.boats){
           if(boat) {
             this.boatsIds.push(boat.id);
@@ -74,9 +74,9 @@ export class BookingComponent implements OnInit {
         }
       }
       if(this.bookingCartJSON.services){
-        this.entryDate = this.bookingCartJSON.services[0].entryDate;
-        this.endDate = this.bookingCartJSON.services[0].endDate;
-        this.totalPeople = this.bookingCartJSON.services[0].totalPeople;
+        // this.entryDate = this.bookingCartJSON.services[0].entryDate;
+        // this.endDate = this.bookingCartJSON.services[0].endDate;
+        // this.totalPeople = this.bookingCartJSON.services[0].totalPeople;
         for(let service of this.bookingCartJSON.services){
           this.servicesIds.push(service.id);
           const id = service.id as number;
@@ -93,13 +93,19 @@ export class BookingComponent implements OnInit {
   booking(){
     const userId = this.storageService.getItem('userId');
     if(userId) {
+      const boatsInput: Array<AddBoatBookingInputDTO> = [];
+      for(let boat of this.boats){
+          boatsInput.push({
+            boatId: boat.id,
+            entryDate: this.entryDate,
+            departureDate: this.endDate
+          })
+      }
       const input : AddBookingInputDTO = {
         clientId: userId,
-        entryDate: this.entryDate as string,
-        departureDate: this.entryDate as string,
         totalPeople: this.totalPeople,
         requestCaptain: this.requestCapitan,
-        boatIds: this.boatsIds,
+        boats: boatsInput,
         serviceIds: this.servicesIds,
         activityIds: this.activityIds
       };

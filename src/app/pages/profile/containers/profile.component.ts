@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {
-  BookingOutputDTO,
-  BookingOutputDTOGenericResponseDTO,
-  BookingService,
   UserOutputDTO,
   UsersService,
   EditUserInputDTO, BoatsService
@@ -23,14 +20,11 @@ export class ProfileComponent implements OnInit {
   user: any;
   userData: UserOutputDTO;
 
-  bookings?: Array<BookingOutputDTO>;
-
   constructor(private router: Router,
               private formBuilder: FormBuilder,
               protected userService: UsersService,
               protected storageService:StorageService,
               protected authService:AuthService,
-              private bookingService: BookingService,
               private boatsService: BoatsService)
   {
     this.dataForm = this.formBuilder.group({
@@ -77,16 +71,8 @@ export class ProfileComponent implements OnInit {
           this.dataForm.get(['country'])?.setValue(resp.country);
         }
       });
-
-      const clientId = this.storageService.getItem("userId") as string;
-      this.bookingService.apiBookingGet(undefined, clientId).subscribe(resp => {
-        this.bookings = this.handlerBookings(resp).items as  Array<BookingOutputDTO>;
-      });
   }
 
-  handlerBookings(resp: BookingOutputDTOGenericResponseDTO) {
-    return resp;
-  }
 
   onSubmit() {
 

@@ -1,23 +1,23 @@
 import {NgModule} from '@angular/core';
-import {RefundsComponent} from './containers/refunds.component';
-import {RefundsRoutingModule} from './refunds-routing.module';
+import {RefundsBookingComponent} from './containers/refunds-booking.component';
+import {RefundsBookingRoutingModule} from './refunds-booking-routing.module';
 import {ReactiveFormsModule} from "@angular/forms";
 import {CoreModule} from "../../core/core.module";
 import {SharedModule} from "../../shared/shared.module";
 
 @NgModule({
   declarations: [
-    RefundsComponent
+    RefundsBookingComponent
   ],
   exports: [
-    RefundsComponent
+    RefundsBookingComponent
   ],
   imports: [
-    RefundsRoutingModule,
+    RefundsBookingRoutingModule,
     ReactiveFormsModule,
     CoreModule,
     SharedModule
   ]
 })
-export class RefundsModule {
+export class RefundsBookingModule {
 }

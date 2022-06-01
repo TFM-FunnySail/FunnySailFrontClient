@@ -34,17 +34,10 @@ export class BoatsComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       initialDate: ['', Validators.required],
-      endDate: ['', Validators.required],
-      typeBoat: ['']
+      endDate: ['', Validators.required]
     });
 
     this.activatedRoute.queryParams.subscribe(parameters => {
-      let type = undefined;
-      if(parameters['type'] && parameters['type'] !== '')
-      {
-        type = parameters['type'];
-        this.form.get('typeBoat').setValue(type);
-      }
       let initialDate = undefined;
       if(parameters['initialDate'] && parameters['initialDate'] !== '')
       {
@@ -59,7 +52,7 @@ export class BoatsComponent implements OnInit {
         this.form.get('endDate').setValue(endDate);
       }
       if(initialDate && endDate) {
-        this.boatsApiService.apiBoatsGet(undefined, undefined, undefined, type, initialDate, endDate).subscribe(resp => {
+        this.boatsApiService.apiBoatsAvailableBoatsGet(initialDate, endDate).subscribe(resp => {
           this.boats = this.handlerBoats(resp).items;
         });
       }
@@ -75,10 +68,6 @@ export class BoatsComponent implements OnInit {
     if(this.form.valid) {
       console.log('isValid')
       console.log(this.form)
-      let type = undefined;
-      if (this.form.get('typeBoat').value) {
-        type = this.form.get('typeBoat').value;
-      }
       let initialDate = undefined;
       if (this.form.get('initialDate').value) {
         console.log(this.form.get('initialDate').value)
@@ -92,7 +81,8 @@ export class BoatsComponent implements OnInit {
         endDate = date.toISOString();
         this.finalDate = endDate;
       }
-      this.boatsApiService.apiBoatsGet(undefined, undefined, undefined, type, initialDate, endDate).subscribe(resp => {
+      this.boatsApiService.apiBoatsAvailableBoatsGet(initialDate, endDate).subscribe(resp => {
+        console.log(resp)
         this.boats = this.handlerBoats(resp).items;
       });
     }

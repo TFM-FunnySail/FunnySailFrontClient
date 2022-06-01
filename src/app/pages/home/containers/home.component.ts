@@ -71,16 +71,11 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       initialDate: ['', Validators.required],
-      endDate: ['', Validators.required],
-      typeBoat: ['', Validators.required]
+      endDate: ['', Validators.required]
     });
   }
 
   find() {
-    let type = '';
-    if (this.form.get('typeBoat').value) {
-      type = this.form.get('typeBoat').value;
-    }
     let initialDate = '';
     if (this.form.get('initialDate').value) {
       console.log(this.form.get('initialDate').value);
@@ -92,7 +87,7 @@ export class HomeComponent implements OnInit {
       endDate = (this.form.get('endDate').value as unknown as Date).toISOString();
     }
 
-    this.router.navigate(['/boats'], { queryParams: { type, initialDate , endDate } });
+    this.router.navigate(['/boats'], { queryParams: { initialDate , endDate } });
   }
 
   rent() {
