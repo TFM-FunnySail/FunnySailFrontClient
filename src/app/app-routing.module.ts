@@ -14,8 +14,6 @@ import {RefundsModule} from "./pages/refunds/refunds.module";
 import {ActivityModule} from "./pages/activity/activity.module";
 import {ServiceModule} from "./pages/service/service.module";
 import {BookingModule} from "./pages/booking/booking.module";
-import {BookingActivityModule} from "./pages/booking/booking-activity.module";
-import {BookingServicesModule} from "./pages/booking/booking-services.module";
 
 const routes: Routes = [
   {
@@ -77,18 +75,6 @@ const routes: Routes = [
       {
         path: 'booking',
         loadChildren: () => BookingModule
-      },
-      {
-        path: 'booking/activity/:id',
-        loadChildren: () => BookingActivityModule
-      },
-      {
-        path: 'booking/service/:id',
-        loadChildren: () => BookingServicesModule
-      },
-      {
-        path: 'booking/boat',
-        loadChildren: () => BookingBoatModule
       }
     ]
   }

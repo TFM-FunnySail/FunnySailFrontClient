@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {ServicesService, ServiceOutputDTO} from "../../../shared/sdk";
+import {StorageService} from "../../../shared/services/storage/storage.service";
 
 @Component({
   selector: 'service',
@@ -15,6 +16,7 @@ export class ServiceComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private servicesService: ServicesService,
+              private storageService: StorageService,
               private router: Router) {
     this.service = {
       id: -1,
@@ -33,27 +35,32 @@ export class ServiceComponent implements OnInit {
         if(resp){
           console.log(resp);
           this.exist = true;
-          if(resp.id){
-            this.service.id = resp.id;
-          }
-          if(resp.name){
-            this.service.name = resp.name;
-          }
-          if(resp.active){
-            this.service.active = resp.active;
-          }
-          if(resp.price){
-            this.service.price = resp.price;
-          }
-          if(resp.description){
-            this.service.description = resp.description;
-          }
+          this.service = resp;
         }
       });
     });
   }
 
   booking(){
-    this.router.navigate(['booking/service/' + this.service.id]);
+    const id = this.service.id;
+    if (id) {
+      const bookingCart = this.storageService.getItem('bookingCart');
+      let bookingCartJSON:any;
+      if (bookingCart) {
+        bookingCartJSON = JSON.parse(bookingCart);
+        if (bookingCartJSON.services) {
+          bookingCartJSON.services.push({id});
+        } else {
+          bookingCartJSON.services = [{id}];
+          console.log(bookingCartJSON);
+        }
+      } else {
+        bookingCartJSON = {services: [{id}]};
+      }
+      this.storageService.setItem('bookingCart', JSON.stringify(bookingCartJSON));
+      console.log(bookingCartJSON);
+      this.router.navigate(['/booking']);
+    }
+
   }
 }

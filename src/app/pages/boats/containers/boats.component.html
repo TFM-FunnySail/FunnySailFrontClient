@@ -37,7 +37,7 @@
         <div class="card mb-3">
           <img class="card-img-top img-card" src="https://picsum.photos/id/62/500/500" alt="Card image cap">
           <div class="card-body">
-            <a class="card-title" [routerLink]="['/boat/'+boat.id]"><h2><strong>{{boat.name}}</strong></h2></a>
+            <a class="card-title" [routerLink]="['/boat']" [queryParams]="{id: boat.id , initialDate: this.initDate, endDate: this.finalDate}"><h2><strong>{{boat.name}}</strong></h2></a>
             <p class="card-text">{{'boats.description' | translate}}: {{boat.description}}</p>
             <p class="card-text">{{'boats.capacity' | translate}}: {{boat.capacity}} {{'boats.people' | translate}}</p>
             <p class="card-text">{{'boats.length' | translate}}: {{boat.sleeve}} {{'boats.meters' | translate}}</p>

@@ -1,0 +1,22 @@
+.example-card {
+  max-width: 400px;
+  border: solid 1px lightgray;
+}
+
+.title{
+  color: #002f6c;;
+}
+
+.subtitle{
+  color: #4f83cc;
+}
+
+.btn-proyecto{
+  background-color: #4f83cc;
+  color: white;
+}
+
+.btn-proyecto:hover{
+  background-color: #002f6c;
+  color: white;
+}

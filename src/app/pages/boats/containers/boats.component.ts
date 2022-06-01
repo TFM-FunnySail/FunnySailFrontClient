@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {BoatOutputDTO, BoatOutputDTOGenericResponseDTO, BoatsService, BoatTypeOutputDTO} from "../../../shared/sdk";
 import { HttpClient } from "@angular/common/http";
 import {ActivatedRoute, Router} from '@angular/router';
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'boats',
@@ -15,6 +15,8 @@ export class BoatsComponent implements OnInit {
   boatTypes: BoatTypeOutputDTO[] = [];
 
   form: any;
+  initDate: string = '';
+  finalDate: string = '';
 
   constructor(private formBuilder: FormBuilder,
               protected boatsApiService: BoatsService,
@@ -31,8 +33,8 @@ export class BoatsComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      initialDate: [''],
-      endDate: [''],
+      initialDate: ['', Validators.required],
+      endDate: ['', Validators.required],
       typeBoat: ['']
     });
 
@@ -56,9 +58,11 @@ export class BoatsComponent implements OnInit {
         endDate = decodeURIComponent(parameters['endDate']);
         this.form.get('endDate').setValue(endDate);
       }
-      this.boatsApiService.apiBoatsGet(undefined, undefined, undefined, type, initialDate, endDate).subscribe(resp => {
-        this.boats = this.handlerBoats(resp).items;
-      });
+      if(initialDate && endDate) {
+        this.boatsApiService.apiBoatsGet(undefined, undefined, undefined, type, initialDate, endDate).subscribe(resp => {
+          this.boats = this.handlerBoats(resp).items;
+        });
+      }
     });
   }
 
@@ -67,26 +71,26 @@ export class BoatsComponent implements OnInit {
   }
 
   searchAct() {
+    console.log('searchboat')
     if(this.form.valid) {
+      console.log('isValid')
+      console.log(this.form)
       let type = undefined;
       if (this.form.get('typeBoat').value) {
         type = this.form.get('typeBoat').value;
       }
       let initialDate = undefined;
       if (this.form.get('initialDate').value) {
+        console.log(this.form.get('initialDate').value)
         const date = this.form.get('initialDate').value as unknown as Date;
-        if(this.form.get('initialDate') instanceof Date)
-        {
-          initialDate = date.toISOString();
-        }
+        initialDate = date.toISOString();
+        this.initDate = date.toISOString();
       }
       let endDate = undefined;
       if (this.form.get('endDate').value) {
         const date = this.form.get('endDate').value as unknown as Date;
-        if(this.form.get('endDate') instanceof Date)
-        {
-          endDate = date.toISOString();
-        }
+        endDate = date.toISOString();
+        this.finalDate = endDate;
       }
       this.boatsApiService.apiBoatsGet(undefined, undefined, undefined, type, initialDate, endDate).subscribe(resp => {
         this.boats = this.handlerBoats(resp).items;

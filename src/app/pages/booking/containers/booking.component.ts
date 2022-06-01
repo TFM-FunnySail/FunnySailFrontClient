@@ -44,15 +44,18 @@ export class BookingComponent implements OnInit {
     if(bookingCart){
       this.bookingCartJSON = JSON.parse(bookingCart);
       if(this.bookingCartJSON.activities){
-        this.entryDate = this.bookingCartJSON.activities[0].entryDate;
-        this.endDate = this.bookingCartJSON.activities[0].endDate;
-        this.totalPeople = this.bookingCartJSON.activities[0].totalPeople;
-        for(let i = 0; i < this.bookingCartJSON.activities.length; i++){
-          this.activityIds.push(this.bookingCartJSON.activities[i].id);
-          const id = this.bookingCartJSON.activities[i].id as number;
-          this.activitiesService.apiActivitiesIdGet(id).subscribe(resp => {
-            this.activities.push(resp);
-          });
+        // this.entryDate = this.bookingCartJSON.activities[0].entryDate;
+        // this.endDate = this.bookingCartJSON.activities[0].endDate;
+        // this.totalPeople = this.bookingCartJSON.activities[0].totalPeople;
+        for(let activities of this.bookingCartJSON.activities){
+          console.log(activities);
+          if(activities) {
+            this.activityIds.push(activities.id);
+            const id = activities.id as number;
+            this.activitiesService.apiActivitiesIdGet(id).subscribe(resp => {
+              this.activities.push(resp);
+            });
+          }
         }
       }
       if(this.bookingCartJSON.boats){
@@ -60,21 +63,23 @@ export class BookingComponent implements OnInit {
         this.endDate = this.bookingCartJSON.boats[0].endDate;
         this.totalPeople = this.bookingCartJSON.boats[0].totalPeople;
         this.requestCapitan = this.bookingCartJSON.boats[0].requestCapitan;
-        for(let i = 0; i < this.bookingCartJSON.boats.length; i++){
-          this.boatsIds.push(this.bookingCartJSON.boats[i].id);
-          const id = this.bookingCartJSON.boats[i].id as number;
-          this.boatsService.apiBoatsIdGet(id).subscribe(resp => {
-            this.boats.push(resp);
-          });
+        for(let boat of this.bookingCartJSON.boats){
+          if(boat) {
+            this.boatsIds.push(boat.id);
+            const id = boat.id as number;
+            this.boatsService.apiBoatsIdGet(id).subscribe(resp => {
+              this.boats.push(resp);
+            });
+          }
         }
       }
       if(this.bookingCartJSON.services){
         this.entryDate = this.bookingCartJSON.services[0].entryDate;
         this.endDate = this.bookingCartJSON.services[0].endDate;
         this.totalPeople = this.bookingCartJSON.services[0].totalPeople;
-        for(let i = 0; i < this.bookingCartJSON.services.length; i++){
-          this.servicesIds.push(this.bookingCartJSON.services[i].id);
-          const id = this.bookingCartJSON.services[i].id as number;
+        for(let service of this.bookingCartJSON.services){
+          this.servicesIds.push(service.id);
+          const id = service.id as number;
           this.servicesService.apiServicesIdGet(id).subscribe(resp => {
             this.services.push(resp);
           });
@@ -99,12 +104,51 @@ export class BookingComponent implements OnInit {
         activityIds: this.activityIds
       };
       this.bookingService.apiBookingPost(input).subscribe((resp)=>{
-        this.router.navigate(['booking/pay/'+ resp.id]);
+        this.router.navigate(['payment/'+ resp.id]);
       }, (error) => {
         alert(error);
       });
     } else {
       alert('debe registrarse primero!');
     }
+  }
+
+  deleteActivity(activity: any){
+    if(this.bookingCartJSON && this.bookingCartJSON.activities) {
+      for (let i = 0; i < this.bookingCartJSON.activities.length; i++) {
+        if (parseInt(this.bookingCartJSON.activities[i].id) === parseInt(activity.id)) {
+          this.bookingCartJSON.activities.splice(i, 1);
+          this.activities.splice(i, 1);
+          break;
+        }
+      }
+    }
+    this.storageService.setItem('bookingCart', JSON.stringify(this.bookingCartJSON));
+  }
+
+  deleteBoat(boat: any){
+    if(this.bookingCartJSON && this.bookingCartJSON.boats) {
+      for (let i = 0; i < this.bookingCartJSON.boats.length; i++) {
+        if (parseInt(this.bookingCartJSON.boats[i].id) === parseInt(boat.id)) {
+          this.bookingCartJSON.boats.splice(i, 1);
+          this.boats.splice(i, 1);
+          break;
+        }
+      }
+    }
+    this.storageService.setItem('bookingCart', JSON.stringify(this.bookingCartJSON));
+  }
+
+  deleteService(service: any){
+    if(this.bookingCartJSON && this.bookingCartJSON.services) {
+      for (let i = 0; i < this.bookingCartJSON.services.length; i++) {
+        if (parseInt(this.bookingCartJSON.services[i].id) === parseInt(service.id)) {
+          this.bookingCartJSON.services.splice(i, 1);
+          this.services.splice(i, 1);
+          break;
+        }
+      }
+    }
+    this.storageService.setItem('bookingCart', JSON.stringify(this.bookingCartJSON));
   }
 }

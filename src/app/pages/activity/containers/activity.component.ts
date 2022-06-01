@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {ActivitiesService, ActivityOutputDTO} from "../../../shared/sdk";
+import {StorageService} from "../../../shared/services/storage/storage.service";
 
 @Component({
   selector: 'activity',
@@ -15,6 +16,7 @@ export class ActivityComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private activateService: ActivitiesService,
+              private storageService: StorageService,
               private router: Router) {
     this.activity = {
       id: -1,
@@ -34,31 +36,33 @@ export class ActivityComponent implements OnInit {
           if(resp){
             console.log(resp);
             this.exist = true;
-            if(resp.id){
-              this.activity.id = resp.id;
-            }
-            if(resp.activityDate){
-              this.activity.activityDate = resp.activityDate;
-            }
-            if(resp.name){
-              this.activity.name = resp.name;
-            }
-            if(resp.active){
-              this.activity.active = resp.active;
-            }
-            if(resp.price){
-              this.activity.price = resp.price;
-            }
-            if(resp.description){
-              this.activity.description = resp.description;
-            }
+            this.activity = resp;
           }
         });
     });
   }
 
-  booking(){
-    this.router.navigate(['booking/activity/' + this.activity.id]);
+  booking() {
+    let id = this.activity.id;
+    if (id) {
+      const bookingCart = this.storageService.getItem('bookingCart');
+      let bookingCartJSON;
+      if (bookingCart) {
+        bookingCartJSON = JSON.parse(bookingCart);
+        if (bookingCartJSON.activities) {
+          bookingCartJSON.activities.push({id});
+        } else {
+          bookingCartJSON.activities = [{id}];
+        }
+      } else {
+        bookingCartJSON = {activities: [{id}]};
+      }
+      this.storageService.setItem('bookingCart', JSON.stringify(bookingCartJSON));
+      console.log(bookingCartJSON);
+      this.router.navigate(['/booking']);
+
+      this.router.navigate(['/booking']);
+    }
   }
 
 }
