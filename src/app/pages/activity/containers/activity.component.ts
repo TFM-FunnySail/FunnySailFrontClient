@@ -50,7 +50,9 @@ export class ActivityComponent implements OnInit {
       if (bookingCart) {
         bookingCartJSON = JSON.parse(bookingCart);
         if (bookingCartJSON.activities) {
-          bookingCartJSON.activities.push({id});
+          if(!this.existActivity(bookingCartJSON, id)){
+            bookingCartJSON.activities.push({id});
+          }
         } else {
           bookingCartJSON.activities = [{id}];
         }
@@ -58,11 +60,16 @@ export class ActivityComponent implements OnInit {
         bookingCartJSON = {activities: [{id}]};
       }
       this.storageService.setItem('bookingCart', JSON.stringify(bookingCartJSON));
-      console.log(bookingCartJSON);
-      this.router.navigate(['/booking']);
-
       this.router.navigate(['/booking']);
     }
   }
 
+  private existActivity(bookingCartJSON: any, id: number) {
+    for (let act of bookingCartJSON.activities) {
+      if (parseInt(act.id) === id) {
+        return true;
+      }
+    }
+    return false;
+  }
 }

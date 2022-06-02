@@ -30,10 +30,8 @@ export class ServiceComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(parameters => {
       let id = parameters['id'] as number;
-      console.log(id);
       this.servicesService.apiServicesIdGet(id).subscribe(resp => {
         if(resp){
-          console.log(resp);
           this.exist = true;
           this.service = resp;
         }
@@ -49,13 +47,7 @@ export class ServiceComponent implements OnInit {
       if (bookingCart) {
         bookingCartJSON = JSON.parse(bookingCart);
         if (bookingCartJSON.services) {
-          let add = true;
-          for (let ser of bookingCartJSON.services) {
-            if (parseInt(ser.id) === id) {
-              add = false;
-            }
-          }
-          if(add){
+          if(!this.existService(bookingCartJSON, id)){
             bookingCartJSON.services.push({id});
           }
         } else {
@@ -66,9 +58,16 @@ export class ServiceComponent implements OnInit {
         bookingCartJSON = {services: [{id}]};
       }
       this.storageService.setItem('bookingCart', JSON.stringify(bookingCartJSON));
-      console.log(bookingCartJSON);
       this.router.navigate(['/booking']);
     }
+  }
 
+  private existService(bookingCartJSON: any, id: number) {
+    for (let ser of bookingCartJSON.services) {
+      if (parseInt(ser.id) === id) {
+        return true;
+      }
+    }
+    return false;
   }
 }

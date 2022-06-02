@@ -44,24 +44,34 @@ export class BoatPageComponent implements OnInit {
   }
 
   booking(){
-    if (this.boatId) {
+    const id = this.boatId;
+    if (id) {
       const bookingCart = this.storageService.getItem('bookingCart');
       let bookingCartJSON:any;
       if (bookingCart) {
         bookingCartJSON = JSON.parse(bookingCart);
         if (bookingCartJSON.boats) {
-          bookingCartJSON.boats.push({id: this.boatId, initialDate: this.initialDate, endDate: this.endDate});
+          if(!this.existBoat(bookingCartJSON, id)) {
+            bookingCartJSON.boats.push({id, initialDate: this.initialDate, endDate: this.endDate});
+          }
         } else {
-          bookingCartJSON.boats = [{id: this.boatId, initialDate: this.initialDate, endDate: this.endDate}];
+          bookingCartJSON.boats = [{id, initialDate: this.initialDate, endDate: this.endDate}];
           console.log(bookingCartJSON);
         }
       } else {
-        bookingCartJSON = {boats: [{id: this.boatId, initialDate: this.initialDate, endDate: this.endDate}]};
+        bookingCartJSON = {boats: [{id, initialDate: this.initialDate, endDate: this.endDate}]};
       }
       this.storageService.setItem('bookingCart', JSON.stringify(bookingCartJSON));
       console.log(bookingCartJSON);
       this.router.navigate(['/booking']);
     }
   }
-
+  private existBoat(bookingCartJSON: any, id: number) {
+    for (let boat of bookingCartJSON.boats) {
+      if (parseInt(boat.id) === id) {
+        return true;
+      }
+    }
+    return false;
+  }
 }

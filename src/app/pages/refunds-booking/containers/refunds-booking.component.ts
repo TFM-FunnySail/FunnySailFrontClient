@@ -31,7 +31,9 @@ export class RefundsBookingComponent implements OnInit {
 
   ngOnInit(): void {
     const clientEmail = this.storageService.getItem("userEmail") as string;
+    console.log(clientEmail);
     this.refundsService.apiRefundsGet(undefined, undefined, clientEmail).subscribe(resp => {
+      console.log(resp);
       this.refunds = this.handlerRefunds(resp).items as Array<RefundOutputDTO>;
       this.countRefunds = this.refunds?.length as number;
       console.log(this.refunds);
