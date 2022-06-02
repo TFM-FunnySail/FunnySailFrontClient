@@ -171,7 +171,11 @@
     "close": "Cerrar",
     "saveChanges": "Guardar cambios",
     "boats": "Barcos",
-    "createBoat": "Crear barco"
+    "createBoat": "Crear barco",
+    "viewBoat": "Ver barco",
+    "people": "Personas",
+    "portData": "Información del puerto",
+    "images": "Imágenes"
   },
   "rentalHC": {
     "basePrice": "Precio base",
@@ -213,5 +217,15 @@
     "submit": "Registrar",
     "image": "Imagen",
     "fileSelected": "Archivo seleccionado"
+  },
+  "boatType": {
+    "yatch": "Yate",
+    "floatingHouse": "Casa flotante",
+    "jetSki": "Moto de agua",
+    "schooner": "Goleta",
+    "catamaran": "Catamarán",
+    "neumatic": "Zodiac",
+    "boat": "Lancha",
+    "sail": "Velero"
   }
 }

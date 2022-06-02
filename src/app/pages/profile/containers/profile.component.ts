@@ -4,7 +4,9 @@ import {Router} from "@angular/router";
 import {
   UserOutputDTO,
   UsersService,
-  EditUserInputDTO, BoatsService
+  EditUserInputDTO,
+  BoatsService,
+  BoatOutputDTO, BoatOutputDTOGenericResponseDTO,
 } from "../../../shared/sdk";
 
 import {StorageService} from "../../../shared/services/storage/storage.service";
@@ -19,6 +21,7 @@ export class ProfileComponent implements OnInit {
   dataForm: FormGroup;
   user: any = {};
   userData: UserOutputDTO;
+  boats: Array<BoatOutputDTO> | null | undefined = [];
 
   constructor(private router: Router,
               private formBuilder: FormBuilder,
@@ -52,8 +55,8 @@ export class ProfileComponent implements OnInit {
     const id = this.storageService.getItem('userId');
     if(id)
       this.userService.apiUsersIdGet(id).subscribe((resp: UserOutputDTO)=>{
-        console.log(resp);
         if(resp){
+          console.log(resp)
           this.userData = resp;
           this.user = {
             name: resp.firstName,
@@ -166,6 +169,7 @@ export class ProfileComponent implements OnInit {
     this.storageService.deleteItem('userId');
     this.storageService.deleteItem("User");
     this.storageService.deleteItem("userEmail");
+    this.storageService.deleteItem("boatId");
     this.authService.logout();
     this.router.navigate(['home']);
       setTimeout(() => {
@@ -174,8 +178,9 @@ export class ProfileComponent implements OnInit {
   }
 
   checkBoats(){
-    this.boatsService.apiBoatsGet().subscribe(resp => {
-      console.log(resp);
+    this.boatsService.apiBoatsGet().subscribe((barcos: BoatOutputDTOGenericResponseDTO)=>{
+      if(barcos)
+        this.boats = barcos.items;
     });
   }
 }

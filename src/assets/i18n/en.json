@@ -171,7 +171,11 @@
     "close": "Close",
     "saveChanges": "Save changes",
     "boats": "Boats",
-    "createBoat": "Create boat"
+    "createBoat": "Create boat",
+    "viewBoat": "View boat",
+    "people": "People",
+    "portData": "Port information",
+    "images": "Images"
   },
   "rentalHC": {
     "basePrice": "Base price",
@@ -213,6 +217,15 @@
     "submit": "Submit",
     "image": "Image",
     "fileSelected": "File selected"
-
+  },
+  "boatType": {
+    "yatch": "Yatch",
+    "floatingHouse": "Floating house",
+    "jetSki": "Jet ski",
+    "schooner": "Schooner",
+    "catamaran": "Catamaran",
+    "neumatic": "Zodiac",
+    "boat": "Boat",
+    "sail": "Sail"
   }
 }
