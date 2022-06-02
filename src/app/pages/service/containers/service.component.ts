@@ -49,7 +49,15 @@ export class ServiceComponent implements OnInit {
       if (bookingCart) {
         bookingCartJSON = JSON.parse(bookingCart);
         if (bookingCartJSON.services) {
-          bookingCartJSON.services.push({id});
+          let add = true;
+          for (let ser of bookingCartJSON.services) {
+            if (parseInt(ser.id) === id) {
+              add = false;
+            }
+          }
+          if(add){
+            bookingCartJSON.services.push({id});
+          }
         } else {
           bookingCartJSON.services = [{id}];
           console.log(bookingCartJSON);
