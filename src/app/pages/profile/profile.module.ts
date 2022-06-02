@@ -4,6 +4,7 @@ import { ProfileComponent } from "./containers/profile.component";
 import { ProfileRoutingModule } from "./profile-routing.module";
 import { CoreModule } from "../../../../../FunnySailIonicApp/src/app/core/core.module";
 import {SharedModule} from "../../shared/shared.module";
+import {UsersBoatCardModule} from "../../core/components/users-boat-card/users-boat-card.module";
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import {SharedModule} from "../../shared/shared.module";
         CommonModule,
         ProfileRoutingModule,
         CoreModule,
-        SharedModule
+        SharedModule,
+        UsersBoatCardModule
     ],
   exports: [
     ProfileComponent

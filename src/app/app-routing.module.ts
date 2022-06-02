@@ -80,6 +80,10 @@ const routes: Routes = [
       {
         path: 'booking',
         loadChildren: () => BookingModule
+      },
+      {
+        path: 'editBoat',
+        loadChildren: () => CreateBoatModule
       }
     ]
   }

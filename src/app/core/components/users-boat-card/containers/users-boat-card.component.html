@@ -1,0 +1,143 @@
+<div class="card" style="width: 15rem;" id="tarjeta">
+
+  <div class="card-body" id="cuerpoTarjeta">
+    <h2 class="card-title">{{boat.name}}</h2>
+    <p class="card-text">{{boat.description}}</p>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+      {{'profile.viewBoat' | translate}}
+    </button>
+  </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-scrollable" style="width: 40rem;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p class="modal-title h4" id="exampleModalLabel">{{boat.name}}</p>
+        <button type="button" id="closeModal" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-md">
+              <strong>Registration</strong>
+            </div>
+            <div class="col-md">
+              <p>{{boat.registration}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md">
+              <strong>Boat type</strong>
+            </div>
+            <div class="col-md">
+              <p>{{type| translate}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md">
+              <strong>Capacity</strong>
+            </div>
+            <div class="col-md">
+              <p>{{boat.capacity}}{{'profile.people' | translate}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md">
+              <strong>{{'createBoat.length'|translate}}</strong>
+            </div>
+            <div class="col-md">
+              <p>{{boat.length}} m</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md">
+              <strong>{{'createBoat.beam'|translate}}</strong>
+            </div>
+            <div class="col-md">
+              <p>{{boat.sleeve}} m</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md">
+              <strong>{{'createBoat.power'|translate}}</strong>
+            </div>
+            <div class="col-md">
+              <p>{{boat.motorPower}} HP</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md">
+              <strong>{{'createBoat.dayBasePrice'|translate}}</strong>
+            </div>
+            <div class="col-md">
+              <p>{{boat.dayBasePrice}} €</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md">
+              <strong>{{'createBoat.hourBasePrice'|translate}}</strong>
+            </div>
+            <div class="col-md">
+              <p>{{boat.hourBasePrice}} €</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md">
+              <strong>{{'createBoat.supplement'|translate}}</strong>
+            </div>
+            <div class="col-md">
+              <p>{{boat.supplement}} €</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md">
+              <strong>{{'createBoat.descriptionForm'|translate}}</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md">
+              <p>{{boat.description}}</p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md">
+              <p class="h5">{{'profile.portData'|translate}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md">
+              <strong>{{'createBoat.port'|translate}}</strong>
+            </div>
+            <div class="col-md">
+              <p>{{port}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md">
+              <strong>{{'createBoat.mooring'|translate}}</strong>
+            </div>
+            <div class="col-md">
+              <p>{{mooring}}</p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md">
+              <p class="h5">{{'profile.images'|translate}}</p>
+            </div>
+          </div>
+          <div class="row flex-row flex-nowrap" style="overflow: scroll; overflow-y: hidden">
+            <div class="col-3" id="imagesSlide">
+            </div>
+          </div>
+          <div class="row" style="margin-top:20px;">
+            <button class="btn btn-proyecto" (click)="editBoat()">{{'profile.edit' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -28,42 +28,28 @@ export class CreateBoatComponent implements OnInit {
   file: File | undefined;
   fileName: string = '';
 
+  boatId: string | null = null;
+  header: Boolean = true;
+
   constructor(private formBuilder: FormBuilder,
               private boatsApiService: BoatsService,
               private portService: PortService,
               private storageService: StorageService) {
-    //Del formulario falta por
-    //duplicar el mooringPoint para llenar el mooringId
-    //Insertar la imagen del resources
-    //Arreglar boatTitles para que sea array
-    //Añadir el owner id desde el localStorage
-    this.boatForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
-      description: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(1000)]],
-      registration: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
-      mooringPoint: ['', [Validators.required]],
-      length: ['', [Validators.required, Validators.min(0), Validators.max(100)]],
-      sleeve: ['', [Validators.required, Validators.min(0), Validators.max(100)]],
-      capacity: ['', [Validators.required, Validators.min(0), Validators.max(500)]],
-      motorPower: ['', [Validators.required, Validators.min(0), Validators.max(1000)]],
-      boatTypeId: ['', [Validators.required]],
-      dayBasePrice: ['', [Validators.required, Validators.min(0), Validators.max(3000)]],
-      hourBasePrice: ['', [Validators.required, Validators.min(0), Validators.max(3000)]],
-      supplement: ['', [Validators.required, Validators.min(0), Validators.max(3000)]],
-      requiredBoatTitles: ['', [Validators.required]],
+    this.boatForm = this.formBuilder.group({});
+    this.buildForm();
+    if(this.storageService.getItem("boatId")){
+      this.fillForm()
 
+    }else{
+      this.updateMoorings();
+    }
 
-
-      port: ['', [Validators.required]],
-    });
-    this.setArrays();
   }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    console.log(this.boatForm.value);
     let boat: AddBoatInputDTO;
     boat = {
       name: this.boatForm.get('name')?.value,
@@ -84,11 +70,9 @@ export class CreateBoatComponent implements OnInit {
       resourcesIdList: []
     };
 
-    console.log(boat);
     this.boatsApiService.apiBoatsPost(boat).subscribe((resp: BoatOutputDTO) => {
       if(resp.id){
         this.boatsApiService.apiBoatsIdResourceImagePost(resp.id, true,this.file).subscribe((resp: any) => {
-          console.log(resp);
 
         }, (error: any) => {
           console.log(error);
@@ -121,6 +105,26 @@ export class CreateBoatComponent implements OnInit {
     });
   }
 
+  buildForm(){
+    this.boatForm = this.formBuilder.group({
+      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
+      description: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(1000)]],
+      registration: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+      mooringPoint: ['', [Validators.required]],
+      length: ['', [Validators.required, Validators.min(0), Validators.max(100)]],
+      sleeve: ['', [Validators.required, Validators.min(0), Validators.max(100)]],
+      capacity: ['', [Validators.required, Validators.min(0), Validators.max(500)]],
+      motorPower: ['', [Validators.required, Validators.min(0), Validators.max(1000)]],
+      boatTypeId: ['', [Validators.required]],
+      dayBasePrice: ['', [Validators.required, Validators.min(0), Validators.max(3000)]],
+      hourBasePrice: ['', [Validators.required, Validators.min(0), Validators.max(3000)]],
+      supplement: ['', [Validators.required, Validators.min(0), Validators.max(3000)]],
+      requiredBoatTitles: ['', [Validators.required]],
+      port: ['', [Validators.required]],
+    });
+    this.setArrays();
+  }
+
   updateMoorings() {
     this.moorings = [];
     if(this.ports[this.boatForm.get('port')?.value])
@@ -132,6 +136,17 @@ export class CreateBoatComponent implements OnInit {
         }
   }
 
+  updateMoorings2(idPort: number) {
+    this.moorings = [];
+    this.portService.apiPortGet(idPort).subscribe((resp: PortOutputDTOGenericResponseDTO) => {
+      if(resp.items)
+        if(resp.items[0].moorings)
+          for(let mooring of resp.items[0].moorings) {
+            this.moorings.push(mooring);
+          }
+    });
+  }
+
   onFileSelected(event: any) {
     this.file = event.target.files[0];
     if (this.file) {
@@ -139,5 +154,28 @@ export class CreateBoatComponent implements OnInit {
       const formData = new FormData();
       formData.append("Imagen", this.file);
     }
+  }
+//Edit - from now on hee hee
+  fillForm(){
+    if(this.storageService.getItem("boatId") != null){
+      this.boatId = this.storageService.getItem("boatId");
+      this.header = false;
+    }
+    if(this.boatId)
+      this.boatsApiService.apiBoatsIdGet(parseInt(this.boatId)).subscribe((resp: BoatOutputDTO) => {
+        console.log(resp);
+        this.boatForm.patchValue(resp);
+        this.boatForm.get('boatTypeId')?.setValue(resp.boatType?.id?.toString());
+        if(resp.requiredBoatTitles)
+          if(resp.requiredBoatTitles[0].titleId)
+            this.boatForm.get('requiredBoatTitles')?.setValue(resp.requiredBoatTitles[0]?.titleId?.toString());
+        if(resp.mooring?.portId)
+          this.updateMoorings2(resp.mooring?.portId);
+        if(resp.mooring){
+          this.boatForm.get('port')?.setValue(resp.mooring.portId?.toString());
+          this.boatForm.get('mooringPoint')?.setValue(resp.mooring.id?.toString());
+        }
+
+      });
   }
 }
