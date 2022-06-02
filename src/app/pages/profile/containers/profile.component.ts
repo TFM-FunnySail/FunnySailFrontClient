@@ -17,7 +17,7 @@ import {AuthService} from "../../../shared/services/auth/auth.service";
 })
 export class ProfileComponent implements OnInit {
   dataForm: FormGroup;
-  user: any;
+  user: any = {};
   userData: UserOutputDTO;
 
   constructor(private router: Router,

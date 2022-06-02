@@ -23,6 +23,7 @@ export * from './boatTypeOutputDTO';
 export * from './bookingOutputDTO';
 export * from './bookingOutputDTOGenericResponseDTO';
 export * from './bookingStatusEnum';
+export * from './changePasswordDTO';
 export * from './clientInvoiceLinesOutputDTO';
 export * from './clientInvoiceOutputDTO';
 export * from './clientInvoiceOutputDTOGenericResponseDTO';

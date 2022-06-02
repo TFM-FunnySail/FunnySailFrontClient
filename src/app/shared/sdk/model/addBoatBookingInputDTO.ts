@@ -13,6 +13,7 @@
 
 export interface AddBoatBookingInputDTO { 
     boatId?: number;
+    requestCaptain?: boolean;
     entryDate?: string;
     departureDate?: string;
 }

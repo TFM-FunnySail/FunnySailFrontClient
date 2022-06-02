@@ -15,5 +15,8 @@ export interface BoatBookingOutputDTO {
     id?: number;
     name?: string | null;
     price?: number;
+    entryDate?: string | null;
+    departureDate?: string | null;
+    requestCaptain?: boolean;
 }
 

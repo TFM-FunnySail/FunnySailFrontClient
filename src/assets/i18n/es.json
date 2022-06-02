@@ -211,6 +211,7 @@
     "maxValue3000": "El valor máximo es 3000",
     "port": "Puerto",
     "submit": "Registrar",
-    "image": "Imagen"
+    "image": "Imagen",
+    "fileSelected": "Archivo seleccionado"
   }
 }
