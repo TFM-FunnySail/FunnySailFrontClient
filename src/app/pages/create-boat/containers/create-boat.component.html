@@ -44,7 +44,7 @@
       <div class="col-md col-xs-12 col-sm-6">
         <p>{{'createBoat.beam' | translate}}</p>
         <mat-form-field appearance="outline" >
-          <input matInput placeholder="{{'createBoat.beam'|translate}}" formControlName="beam" type="number">
+          <input matInput placeholder="{{'createBoat.beam'|translate}}" formControlName="sleeve" type="number">
           <mat-error *ngIf="boatForm.get('beam')?.errors?.['required']">
             {{'createBoat.required' | translate}}
           </mat-error>
@@ -76,7 +76,7 @@
       <div class="col-md col-xs-12 col-sm-6">
         <p>{{'createBoat.power' | translate}}</p>
         <mat-form-field appearance="outline" >
-          <input matInput placeholder="{{'createBoat.power'|translate}}" formControlName="power" type="number">
+          <input matInput placeholder="{{'createBoat.power'|translate}}" formControlName="motorPower" type="number">
           <mat-error *ngIf="boatForm.get('power')?.errors?.['required']">
             {{'createBoat.required' | translate}}
           </mat-error>
@@ -106,7 +106,7 @@
       <div class="col-md col-xs-12 col-sm-6">
         <p>{{'createBoat.type' | translate}}</p>
         <mat-form-field appearance="outline" >
-          <mat-select formControlName="type" placeholder="{{'createBoat.type'|translate}}">
+          <mat-select formControlName="boatTypeId" placeholder="{{'createBoat.type'|translate}}">
             <mat-option value="" selected hidden>{{'createBoat.type'|translate}}</mat-option>
             <mat-option value="{{type.id}}" *ngFor="let type of boatTypes">{{type.name}}</mat-option>
           </mat-select>
@@ -118,7 +118,7 @@
       <div class="col-md col-xs-12 col-sm-6">
         <p>{{'createBoat.titulation' | translate}}</p>
         <mat-form-field appearance="outline" >
-          <mat-select formControlName="titulation" placeholder="{{'createBoat.titulation'|translate}}">
+          <mat-select formControlName="requiredBoatTitles" placeholder="{{'createBoat.titulation'|translate}}">
             <mat-option value="" selected hidden>{{'createBoat.titulation' | translate}}</mat-option>
             <mat-option value="{{title.titleId}}" *ngFor="let title of titulations">{{'createBoat.'+title.name | translate}}</mat-option>
           </mat-select>
@@ -144,7 +144,7 @@
       <div class="col-md col-xs-12 col-sm-6">
         <p>{{'createBoat.mooring' | translate}}</p>
         <mat-form-field appearance="outline" >
-          <mat-select formControlName="mooring" placeholder="{{'createBoat.mooring'|translate}}">
+          <mat-select formControlName="mooringPoint" placeholder="{{'createBoat.mooring'|translate}}">
             <mat-option value="" selected hidden>{{'createBoat.mooring'|translate}}</mat-option>
             <mat-option value="{{mooring.id}}" *ngFor="let mooring of moorings">{{mooring.alias}}</mat-option>
           </mat-select>
@@ -201,10 +201,20 @@
         </mat-form-field>
 
         <p>{{'createBoat.image' | translate}}</p>
-        <mat-form-field class="angularformcss no-line " floatLabel="always">
-          <img matPrefix src="https://image.flaticon.com/icons/png/512/23/23765.png" width="24px" height="24px">
-          <input matInput placeholder="Issue type" id="issueType">
-        </mat-form-field>
+        <table>
+          <tr>
+            <td>
+              <button type="button" class="btn-proyecto" mat-raised-button (click)="fileInput.click()">Choose File</button>
+            </td>
+            <td>
+              <div *ngIf="fileInput.value">
+                <button type="button" class="btn btn-success">{{'createBoat.fileSelected' | translate}}</button>
+              </div>
+            </td>
+          </tr>
+        </table>
+
+          <input type="file" class="file-input" [accept]="requiredFileType" #fileInput (change)="onFileSelected($event)" hidden>
 
 
       </div>

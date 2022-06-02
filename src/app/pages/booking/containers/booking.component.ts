@@ -103,6 +103,8 @@ export class BookingComponent implements OnInit {
       }
       const input : AddBookingInputDTO = {
         clientId: userId,
+        entryDate: this.entryDate as string,
+        departureDate: this.entryDate as string,
         totalPeople: this.totalPeople,
         requestCaptain: this.requestCapitan,
         boats: boatsInput,

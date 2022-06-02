@@ -25,7 +25,6 @@ export interface BookingOutputDTO {
     departureDate?: string | null;
     totalPeople?: number;
     paid?: boolean;
-    requestCaptain?: boolean;
     status?: string | null;
     client?: UserOutputDTO;
     boatBookings?: Array<BoatBookingOutputDTO> | null;

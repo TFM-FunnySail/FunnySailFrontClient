@@ -45,6 +45,7 @@ model/boatTypeOutputDTO.ts
 model/bookingOutputDTO.ts
 model/bookingOutputDTOGenericResponseDTO.ts
 model/bookingStatusEnum.ts
+model/changePasswordDTO.ts
 model/clientInvoiceLinesOutputDTO.ts
 model/clientInvoiceOutputDTO.ts
 model/clientInvoiceOutputDTOGenericResponseDTO.ts

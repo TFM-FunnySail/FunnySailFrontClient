@@ -9,14 +9,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { AddBoatBookingInputDTO } from './addBoatBookingInputDTO';
 
 
-export interface AddBookingInputDTO { 
-    clientId?: string | null;
-    totalPeople: number;
-    boats?: Array<AddBoatBookingInputDTO> | null;
-    serviceIds?: Array<number> | null;
-    activityIds?: Array<number> | null;
+export interface ChangePasswordDTO { 
+    oldPassword: string;
+    newPassword: string;
+    confirmPassword?: string | null;
 }
 

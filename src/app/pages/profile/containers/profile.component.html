@@ -4,7 +4,7 @@
       <img src="assets/user.png" alt="profile picture" class="img-circle" style="width: 15%; margin: 1.5%;">
     </div>
   </div>
-  <div class="row" style="background-color: white; text-align: center; margin-top:2%;">
+  <div class="row" style="background-color: white; text-align: center; margin-top:2%;" *ngIf="user.name">
     <p class="h2">{{user.name}} {{user.lastName}}</p>
   </div>
   <div class="row">

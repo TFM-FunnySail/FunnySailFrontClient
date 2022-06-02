@@ -166,6 +166,37 @@
         }
       }
     },
+    "/api/Account/change-password": {
+      "put": {
+        "tags": [
+          "Account"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePasswordDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePasswordDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePasswordDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Activities": {
       "get": {
         "tags": [
@@ -4189,6 +4220,9 @@
             "type": "integer",
             "format": "int32"
           },
+          "requestCaptain": {
+            "type": "boolean"
+          },
           "entryDate": {
             "type": "string",
             "format": "date-time"
@@ -4323,9 +4357,6 @@
           "totalPeople": {
             "type": "integer",
             "format": "int32"
-          },
-          "requestCaptain": {
-            "type": "boolean"
           },
           "boats": {
             "type": "array",
@@ -4574,6 +4605,19 @@
           "price": {
             "type": "number",
             "format": "double"
+          },
+          "entryDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "departureDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "requestCaptain": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -4803,9 +4847,6 @@
           "paid": {
             "type": "boolean"
           },
-          "requestCaptain": {
-            "type": "boolean"
-          },
           "status": {
             "type": "string",
             "nullable": true
@@ -4881,6 +4922,29 @@
         ],
         "type": "integer",
         "format": "int32"
+      },
+      "ChangePasswordDTO": {
+        "required": [
+          "newPassword",
+          "oldPassword"
+        ],
+        "type": "object",
+        "properties": {
+          "oldPassword": {
+            "type": "string",
+            "format": "password"
+          },
+          "newPassword": {
+            "type": "string",
+            "format": "password"
+          },
+          "confirmPassword": {
+            "type": "string",
+            "format": "password",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
       },
       "ClientInvoiceLinesOutputDTO": {
         "type": "object",
@@ -5847,7 +5911,7 @@
           "status": {
             "$ref": "#/components/schemas/BookingStatusEnum"
           },
-          "boatBookingIds": {
+          "boatBookings": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/AddBoatBookingInputDTO"

@@ -211,7 +211,8 @@
     "maxValue3000": "The field must be or be less than 3000",
     "port": "Port",
     "submit": "Submit",
-    "image": "Image"
+    "image": "Image",
+    "fileSelected": "File selected"
 
   }
 }

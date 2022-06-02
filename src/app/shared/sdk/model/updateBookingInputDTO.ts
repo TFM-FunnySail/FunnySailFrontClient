@@ -21,7 +21,7 @@ export interface UpdateBookingInputDTO {
     totalPeople?: number | null;
     requestCaptain?: boolean | null;
     status?: BookingStatusEnum;
-    boatBookingIds?: Array<AddBoatBookingInputDTO> | null;
+    boatBookings?: Array<AddBoatBookingInputDTO> | null;
     serviceBookingIds?: Array<number> | null;
     activityBookingIds?: Array<number> | null;
 }
