@@ -129,14 +129,36 @@
               <p class="h5">{{'profile.images'|translate}}</p>
             </div>
           </div>
-          <div class="row flex-row flex-nowrap" style="overflow: scroll; overflow-y: hidden">
-            <div class="col-3" id="imagesSlide">
-            </div>
+          <div class="row flex-row flex-nowrap" id="imagesSlide" style="overflow: scroll; overflow-y: hidden">
+            <input type="file" class="file-input" #fileInput (change)="onFileSelected($event)" hidden>
+            <button class="btn btn-add" (click)="fileInput.click()">+</button>
+
           </div>
           <div class="row" style="margin-top:20px;">
             <button class="btn btn-proyecto" (click)="editBoat()">{{'profile.edit' | translate}}</button>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" #deleteResource id="deleteResource" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel2">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>

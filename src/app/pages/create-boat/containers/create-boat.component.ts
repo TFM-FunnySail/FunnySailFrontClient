@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {
   AddBoatInputDTO, BoatOutputDTO,
   BoatsService,
@@ -8,7 +8,7 @@ import {
   BoatTypeOutputDTO, MooringOutputDTO,
   PortOutputDTO,
   PortOutputDTOGenericResponseDTO,
-  PortService
+  PortService, UpdateBoatInputDTO
 } from "../../../shared/sdk";
 import {StorageService} from "../../../shared/services/storage/storage.service";
 
@@ -177,5 +177,63 @@ export class CreateBoatComponent implements OnInit {
         }
 
       });
+
+    this.boatForm.get('length')?.disable();
+    this.boatForm.get('sleeve')?.disable();
+    this.boatForm.get('registration')?.disable();
+    this.boatForm.get('boatTypeId')?.disable();
+    this.boatForm.get('requiredBoatTitles')?.disable();
+    this.boatForm.get('port')?.disable();
+    this.boatForm.get('mooringPoint')?.disable();
+  }
+
+  updateBoat() {
+
+    if(this.storageService.getItem("boatId") != null){
+      this.boatId = this.storageService.getItem("boatId");
+      this.header = false;
+
+    }
+    if(this.boatId){
+      this.boatsApiService.apiBoatsIdGet(parseInt(this.boatId)).subscribe((resp: BoatOutputDTO) => {
+        if(this.boatId){
+          this.boatForm.addControl('BoatId', new FormControl(parseInt(this.boatId)));
+          const updateBoat: UpdateBoatInputDTO = {
+            boatId: parseInt(this.boatId),
+            mooringId: parseInt(this.boatForm.get('mooringPoint')?.value),
+            boatTypeId: parseInt(this.boatForm.get('boatTypeId')?.value),
+            active: resp?.active,
+            pendingToReview: resp?.pendingToReview,
+            boatInfo: {
+              boatId: parseInt(this.boatId),
+              name: this.boatForm.get('name')?.value,
+              description: this.boatForm.get('description')?.value,
+              registration: this.boatForm.get('registration')?.value,
+              length: this.boatForm.get('length')?.value,
+              sleeve: this.boatForm.get('sleeve')?.value,
+              capacity: this.boatForm.get('capacity')?.value,
+              motorPower: this.boatForm.get('motorPower')?.value
+            },
+            requiredTitles: {
+              boatId: parseInt(this.boatId),
+              boatTites: [parseInt(this.boatForm.get('requiredBoatTitles')?.value)]
+            },
+            prices: {
+              boatId: parseInt(this.boatId),
+              dayBasePrice: this.boatForm.get('dayBasePrice')?.value,
+              hourBasePrice: this.boatForm.get('hourBasePrice')?.value,
+              supplement: this.boatForm.get('supplement')?.value
+            }
+          }
+          this.boatsApiService.apiBoatsIdPut(parseInt(this.boatId), updateBoat).subscribe((resp: BoatOutputDTO) => {
+            console.log(resp);
+          });
+        }
+      });
+
+    }
+
+
+
   }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
 import {StorageService} from "./shared/services/storage/storage.service";
+import {AuthService} from "./shared/services/auth/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,17 @@ import {StorageService} from "./shared/services/storage/storage.service";
 export class AppComponent {
   title = 'FunnySailFrontClient';
   constructor(private translateService: TranslateService,
-              private storageService: StorageService) {
+              private storageService: StorageService,
+              private authService: AuthService) {
     this.initTranslate();
+    if(!this.authService.isLoggedIn() && this.storageService.getItem('userId')) {
+      this.storageService.deleteItem('userId');
+      this.storageService.deleteItem("User");
+      this.storageService.deleteItem("userEmail");
+      this.storageService.deleteItem("boatId");
+      this.authService.logout();
+    }
+
   }
 
   private initTranslate() {

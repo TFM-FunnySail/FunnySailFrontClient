@@ -13,6 +13,7 @@ import { ResourcesEnum } from './resourcesEnum';
 
 
 export interface BoatResourcesOutputDTO { 
+    id?: number;
     uri?: string | null;
     main?: boolean;
     type?: ResourcesEnum;
