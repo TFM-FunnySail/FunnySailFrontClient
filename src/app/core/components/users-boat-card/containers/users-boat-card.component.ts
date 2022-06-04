@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {BoatOutputDTO} from "../../../../shared/sdk";
+import {Component, Input, OnInit } from '@angular/core';
+import {BoatOutputDTO, BoatsService} from "../../../../shared/sdk";
 import {Router} from "@angular/router";
 import {StorageService} from "../../../../shared/services/storage/storage.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'users-boat-card',
@@ -14,8 +15,14 @@ export class UsersBoatCardComponent implements OnInit {
   type: string;
   port: string;
   mooring: string;
+  requiredFileType: string | undefined;
+  file: File | undefined;
+  fileName: string = '';
+
   constructor(private router: Router,
-              private storageService: StorageService) {
+              private storageService: StorageService,
+              private boatsService: BoatsService,
+              private translate: TranslateService) {
     this.type = '';
     this.port = '';
     this.mooring = '';
@@ -49,6 +56,18 @@ export class UsersBoatCardComponent implements OnInit {
           let imagen = document.createElement('img');
           imagen.src = 'https://localhost:44316/Images/'+image.uri;
           imagen.style.width = '200px';
+          imagen.onclick = () => {
+            //Llenar para eliminar imagen
+            if(confirm(this.translate.instant('deleteImage'))){
+              //this.boatsService.
+              if(this.boat.id && image.id)
+              this.boatsService.apiBoatsIdResourceResourceIdDelete(this.boat.id, image.id).subscribe({
+                next: (res) => {
+                  location.reload()
+                }
+              });
+            }
+          }
           let carousel = document.getElementById('imagesSlide');
           if(carousel)
             carousel.appendChild(imagen);
@@ -65,4 +84,20 @@ export class UsersBoatCardComponent implements OnInit {
     this.storageService.setItem('boatId', this.boat.id);
     this.router.navigate(['/editBoat']);
   }
+
+  onFileSelected(event: any) {
+    this.file = event.target.files[0];
+    if (this.file) {
+      this.fileName = this.file.name;
+      //const formData = new FormData();
+      //formData.append("Imagen", this.file);
+      if(this.boat.id != undefined)
+      this.boatsService.apiBoatsIdResourceImagePost(this.boat.id, true, this.file).subscribe({
+        next: (res) => {
+          location.reload();
+        }
+      });
+    }
+  }
+
 }

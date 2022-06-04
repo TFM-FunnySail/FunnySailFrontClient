@@ -4,7 +4,7 @@
     <p>{{'createBoat.description' | translate}}</p>
     <hr>
   </div>
-  <form [formGroup]="boatForm" (ngSubmit)="onSubmit()" >
+  <form [formGroup]="boatForm">
     <div class="row">
       <div class="col-md col-xs-12">
         <p class="h3">{{'createBoat.formTitle'|translate}}</p>
@@ -199,20 +199,22 @@
             {{'createBoat.maxValue3000' | translate}}
           </mat-error>
         </mat-form-field>
+        <div *ngIf="header">
+          <p>{{'createBoat.image' | translate}}</p>
+          <table>
+            <tr>
+              <td>
+                <button type="button" class="btn-proyecto" mat-raised-button (click)="fileInput.click()">Choose File</button>
+              </td>
+              <td>
+                <div *ngIf="fileInput.value">
+                  <button type="button" class="btn btn-success">{{'createBoat.fileSelected' | translate}}</button>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
 
-        <p>{{'createBoat.image' | translate}}</p>
-        <table>
-          <tr>
-            <td>
-              <button type="button" class="btn-proyecto" mat-raised-button (click)="fileInput.click()">Choose File</button>
-            </td>
-            <td>
-              <div *ngIf="fileInput.value">
-                <button type="button" class="btn btn-success">{{'createBoat.fileSelected' | translate}}</button>
-              </div>
-            </td>
-          </tr>
-        </table>
 
           <input type="file" class="file-input" [accept]="requiredFileType" #fileInput (change)="onFileSelected($event)" hidden>
 
@@ -236,12 +238,12 @@
     </div>
     <div class="row">
       <div class="col-md-12" *ngIf="header">
-        <button class="btn btn-proyecto" mat-raised-button color="primary"  style="width:100%; margin-bottom:50px;">
+        <button class="btn btn-proyecto" mat-raised-button color="primary"  style="width:100%; margin-bottom:50px;" (click)="onSubmit()">
           <span class="mat-body-2">{{'createBoat.submit' | translate}}</span>
         </button>
       </div>
       <div class="col-md-12" *ngIf="!header">
-        <button class="btn btn-proyecto" mat-raised-button style="width:100%; margin-bottom:50px;">
+        <button class="btn btn-proyecto" mat-raised-button style="width:100%; margin-bottom:50px;" (click)="updateBoat()">
           <span class="mat-body-2">{{'createBoat.submit' | translate}}</span>
         </button>
       </div>

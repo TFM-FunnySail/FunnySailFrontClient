@@ -175,7 +175,8 @@
     "viewBoat": "Ver barco",
     "people": "Personas",
     "portData": "Información del puerto",
-    "images": "Imágenes"
+    "images": "Imágenes",
+    "deleteImage": "¿Desea eliminar esta imagen?"
   },
   "rentalHC": {
     "basePrice": "Precio base",
