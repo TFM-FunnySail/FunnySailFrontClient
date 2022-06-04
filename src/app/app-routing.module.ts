@@ -46,7 +46,7 @@ const routes: Routes = [
         loadChildren: () => BoatPageModule
       },
       {
-        path: 'payment',
+        path: 'payment/:id',
         loadChildren: () => PaymentModule
       },
       {

@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {CarouselComponent} from "./containers/carousel.component";
 import {FormsModule} from "@angular/forms";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
-import {MaterialModule} from "../../material/material.module";
+import {MaterialModule} from "../../../../../../FunnySailIonicApp/src/app/core/material/material.module";
 
 @NgModule({
   declarations: [

@@ -1,23 +1,22 @@
 import {NgModule} from '@angular/core';
-import {RefundsBookingComponent} from './containers/refunds-booking.component';
-import {RefundsBookingRoutingModule} from './refunds-booking-routing.module';
+import {CommonModule} from '@angular/common';
 import {ReactiveFormsModule} from "@angular/forms";
 import {CoreModule} from "../../../../../FunnySailIonicApp/src/app/core/core.module";
 import {SharedModule} from "../../shared/shared.module";
+import {BillingComponent} from "./containers/billing.component";
+import {BillingRoutingModule} from "./billing-routing.module";
 
 @NgModule({
   declarations: [
-    RefundsBookingComponent
-  ],
-  exports: [
-    RefundsBookingComponent
+    BillingComponent
   ],
   imports: [
-    RefundsBookingRoutingModule,
+    CommonModule,
     ReactiveFormsModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    BillingRoutingModule
   ]
 })
-export class RefundsBookingModule {
+export class BillingModule{
 }

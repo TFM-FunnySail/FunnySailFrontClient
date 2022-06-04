@@ -1,137 +1,142 @@
-<div class="container" style="margin-top:100px; height: 540px; overflow: scroll; overflow-x: hidden;">
+<div class="container mb-5" style="margin-top:100px;">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-12 col-md-4">
+      <div class="card p-5">
+        <p class="title-payment">Datos de la operación</p>
+        <p><span class="text-important">Importe:</span> {{totalPrice}} €</p>
+        <div class="row">
+          <div class="col-6">
+            <p class="text-important">Comercio:</p>
+            <hr style="width: 300px;">
+            <p class="text-important">Terminal:</p>
+            <hr style="width: 300px;">
+            <p class="text-important">Pedido:</p>
+            <hr style="width: 300px;">
+            <p class="text-important">Fecha:</p>
+            <hr style="width: 300px;">
+            <p class="text-important">Descripción producto:</p>
+          </div>
+          <div class="col-6">
+            <p>FUNNYSAIL(ESPAÑA)</p>
+            <br>
+            <p>419090003-1</p>
+            <br>
+            <p>{{bookingId}}</p>
+            <br>
+            <p>{{dateNow}}</p>
+            <br>
+            <p> Se está realizando la operación de pago de su reserva</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
       <div class="row">
-        <img src="assets/defaultBoat.jpg" style="width:100%;">
-      </div>
-    </div>
-    <div class="col-md">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <p class="h3">BoatName - BoatRegistration</p>
-            <hr>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-            <hr>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-              <p class="h5">Extras solicitados</p>
-          </div>
-        </div>
-        <div class="row" style="margin-top:10px;">
-          <div class="col-md" style="text-align: center;">
-            <img src="assets/float-activity.png" width="35" style="margin-bottom:10px;">
-            <p>Float</p>
-          </div>
-          <div class="col-md" style="text-align: center;">
-            <img src="assets/fishing-activity.png" width="35" style="margin-bottom:10px;">
-            <p>Fishing rod</p>
-          </div>
-          <div class="col-md" style="text-align: center;">
-            <img src="assets/bimini-top.png" width="35" style="margin-bottom:10px;">
-            <p>Bimini top</p>
-          </div>
-          <hr>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <p class="h5">Payment method</p>
-          </div>
-        </div>
-        <div class="row">
-          <mat-form-field appearance="outline">
-            <select matNativeControl formControlName="paymentMethod">
-              <option [selected]="true" [hidden]="true">Select Payment Method</option>
-              <option>Paypal</option>
-              <option>Credit Card</option>
-              <option>Debit Card</option>
-              <option>Net Banking</option>
-            </select>
-          </mat-form-field>
-          <hr>
-          <form>
-            <div class="row">
-              <div class="col-md-6">
-                <mat-form-field appearance="outline">
-                  <mat-label>Name on card</mat-label>
-                  <input matInput formControlName="cardName" type="text" placeholder="Name on card">
-
-             <!-- <mat-error *ngIf="registerForm.get('cardName')?.errors?.['minLength']">
-                Card on name must have at least 3 characters.
-              </mat-error>
-              <mat-error *ngIf="registerForm.get('cardName')?.errors?.['maxLength']">
-                Card on name must have at least 20 characters.
-              </mat-error>-->
-                </mat-form-field>
+        <div class="col">
+          <div class="container">
+            <div class="card p-3">
+              <div class="row">
+                <div class="col">
+                  <p class="h5">Payment method</p>
+                </div>
               </div>
-              <div class="col-md-6">
-                <mat-form-field appearance="outline">
-                  <mat-label>Card number</mat-label>
-                  <input matInput formControlName="cardNumber" type="number" placeholder="Number on card">
-
-          <!--<mat-error *ngIf="registerForm.get('cardNumber')?.errors?.['pattern']">
-            Card number must be 16 numbers long.
-          </mat-error>-->
-                </mat-form-field>
+              <div class="row">
+               <form [formGroup]="form" class="justify-content-center form">
+                <div class="row">
+                  <div class="col">
+                    <mat-form-field appearance="outline">
+                      <select matNativeControl formControlName="paymentMethod">
+                        <option [selected]="true" [hidden]="true">Select Payment Method</option>
+                        <option>Credit Card</option>
+                        <option>Debit Card</option>
+                      </select>
+                      <mat-error *ngIf="form.get('paymentMethod')?.errors?.['required']">
+                        {{'payment.error.required' | translate}}
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <hr>
+                </div>
+                  <div class="row">
+                    <div class="col">
+                      <mat-form-field appearance="outline">
+                        <mat-label>Card number</mat-label>
+                        <input matInput formControlName="cardNumber" placeholder="Number on card">
+                        <mat-error *ngIf="form.get('cardNumber')?.errors?.['required']">
+                          {{'payment.error.required' | translate}}
+                        </mat-error>
+                        <mat-error *ngIf="form.get('cardNumber')?.errors?.['minlength']">
+                          {{'payment.error.minLength' | translate}}
+                        </mat-error>
+                        <mat-error *ngIf="form.get('cardNumber')?.errors?.['maxlength']">
+                          {{'payment.error.maxLength' | translate}}
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <mat-form-field appearance="outline">
+                        <mat-label>Card expiration month</mat-label>
+                        <input matInput formControlName="cardExpirationMonth" placeholder="mm">
+                        <mat-error *ngIf="form.get('cardExpirationMonth')?.errors?.['required']">
+                          {{'payment.error.required' | translate}}
+                        </mat-error>
+                        <mat-error *ngIf="form.get('cardExpirationMonth')?.errors?.['minlength']">
+                          {{'payment.error.minLength' | translate}}
+                        </mat-error>
+                        <mat-error *ngIf="form.get('cardExpirationMonth')?.errors?.['maxlength']">
+                          {{'payment.error.maxLength' | translate}}
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                      <mat-form-field appearance="outline">
+                        <mat-label>Card expiration year</mat-label>
+                        <input matInput formControlName="cardExpirationYear" placeholder="aa">
+                        <mat-error *ngIf="form.get('cardExpirationYear')?.errors?.['required']">
+                          {{'payment.error.required' | translate}}
+                        </mat-error>
+                        <mat-error *ngIf="form.get('cardExpirationYear')?.errors?.['minlength']">
+                          {{'payment.error.minLength' | translate}}
+                        </mat-error>
+                        <mat-error *ngIf="form.get('cardExpirationYear')?.errors?.['maxlength']">
+                          {{'payment.error.maxLength' | translate}}
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <mat-form-field appearance="outline">
+                        <mat-label>Card CVV</mat-label>
+                        <input matInput formControlName="cardCvv" placeholder="Card CVV">
+                        <mat-error *ngIf="form.get('cardCvv')?.errors?.['required']">
+                          {{'payment.error.required' | translate}}
+                        </mat-error>
+                        <mat-error *ngIf="form.get('cardCvv')?.errors?.['minlength']">
+                          {{'payment.error.minLength' | translate}}
+                        </mat-error>
+                        <mat-error *ngIf="form.get('cardCvv')?.errors?.['maxlength']">
+                          {{'payment.error.maxLength' | translate}}
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <button class="btn btn-proyecto" style="margin-left: auto; margin-right: auto" (click)="Cancel()">
+                      Cancelar
+                    </button>
+                    <button class="btn btn-proyecto" style="margin-left: auto; margin-right: auto" (click)="Pay()">
+                      Pagar
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
-
-            <div class="row">
-              <div class="col-md-6">
-                <mat-form-field appearance="outline">
-                  <mat-label>Card expiration</mat-label>
-                  <input matInput formControlName="cardExpiration" type="number" placeholder="Card expiration">
-
-          <!--<mat-error *ngIf="registerForm.get('cardNumber')?.errors?.['pattern']">
-            Card number must be 16 numbers long.
-          </mat-error>-->
-                </mat-form-field>
-              </div>
-              <div class="col-md-6">
-                <mat-form-field appearance="outline">
-                  <mat-label>Card CVV</mat-label>
-                  <input matInput formControlName="cardCvv" type="number" placeholder="Card CVV">
-
-          <!--<mat-error *ngIf="registerForm.get('cardCvv')?.errors?.['pattern']">
-            Card number must be 9 numbers long.
-          </mat-error>-->
-                </mat-form-field>
-              </div>
-            </div>
-          </form>
-          <div class="row">
-            <button class="btn btn-proyecto" style="margin-left: auto; margin-right: auto">
-              Submit
-            </button>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="row" style="margin-top:-280px;">
-    <div class="col-md-2">
-      <p>Precio base:</p>
-      <p>I.V.A. (21%): </p>
-      <hr style="width: 410px;">
-    </div>
-    <div class="col-md-2">
-      <p style="font-weight: bold;">255.00€</p>
-      <p style="font-weight: bold;">53.55€</p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-2">
-      <p>Precio final:</p>
-    </div>
-    <div class="col-md-2">
-      <p style="font-weight: bold;">303.55€</p>
     </div>
   </div>
 

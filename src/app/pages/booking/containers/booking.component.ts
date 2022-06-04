@@ -44,9 +44,6 @@ export class BookingComponent implements OnInit {
     if(bookingCart){
       this.bookingCartJSON = JSON.parse(bookingCart);
       if(this.bookingCartJSON.activities){
-        // this.entryDate = this.bookingCartJSON.activities[0].entryDate;
-        // this.endDate = this.bookingCartJSON.activities[0].endDate;
-        // this.totalPeople = this.bookingCartJSON.activities[0].totalPeople;
         for(let activities of this.bookingCartJSON.activities){
           console.log(activities);
           if(activities) {
@@ -59,11 +56,7 @@ export class BookingComponent implements OnInit {
         }
       }
       if(this.bookingCartJSON.boats){
-        // this.entryDate = this.bookingCartJSON.boats[0].entryDate;
-        // this.endDate = this.bookingCartJSON.boats[0].endDate;
-        // this.totalPeople = this.bookingCartJSON.boats[0].totalPeople;
-        // this.requestCapitan = this.bookingCartJSON.boats[0].requestCapitan;
-        for(let boat of this.bookingCartJSON.boats){
+    for(let boat of this.bookingCartJSON.boats){
           if(boat) {
             this.boatsIds.push(boat.id);
             const id = boat.id as number;
@@ -74,10 +67,7 @@ export class BookingComponent implements OnInit {
         }
       }
       if(this.bookingCartJSON.services){
-        // this.entryDate = this.bookingCartJSON.services[0].entryDate;
-        // this.endDate = this.bookingCartJSON.services[0].endDate;
-        // this.totalPeople = this.bookingCartJSON.services[0].totalPeople;
-        for(let service of this.bookingCartJSON.services){
+         for(let service of this.bookingCartJSON.services){
           this.servicesIds.push(service.id);
           const id = service.id as number;
           this.servicesService.apiServicesIdGet(id).subscribe(resp => {
@@ -109,7 +99,7 @@ export class BookingComponent implements OnInit {
         activityIds: this.activityIds
       };
       this.bookingService.apiBookingPost(input).subscribe((resp)=>{
-        this.router.navigate(['payment/'+ resp.id]);
+        this.router.navigate(['/payment/'+ resp.id]);
       }, (error) => {
         alert(error);
       });
