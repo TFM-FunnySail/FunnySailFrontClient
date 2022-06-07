@@ -4614,6 +4614,13 @@
           },
           "requestCaptain": {
             "type": "boolean"
+          },
+          "boatResources": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BoatResourcesOutputDTO"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false

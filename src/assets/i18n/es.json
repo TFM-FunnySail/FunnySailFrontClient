@@ -169,6 +169,7 @@
     "refunds": "Devoluciones",
     "logOut": "Cerrar sesión",
     "changePwd": "Cambiar contraseña",
+    "oldPwd": "Contraseña actual",
     "newPwd": "Nueva contraseña",
     "confirmPwd": "Confirmar contraseña",
     "close": "Cerrar",
