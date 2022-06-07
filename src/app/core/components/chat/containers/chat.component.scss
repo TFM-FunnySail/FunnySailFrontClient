@@ -1,7 +1,19 @@
 
 /* Button used to open the chat form - fixed at the bottom of the page */
-.open-button {
+.btn-proyecto{
+  background-color: #002f6c;
+  color: white;
+  border-radius: 100%;
+  width:50px;
+  height:50px;
+  padding-top: 14px;
+  float: right;
+  margin-top: -2.7%;
+}
 
+.btn-proyecto:hover{
+  background-color: #007ac1;
+  color: white;
 }
 
 /* The popup chat - hidden by default */

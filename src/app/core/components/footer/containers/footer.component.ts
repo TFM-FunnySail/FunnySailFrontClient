@@ -24,6 +24,13 @@ export class FooterComponent implements OnInit {
       this.translateService.use(this.form.get('language').value);
       this.translateService.setDefaultLang(this.form.get('language').value);
     });
+
+    // (document.getElementById('credits') as HTMLDivElement).w
+
+    (document.getElementById('credits') as HTMLDivElement).style.marginLeft = ((screen.width/2)-100).toString() + "px";
+    (document.getElementById('copyRight') as HTMLDivElement).style.marginLeft = ((screen.width/2)-120).toString() + "px";
+
+
   }
 
 }

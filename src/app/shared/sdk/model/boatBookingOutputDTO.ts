@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { BoatResourcesOutputDTO } from './boatResourcesOutputDTO';
 
 
 export interface BoatBookingOutputDTO { 
@@ -18,5 +19,6 @@ export interface BoatBookingOutputDTO {
     entryDate?: string | null;
     departureDate?: string | null;
     requestCaptain?: boolean;
+    boatResources?: Array<BoatResourcesOutputDTO> | null;
 }
 
