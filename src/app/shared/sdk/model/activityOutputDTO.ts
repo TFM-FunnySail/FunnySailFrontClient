@@ -14,7 +14,6 @@ import { ActivityResourcesOutputDTO } from './activityResourcesOutputDTO';
 
 export interface ActivityOutputDTO { 
     id?: number;
-    activityDate?: string;
     name?: string | null;
     active?: boolean;
     price?: number;

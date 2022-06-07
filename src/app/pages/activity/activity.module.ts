@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {ActivityComponent} from "./containers/activity.component";
 import {ActivityRoutingModule} from "./activity-routing.module";
 import {ReactiveFormsModule} from "@angular/forms";
-import {CoreModule} from "../../../../../FunnySailIonicApp/src/app/core/core.module";
+import { CoreModule } from "../../core/core.module";
 
 @NgModule({
   declarations: [

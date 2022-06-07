@@ -4,7 +4,8 @@
     "contactUs": "Contact Us",
     "boats": "Boats",
     "services": "Services",
-    "activities": "Activities"
+    "activities": "Activities",
+    "refundsOrders": "Refunds & Orders"
   },
   "language": {
     "language": "Language",
@@ -118,7 +119,8 @@
     "bimini": "Bimini top",
     "refrigerator": "Refrigerator",
     "sideTable": "Side table",
-    "book": "BOOK NOW"
+    "book": "BOOK NOW",
+    "rentalStatus": "Rental status"
   },
   "services": {
     "title": "Look for the service you need!",
@@ -228,5 +230,16 @@
     "neumatic": "Zodiac",
     "boat": "Boat",
     "sail": "Sail"
+  },
+  "refundsandorders": {
+    "myOrders": "My orders",
+    "myRefunds": "My refunds",
+    "noRefunds": "You have no refunds",
+    "noBookings": "You have no bookings"
+  },
+  "booking": {
+    "card": {
+      "detail": "Details"
+    }
   }
 }

@@ -1,10 +1,10 @@
 <div class="container" style="margin-top: 15%">
   <div class="row">
-    <h1><strong>Mis pedidos</strong></h1>
+    <h1><strong>{{'refundsandorders.myOrders' | translate}}</strong></h1>
     <hr>
     <mat-button-toggle-group  #group="matButtonToggleGroup"  appearance="legacy" name="fontStyle" aria-label="Font Style" [value]="show" (change)="onValChange(group.value)">
-      <mat-button-toggle value="true">Mis pedidos</mat-button-toggle>
-      <mat-button-toggle value="false">Mis devoluciones</mat-button-toggle>
+      <mat-button-toggle value="true">{{'refundsandorders.myOrders' | translate}}</mat-button-toggle>
+      <mat-button-toggle value="false">{{'refundsandorders.myRefunds' | translate}}</mat-button-toggle>
     </mat-button-toggle-group>
   </div>
   <div class="row mt-5" *ngIf="show === 'true'">
@@ -22,9 +22,9 @@
     </div>
   </div>
   <ng-template #notRefunds>
-      <h1>No tienes devoluciones</h1>
+      <h1>{{'refundsandorders.noRefunds' | translate}}</h1>
   </ng-template>
   <ng-template #notBoats>
-    <h1>No tienes devoluciones</h1>
+    <h1>{{'refundsandorders.noBookings' | translate}}</h1>
   </ng-template>
 </div>
