@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {ServiceComponent} from "./containers/service.component";
 import {ServiceRoutingModule} from "./service-routing.module";
 import {ReactiveFormsModule} from "@angular/forms";
-import {CoreModule} from "../../../../../FunnySailIonicApp/src/app/core/core.module";
+import { CoreModule } from "../../core/core.module";
 
 @NgModule({
   declarations: [

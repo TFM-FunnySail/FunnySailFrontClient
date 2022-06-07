@@ -4,7 +4,9 @@
     "contactUs": "Contacto",
     "boats": "Barcos",
     "services": "Servicios",
-    "activities": "Actividades"
+    "activities": "Actividades",
+    "refundsOrders": "Devoluciones y Pedidos"
+
   },
   "language": {
     "language": "Idioma",
@@ -118,7 +120,8 @@
     "bimini": "Toldo bimini",
     "refrigerator": "Nevera",
     "sideTable": "Mesa",
-    "book": "RESERVA YA"
+    "book": "RESERVA YA",
+    "rentalStatus": "Estado del alquiler"
   },
   "services": {
     "title": "¡Busca el servicio que necesitas!",
@@ -228,5 +231,16 @@
     "neumatic": "Zodiac",
     "boat": "Lancha",
     "sail": "Velero"
+  },
+  "refundsandorders": {
+    "myOrders":"Mis pedidos",
+    "myRefunds":"Mis devoluciones",
+    "noRefunds":"No hay devoluciones",
+    "noBookings":"No hay reservas"
+  },
+  "booking": {
+    "card": {
+      "detail": "Detalles"
+    }
   }
 }

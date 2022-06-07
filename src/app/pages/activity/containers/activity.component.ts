@@ -20,7 +20,6 @@ export class ActivityComponent implements OnInit {
               private router: Router) {
     this.activity = {
       id: -1,
-      activityDate: '',
       name: '',
       active: false,
       price: 0,

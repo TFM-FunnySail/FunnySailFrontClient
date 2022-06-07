@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {
   BookingOutputDTO, BookingOutputDTOGenericResponseDTO, BookingService,
   RefundOutputDTO,
@@ -15,6 +15,7 @@ import {StorageService} from "../../../shared/services/storage/storage.service";
   styleUrls: ['./refunds-booking.component.scss']
 })
 export class RefundsBookingComponent implements OnInit {
+  @Input()
   displayedColumns: string[] = ['Description', 'Amount to Return', 'Date'];
   refunds: Array<RefundOutputDTO> = [];
   bookings: Array<BookingOutputDTO> = [];

@@ -27,7 +27,7 @@
     </div>
     <div class="row">
       <div class="col-12 col-sm-12 col-md-4 col-lg-3" *ngFor="let boat of boats">
-        <div class="card mb-3" style="height: 400px;">
+        <div class="card mb-3">
           <img class="card-img-top img-card" src="https://picsum.photos/id/62/500/500" alt="Card image cap">
           <div class="card-body">
             <a class="card-title" [routerLink]="['/boat']" [queryParams]="{id: boat.id , initialDate: this.initDate, endDate: this.finalDate}"><h2><strong>{{boat.name}}</strong></h2></a>

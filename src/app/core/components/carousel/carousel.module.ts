@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {CarouselComponent} from "./containers/carousel.component";
 import {FormsModule} from "@angular/forms";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
-import {MaterialModule} from "../../../../../../FunnySailIonicApp/src/app/core/material/material.module";
+import { SharedModule } from "../../../shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -13,7 +13,7 @@ import {MaterialModule} from "../../../../../../FunnySailIonicApp/src/app/core/m
     CommonModule,
     FormsModule,
     NgbModule,
-    MaterialModule
+    SharedModule
   ],
   exports: [
     CarouselComponent

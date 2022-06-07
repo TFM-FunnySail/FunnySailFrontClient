@@ -4115,10 +4115,6 @@
             "type": "integer",
             "format": "int32"
           },
-          "activityDate": {
-            "type": "string",
-            "format": "date-time"
-          },
           "name": {
             "type": "string",
             "nullable": true
