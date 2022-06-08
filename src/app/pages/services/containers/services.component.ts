@@ -36,7 +36,10 @@ export class ServicesComponent implements OnInit {
     this.serviceApiService.apiServicesGet().subscribe(resp => {
       this.services = this.handlerServices(resp).items;
       this.loading = false;
-    });
+    },
+      ()=>{
+        this.loading = false;
+      });
   }
 
   handlerServices(resp: ServiceOutputDTOGenericResponseDTO) {
@@ -59,7 +62,10 @@ export class ServicesComponent implements OnInit {
       }
       this.serviceApiService.apiServicesGet(undefined, undefined, minPrice, maxPrice, name).subscribe(resp => {
         this.services = this.handlerServices(resp).items;
-      });
+      },
+        ()=>{
+          this.loading = false;
+        });
     }
   }
 }
