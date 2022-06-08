@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {BoatOutputDTO, BoatOutputDTOGenericResponseDTO, BoatsService} from "../../../shared/sdk";
+import {BoatOutputDTO, BoatsService} from "../../../shared/sdk";
 import {ActivatedRoute, Router} from "@angular/router";
 import {StorageService} from "../../../shared/services/storage/storage.service";
 
@@ -10,12 +10,12 @@ import {StorageService} from "../../../shared/services/storage/storage.service";
 })
 
 export class BoatPageComponent implements OnInit {
-
+  loading = true;
   boat: BoatOutputDTO;
   boatId: any;
   initialDate: any;
   endDate: any;
-
+  image: any = '';
   constructor(
     protected boatsApiService: BoatsService,
     protected activatedRoute: ActivatedRoute,
@@ -23,24 +23,28 @@ export class BoatPageComponent implements OnInit {
     private router: Router
   ) {
     this.boat={};
+  }
+
+  ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(parameters => {
       this.boatId = parameters['id'] as string;
       this.initialDate = parameters['initialDate'];
       this.endDate = parameters['endDate'];
       if (this.boatId) {
-        this.boatsApiService.apiBoatsGet(parseInt(this.boatId)).subscribe((resp: BoatOutputDTOGenericResponseDTO) => {
-            if (resp.items)
-              this.boat = resp.items[0];
+        this.boatsApiService.apiBoatsIdGet(parseInt(this.boatId)).subscribe((resp) => {
+            if (resp) {
+              this.boat = resp;
+              if (resp && resp.boatResources) {
+                this.image = resp.boatResources.find(x => x.main)?.uri ??
+                resp.boatResources.length > 0 ? resp.boatResources[0].uri : '';
+              }
+            }
+            this.loading = false;
           }
         );
       }
     });
 
-
-  }
-
-  ngOnInit(): void {
-      console.log('BOAT PAGE')
   }
 
   booking(){

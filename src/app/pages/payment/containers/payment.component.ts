@@ -10,6 +10,7 @@ import {StorageService} from "../../../shared/services/storage/storage.service";
   styleUrls: ['./payment.component.scss']
 })
 export class PaymentComponent implements OnInit {
+  loading = true;
   form: any;
   booking: BookingOutputDTO = {};
   bookingId: string = 'adsdsaasd';
@@ -36,6 +37,7 @@ export class PaymentComponent implements OnInit {
           }
         );
       }
+      this.loading = false;
     });
 
     this.form = this.formBuilder.group({

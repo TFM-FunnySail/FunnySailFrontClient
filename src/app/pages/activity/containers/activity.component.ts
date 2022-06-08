@@ -10,10 +10,10 @@ import {StorageService} from "../../../shared/services/storage/storage.service";
 })
 
 export class ActivityComponent implements OnInit {
-
+  loading = true;
   exist = false;
   activity: ActivityOutputDTO;
-
+  image: any = '';
   constructor(private activatedRoute: ActivatedRoute,
               private activateService: ActivitiesService,
               private storageService: StorageService,
@@ -33,10 +33,14 @@ export class ActivityComponent implements OnInit {
       console.log(id);
         this.activateService.apiActivitiesIdGet(id).subscribe(resp => {
           if(resp){
-            console.log(resp);
             this.exist = true;
             this.activity = resp;
+            if (resp && resp.activityResources) {
+              this.image = resp.activityResources.find(x => x.main)?.uri ??
+              resp.activityResources.length > 0 ? resp.activityResources[0].uri : '';
+            }
           }
+          this.loading = false;
         });
     });
   }

@@ -16,7 +16,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./booking.component.scss']
 })
 export class BookingComponent implements OnInit {
-
+  loading = true;
   activities: Array<ActivityOutputDTO> = [];
   boats: Array<BoatOutputDTO> = [];
   services: Array<ServiceOutputDTO> = [];
@@ -44,6 +44,7 @@ export class BookingComponent implements OnInit {
     if(bookingCart){
       this.bookingCartJSON = JSON.parse(bookingCart);
       if(this.bookingCartJSON.activities){
+        this.loading = true;
         for(let activities of this.bookingCartJSON.activities){
           console.log(activities);
           if(activities) {
@@ -51,32 +52,37 @@ export class BookingComponent implements OnInit {
             const id = activities.id as number;
             this.activitiesService.apiActivitiesIdGet(id).subscribe(resp => {
               this.activities.push(resp);
+              this.loading = false;
             });
           }
         }
       }
       if(this.bookingCartJSON.boats){
-    for(let boat of this.bookingCartJSON.boats){
+        this.loading = true;
+        for(let boat of this.bookingCartJSON.boats){
           if(boat) {
             this.boatsIds.push(boat.id);
             const id = boat.id as number;
             this.boatsService.apiBoatsIdGet(id).subscribe(resp => {
               this.boats.push(resp);
+              this.loading = false;
             });
           }
         }
       }
       if(this.bookingCartJSON.services){
-         for(let service of this.bookingCartJSON.services){
+        this.loading = true;
+        for(let service of this.bookingCartJSON.services){
           this.servicesIds.push(service.id);
           const id = service.id as number;
           this.servicesService.apiServicesIdGet(id).subscribe(resp => {
             this.services.push(resp);
+            this.loading = false;
           });
         }
       }
     } else {
-      alert('no hay reservas aun');
+      this.loading = false;
     }
   }
 

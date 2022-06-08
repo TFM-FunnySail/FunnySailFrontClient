@@ -15,6 +15,7 @@ import {StorageService} from "../../../shared/services/storage/storage.service";
   styleUrls: ['./refunds-booking.component.scss']
 })
 export class RefundsBookingComponent implements OnInit {
+  loading= true;
   @Input()
   displayedColumns: string[] = ['Description', 'Amount to Return', 'Date'];
   refunds: Array<RefundOutputDTO> = [];
@@ -51,6 +52,7 @@ export class RefundsBookingComponent implements OnInit {
           this.countBookings = this.bookings?.length as number;
         }
       }
+      this.loading = false;
     });
   }
 

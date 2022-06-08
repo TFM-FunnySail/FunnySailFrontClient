@@ -1,9 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {
   ActivityBookingOutputDTO,
   BoatBookingOutputDTO,
   BookingOutputDTO, BookingService, ServiceBookingOutputDTO
 } from "../../../../shared/sdk";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-rental-history-card',
@@ -13,6 +14,7 @@ import {
 export class RentalHistoryCardComponent implements OnInit {
 
   @Input() booking: BookingOutputDTO = {};
+  @ViewChild('closeModal') closeAddExpenseModal: ElementRef | undefined;
   name: string = 'Booking ';
   createdDate: string = 'create Date';
   entryDate: string = 'entry Date';
@@ -25,7 +27,7 @@ export class RentalHistoryCardComponent implements OnInit {
   total: number = 0;
   id: string = '';
 
-  constructor(private bookingService: BookingService) {
+  constructor(private bookingService: BookingService, private router: Router) {
     //data-bs-target
   }
 
@@ -66,5 +68,10 @@ export class RentalHistoryCardComponent implements OnInit {
       text += possible.charAt(Math.floor(Math.random() * possible.length));
 
     return text;
+  }
+
+  showBilling(){
+      this.closeAddExpenseModal?.nativeElement.click();
+      this.router.navigate(['/billing/' + this.booking?.clientInvoiceLine?.clientInvoiceId ]);
   }
 }

@@ -10,10 +10,10 @@ import {FormBuilder, Validators} from "@angular/forms";
   styleUrls: ['./boats.component.scss']
 })
 export class BoatsComponent implements OnInit {
-
+  loading = true;
   boats?: Array<BoatOutputDTO> | null;
   boatTypes: BoatTypeOutputDTO[] = [];
-
+  images: any[] = [];
   form: any;
   initDate: string = '';
   finalDate: string = '';
@@ -53,9 +53,19 @@ export class BoatsComponent implements OnInit {
       }
       if(initialDate && endDate) {
         this.boatsApiService.apiBoatsAvailableBoatsGet(initialDate, endDate).subscribe(resp => {
-          this.boats = this.handlerBoats(resp).items;
+          const items = this.handlerBoats(resp).items;
+          this.boats = items;
+          if(items != null) {
+            for (let item of items) {
+              if(item && item.boatResources) {
+                this.images.push(item?.boatResources?.find(x => x.main)?.uri ??
+                item?.boatResources.length > 0 ? item?.boatResources[0].uri : '');
+              }
+            }
+          }
         });
       }
+      this.loading = false;
     });
   }
 
@@ -64,6 +74,7 @@ export class BoatsComponent implements OnInit {
   }
 
   searchAct() {
+    this.loading = true;
     console.log('searchboat')
     if(this.form.valid) {
       console.log('isValid')
@@ -82,8 +93,22 @@ export class BoatsComponent implements OnInit {
         this.finalDate = endDate;
       }
       this.boatsApiService.apiBoatsAvailableBoatsGet(initialDate, endDate).subscribe(resp => {
-        console.log(resp)
-        this.boats = this.handlerBoats(resp).items;
+        const items = this.handlerBoats(resp).items;
+        this.boats = items;
+        if(items != null) {
+          console.log('BARCOS NO ES NULL');
+          console.log(items);
+          for (let item of items) {
+            console.log(item);
+            if(item && item.boatResources) {
+              console.log(item.boatResources);
+              this.images.push(item?.boatResources?.find(x => x.main)?.uri ??
+              item?.boatResources.length > 0 ? item?.boatResources[0].uri : '');
+              console.log(this.images);
+            }
+          }
+        }
+        this.loading = false;
       });
     }
   }

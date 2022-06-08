@@ -18,6 +18,7 @@ import {AuthService} from "../../../shared/services/auth/auth.service";
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  loading = true;
   dataForm: FormGroup;
   user: any = {};
   userData: UserOutputDTO;
@@ -52,9 +53,9 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.storageService.getItem('userId');
-    if(id)
-      this.userService.apiUsersIdGet(id).subscribe((resp: UserOutputDTO)=>{
-        if(resp){
+    if(id) {
+      this.userService.apiUsersIdGet(id).subscribe((resp: UserOutputDTO) => {
+        if (resp) {
           console.log(resp)
           this.userData = resp;
           this.checkBoats();
@@ -73,8 +74,11 @@ export class ProfileComponent implements OnInit {
           this.dataForm.get(['zip'])?.setValue(resp.zipCode);
           this.dataForm.get(['country'])?.setValue(resp.country);
         }
+        this.loading = false;
       });
-
+    }else{
+      this.loading = false;
+    }
   }
 
 

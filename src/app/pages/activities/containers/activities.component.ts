@@ -12,8 +12,9 @@ import {FormBuilder, Validators} from "@angular/forms";
 export class ActivitiesComponent implements OnInit {
 
   activities?: Array<ActivityOutputDTO> | null;
-
+  images: any[] = [];
   form: any;
+  loading = true;
 
   constructor(private formBuilder: FormBuilder,
               protected activitiesService: ActivitiesService,
@@ -32,8 +33,18 @@ export class ActivitiesComponent implements OnInit {
       maxPrice: ['']
     });
 
-    this.activitiesService.apiActivitiesGet().subscribe(resp => {
-      this.activities = this.handlerActivities(resp).items;
+    this.activitiesService.apiActivitiesGet(undefined, true).subscribe(resp => {
+      const items = this.handlerActivities(resp).items;
+      this.activities = items;
+      if(items != null) {
+        for (let item of items) {
+          if(item && item.activityResources) {
+            this.images.push(item?.activityResources?.find(x => x.main)?.uri ??
+            item?.activityResources.length > 0 ? item?.activityResources[0].uri : '');
+          }
+        }
+      }
+      this.loading = false;
     });
   }
 
@@ -42,6 +53,7 @@ export class ActivitiesComponent implements OnInit {
   }
 
   searchAct() {
+    this.loading = true;
     if(this.form.valid) {
       let minPrice = undefined;
       if (this.form.get('minPrice').value) {
@@ -52,7 +64,17 @@ export class ActivitiesComponent implements OnInit {
         maxPrice = this.form.get('maxPrice').value;
       }
       this.activitiesService.apiActivitiesGet(undefined, undefined, undefined, undefined, minPrice, maxPrice).subscribe(resp => {
-        this.activities = this.handlerActivities(resp).items;
+        const items = this.handlerActivities(resp).items;
+        this.activities = items;
+        if(items != null) {
+          for (let item of items) {
+            if(item && item.activityResources) {
+              this.images.push(item?.activityResources?.find(x => x.main)?.uri ??
+              item?.activityResources.length > 0 ? item?.activityResources[0].uri : '');
+            }
+          }
+        }
+        this.loading = false;
       });
     }
   }

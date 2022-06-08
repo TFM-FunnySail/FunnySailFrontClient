@@ -1,7 +1,8 @@
-<div class="container" style="margin-top:100px; padding-bottom: 70px;">
+<loading [loading]="loading"></loading>
+<div class="container" style="margin-top:100px; padding-bottom: 70px;" *ngIf="!loading">
   <div class="row">
     <div class="col-md">
-      <img src="assets/defaultBoat.jpg" alt="boat" style="width:90%;">
+      <img src="{{image | sinfoto}}" alt="boat" style="width:90%;">
     </div>
     <div class="col-md">
       <p class="h2">{{boat.name}} / {{boat.registration}}</p>

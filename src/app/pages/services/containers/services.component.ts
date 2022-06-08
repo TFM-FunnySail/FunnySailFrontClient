@@ -12,7 +12,7 @@ import {FormBuilder} from "@angular/forms";
 export class ServicesComponent implements OnInit {
 
   services?: Array<ServiceOutputDTO> | null;
-
+  loading = true;
   form: any;
 
   constructor(private formBuilder: FormBuilder,
@@ -35,6 +35,7 @@ export class ServicesComponent implements OnInit {
 
     this.serviceApiService.apiServicesGet().subscribe(resp => {
       this.services = this.handlerServices(resp).items;
+      this.loading = false;
     });
   }
 
