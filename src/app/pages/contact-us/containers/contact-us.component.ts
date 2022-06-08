@@ -7,6 +7,7 @@ import {FormBuilder, Validators} from "@angular/forms";
   styleUrls: ['./contact-us.component.scss']
 })
 export class ContactUsComponent implements OnInit {
+  loading = true;
   form: any;
   lat: number = 38.385347;
   lng: number = -0.508487;
@@ -22,6 +23,7 @@ export class ContactUsComponent implements OnInit {
       email: ['', Validators.email],
       message: ['', Validators.required]
     });
+    this.loading = false;
   }
 
   send(){

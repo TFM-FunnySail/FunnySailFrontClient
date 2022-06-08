@@ -18,6 +18,7 @@ import {StorageService} from "../../../shared/services/storage/storage.service";
   styleUrls: ['./create-boat.component.scss']
 })
 export class CreateBoatComponent implements OnInit {
+  loading= true;
   boatForm: FormGroup;
   boatTypes: BoatTypeOutputDTO[] = [];
   titulations: BoatTitleOutputDTO[] = [];
@@ -29,7 +30,7 @@ export class CreateBoatComponent implements OnInit {
   fileName: string = '';
 
   boatId: string | null = null;
-  header: Boolean = true;
+  header: boolean = true;
 
   constructor(private formBuilder: FormBuilder,
               private boatsApiService: BoatsService,
@@ -38,10 +39,11 @@ export class CreateBoatComponent implements OnInit {
     this.boatForm = this.formBuilder.group({});
     this.buildForm();
     if(this.storageService.getItem("boatId")){
-      this.fillForm()
-
+      this.fillForm();
+      this.loading = false;
     }else{
       this.updateMoorings();
+      this.loading = false;
     }
 
   }
@@ -72,9 +74,9 @@ export class CreateBoatComponent implements OnInit {
 
     this.boatsApiService.apiBoatsPost(boat).subscribe((resp: BoatOutputDTO) => {
       if(resp.id){
-        this.boatsApiService.apiBoatsIdResourceImagePost(resp.id, true,this.file).subscribe((resp: any) => {
-
-        }, (error: any) => {
+        this.boatsApiService.apiBoatsIdResourceImagePost(resp.id, true,this.file).subscribe(
+          (resp2: any) => {},
+          (error: any) => {
           console.log(error);
         });
       }
@@ -127,13 +129,15 @@ export class CreateBoatComponent implements OnInit {
 
   updateMoorings() {
     this.moorings = [];
-    if(this.ports[this.boatForm.get('port')?.value])
+    if(this.ports[this.boatForm.get('port')?.value]) {
       this.port = this.ports[this.boatForm.get('port')?.value];
-      if(this.port?.moorings)
-        for(let mooring of this.port.moorings) {
-          if(mooring.available)
+      if (this.port?.moorings) {
+        for (let mooring of this.port.moorings) {
+          if (mooring.available)
             this.moorings.push(mooring);
         }
+      }
+    }
   }
 
   updateMoorings2(idPort: number) {
@@ -161,23 +165,24 @@ export class CreateBoatComponent implements OnInit {
       this.boatId = this.storageService.getItem("boatId");
       this.header = false;
     }
-    if(this.boatId)
+    if(this.boatId) {
       this.boatsApiService.apiBoatsIdGet(parseInt(this.boatId)).subscribe((resp: BoatOutputDTO) => {
-        console.log(resp);
         this.boatForm.patchValue(resp);
         this.boatForm.get('boatTypeId')?.setValue(resp.boatType?.id?.toString());
-        if(resp.requiredBoatTitles)
-          if(resp.requiredBoatTitles[0].titleId)
+        if (resp.requiredBoatTitles) {
+          if (resp.requiredBoatTitles[0].titleId) {
             this.boatForm.get('requiredBoatTitles')?.setValue(resp.requiredBoatTitles[0]?.titleId?.toString());
-        if(resp.mooring?.portId)
+          }
+        }
+        if (resp.mooring?.portId) {
           this.updateMoorings2(resp.mooring?.portId);
-        if(resp.mooring){
+        }
+        if (resp.mooring) {
           this.boatForm.get('port')?.setValue(resp.mooring.portId?.toString());
           this.boatForm.get('mooringPoint')?.setValue(resp.mooring.id?.toString());
         }
-
       });
-
+    }
     this.boatForm.get('length')?.disable();
     this.boatForm.get('sleeve')?.disable();
     this.boatForm.get('registration')?.disable();
@@ -195,6 +200,7 @@ export class CreateBoatComponent implements OnInit {
 
     }
     if(this.boatId){
+      this.loading = true;
       this.boatsApiService.apiBoatsIdGet(parseInt(this.boatId)).subscribe((resp: BoatOutputDTO) => {
         if(this.boatId){
           this.boatForm.addControl('BoatId', new FormControl(parseInt(this.boatId)));
@@ -226,14 +232,10 @@ export class CreateBoatComponent implements OnInit {
             }
           }
           this.boatsApiService.apiBoatsIdPut(parseInt(this.boatId), updateBoat).subscribe((resp: BoatOutputDTO) => {
-            console.log(resp);
+            this.loading = false;
           });
         }
       });
-
     }
-
-
-
   }
 }

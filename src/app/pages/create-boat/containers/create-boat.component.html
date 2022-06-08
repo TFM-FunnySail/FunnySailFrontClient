@@ -1,4 +1,5 @@
-<div class="container" style="margin-top:90px;">
+<loading [loading]="loading"></loading>
+<div class="container" style="margin-top:90px;" *ngIf="loading">
   <div class="row" *ngIf="header">
     <p class="h1">{{'createBoat.title' | translate}}</p>
     <p>{{'createBoat.description' | translate}}</p>

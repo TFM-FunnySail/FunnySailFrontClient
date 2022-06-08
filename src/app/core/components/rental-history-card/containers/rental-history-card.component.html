@@ -1,7 +1,6 @@
 <div class="card" style="width: 18rem;" *ngIf="name">
   <div class="card-body">
     <h5 class="card-title">{{name}}</h5>
-    <p class="card-text">Date: {{createdDate}}</p>
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" [attr.data-bs-target]="'#'+id">
       {{'booking.card.detail' | translate}}
     </button>
@@ -14,10 +13,11 @@
       <div class="modal-header">
         <p class="modal-title h4" id="exampleModalLabel">{{name}}</p>
         <p class="h6">{{createdDate}}</p>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" #closeModal class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <p class="h5">Rental detail</p>
+        <p class="card-text">Date: {{createdDate}}</p>
         <div *ngIf="boatBookings.length > 0">
           <h1>BOATS</h1>
           <div class="container" *ngFor="let book of boatBookings">
@@ -140,6 +140,9 @@
           <hr>
           <div *ngIf="status === 'Booking'">
             <button class="btn btn-primary" (click)="cancelBooking()" >CANCEL</button>
+          </div>
+          <div>
+            <button class="btn btn-primary" (click)="showBilling()" >BILLING</button>
           </div>
         </div>
       </div>

@@ -6,10 +6,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class SinfotoPipe implements PipeTransform {
 
   transform(image : any): any {
-    let noimage = 'noimage.png';
-
+    let noimage = 'assets/img/noimage.png';
     if(!image){
       return noimage;
+    }else{
+      return 'https://localhost:44316/Images/'+ image;
     }
   }
 

@@ -10,7 +10,7 @@ import {StorageService} from "../../../shared/services/storage/storage.service";
 })
 
 export class ServiceComponent implements OnInit {
-
+  loading= true;
   exist = false;
   service: ServiceOutputDTO;
 
@@ -35,6 +35,7 @@ export class ServiceComponent implements OnInit {
           this.exist = true;
           this.service = resp;
         }
+        this.loading = false;
       });
     });
   }

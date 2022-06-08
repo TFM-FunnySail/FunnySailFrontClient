@@ -1,41 +1,69 @@
-<div class="modal-content">
+<loading [loading]="loading" ></loading>
+<div class="modal-content" style="margin-top:5em;" *ngIf="!loading">
   <div class="modal-header">
     <p class="modal-title h4" id="exampleModalLabel">Nº de factura: {{clientInvoice.id}}</p>
-    <p class="h6">{{clientInvoice.createdDate}}</p>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
   </div>
   <div class="modal-body">
-    <p class="h5">Rental detail</p>
-<!--    <div class="container">
+    <p class="h5">Invoice detail</p>
+    <div class="container">
       <div class="row">
         <div class="col-md">
-          <p class="h5">{{'rentalHC.totalPrice'|translate}}</p>
+          <p class="h5">Fecha:</p>
         </div>
         <div class="col-md">
-          <p class="h5">{{total}}€</p>
+          <p class="h6">{{clientInvoice.createdDate}}</p>
+        </div>
+        <hr>
+      </div>
+      <div class="row">
+        <div class="col-md">
+          <p class="h5">Cliente:</p>
+        </div>
+        <div class="col-md">
+          <p class="h5">{{firstName}} {{lastName}}  </p>
         </div>
         <hr>
       </div>
       <div class="row">
         <div class="col-md-6">
-          <p class="h5">{{'boat.rentalStatus'|translate}}</p>
+          <p class="h5">Dirección: </p>
         </div>
         <div class="col-md">
-          <p class="h6">{{status}}</p>
+          <p class="h6">{{city}} , {{address}}, {{zipCode}}  </p>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6">
-          <p class="h5">{{'rentalHC.paymentStatus'|translate}}</p>
+          <p class="h5">Teléfono:</p>
         </div>
         <div class="col-md">
-          <p class="h6">{{paid}}</p>
+          <p class="h6">{{phoneNumber}} </p>
         </div>
       </div>
       <hr>
-      <div *ngIf="status === 'Booking'">
-        <button class="btn btn-primary" (click)="cancelBooking()" >CANCEL</button>
+      <div class="row">
+        <div class="col-md-6">
+          <p class="h5">Pedidos:</p>
+        </div>
+        <div class="col-md" *ngFor="let invoice of invoices">
+          <div class="row">
+            <div class="col-md-6">
+              <p>BookingId:</p>
+            </div>
+            <div class="col-md-6">
+              <p class="h6">{{invoice.bookingId}} </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <p>Total:</p>
+            </div>
+            <div class="col-md-6">
+              <p class="h6">{{invoice.totalAmount}} </p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>-->
+    </div>
   </div>
 </div>

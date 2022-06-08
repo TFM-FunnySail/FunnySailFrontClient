@@ -22,7 +22,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 @NgModule({
     imports: [
         CommonModule,
@@ -51,7 +51,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
         MatSidenavModule,
         MatMenuModule,
         MatGridListModule,
-        MatButtonToggleModule
+        MatButtonToggleModule,
+        MatProgressSpinnerModule
     ],
     exports: [
         MatButtonModule,
@@ -78,7 +79,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
         MatSidenavModule,
         MatMenuModule,
         MatGridListModule,
-        MatButtonToggleModule
+        MatButtonToggleModule,
+        MatProgressSpinnerModule
     ],
     providers: [
         MatDatepickerModule

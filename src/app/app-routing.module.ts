@@ -15,6 +15,7 @@ import {CreateBoatModule} from "./pages/create-boat/create-boat.module";
 import {ActivityModule} from "./pages/activity/activity.module";
 import {ServiceModule} from "./pages/service/service.module";
 import {BookingModule} from "./pages/booking/booking.module";
+import {BillingModule} from "./pages/billing/billing.module";
 
 const routes: Routes = [
   {
@@ -84,6 +85,10 @@ const routes: Routes = [
       {
         path: 'editBoat',
         loadChildren: () => CreateBoatModule
+      },
+      {
+        path: 'billing/:id',
+        loadChildren: () => BillingModule
       }
     ]
   }

@@ -1,4 +1,5 @@
-<div class="container mb-5" style="margin-top:100px;">
+<loading [loading]= "loading"></loading>
+<div class="container mb-5" style="margin-top:100px;" *ngIf="!loading">
   <div class="row">
     <div class="col-12 col-md-4">
       <div class="card p-5">
