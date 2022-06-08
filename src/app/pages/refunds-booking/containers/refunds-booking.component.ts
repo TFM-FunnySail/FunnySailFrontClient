@@ -53,7 +53,12 @@ export class RefundsBookingComponent implements OnInit {
         }
       }
       this.loading = false;
-    });
+    },
+      ()=>{
+        this.loading = false;
+      }, ()=> {
+
+      });
   }
 
   handlerRefunds(resp: RefundOutputDTOGenericResponseDTO) {

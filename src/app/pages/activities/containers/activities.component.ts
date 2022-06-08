@@ -45,7 +45,10 @@ export class ActivitiesComponent implements OnInit {
         }
       }
       this.loading = false;
-    });
+    },
+      ()=>{
+        this.loading = false;
+      });
   }
 
   handlerActivities(resp: ActivityOutputDTOGenericResponseDTO) {
@@ -75,7 +78,10 @@ export class ActivitiesComponent implements OnInit {
           }
         }
         this.loading = false;
-      });
+      },
+        ()=>{
+          this.loading = false;
+        });
     }
   }
 

@@ -63,9 +63,14 @@ export class BoatsComponent implements OnInit {
               }
             }
           }
-        });
+          this.loading = false;
+        },
+          ()=>{
+            this.loading = false;
+          });
+      }else {
+        this.loading = false;
       }
-      this.loading = false;
     });
   }
 
@@ -109,7 +114,10 @@ export class BoatsComponent implements OnInit {
           }
         }
         this.loading = false;
-      });
+      },
+        ()=>{
+          this.loading = false;
+        });
     }
   }
 
