@@ -180,7 +180,11 @@
     "people": "Personas",
     "portData": "Información del puerto",
     "images": "Imágenes",
-    "deleteImage": "¿Desea eliminar esta imagen?"
+    "deleteImage": "¿Desea eliminar esta imagen?",
+    "technicalService": "Reservar servicio técnico",
+    "selectOption": "Seleccione una opción",
+    "return": "Volver",
+    "techService": "Servicio técnico"
   },
   "rentalHC": {
     "basePrice": "Precio base",

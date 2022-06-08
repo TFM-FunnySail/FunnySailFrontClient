@@ -94,6 +94,7 @@ export class TechnicalServiceService {
 
     /**
      * @param id 
+     * @param boatId 
      * @param minPrice 
      * @param maxPrice 
      * @param description 
@@ -104,15 +105,19 @@ export class TechnicalServiceService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public apiTechnicalServiceGet(id?: number, minPrice?: number, maxPrice?: number, description?: string, active?: boolean, limit?: number, offset?: number, page?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<TechnicalServiceOutputDTOGenericResponseDTO>;
-    public apiTechnicalServiceGet(id?: number, minPrice?: number, maxPrice?: number, description?: string, active?: boolean, limit?: number, offset?: number, page?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<HttpResponse<TechnicalServiceOutputDTOGenericResponseDTO>>;
-    public apiTechnicalServiceGet(id?: number, minPrice?: number, maxPrice?: number, description?: string, active?: boolean, limit?: number, offset?: number, page?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<HttpEvent<TechnicalServiceOutputDTOGenericResponseDTO>>;
-    public apiTechnicalServiceGet(id?: number, minPrice?: number, maxPrice?: number, description?: string, active?: boolean, limit?: number, offset?: number, page?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<any> {
+    public apiTechnicalServiceGet(id?: number, boatId?: number, minPrice?: number, maxPrice?: number, description?: string, active?: boolean, limit?: number, offset?: number, page?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<TechnicalServiceOutputDTOGenericResponseDTO>;
+    public apiTechnicalServiceGet(id?: number, boatId?: number, minPrice?: number, maxPrice?: number, description?: string, active?: boolean, limit?: number, offset?: number, page?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<HttpResponse<TechnicalServiceOutputDTOGenericResponseDTO>>;
+    public apiTechnicalServiceGet(id?: number, boatId?: number, minPrice?: number, maxPrice?: number, description?: string, active?: boolean, limit?: number, offset?: number, page?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<HttpEvent<TechnicalServiceOutputDTOGenericResponseDTO>>;
+    public apiTechnicalServiceGet(id?: number, boatId?: number, minPrice?: number, maxPrice?: number, description?: string, active?: boolean, limit?: number, offset?: number, page?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<any> {
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
         if (id !== undefined && id !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
             <any>id, 'Id');
+        }
+        if (boatId !== undefined && boatId !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>boatId, 'BoatId');
         }
         if (minPrice !== undefined && minPrice !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,

@@ -48,7 +48,6 @@ export class ProfileComponent implements OnInit {
     this.userData = {};
     this.dataForm.disable();
 
-    this.checkBoats();
   }
 
   ngOnInit(): void {
@@ -58,6 +57,7 @@ export class ProfileComponent implements OnInit {
         if(resp){
           console.log(resp)
           this.userData = resp;
+          this.checkBoats();
           this.user = {
             name: resp.firstName,
             lastName: resp.lastName,
@@ -74,6 +74,7 @@ export class ProfileComponent implements OnInit {
           this.dataForm.get(['country'])?.setValue(resp.country);
         }
       });
+
   }
 
 
@@ -178,9 +179,11 @@ export class ProfileComponent implements OnInit {
   }
 
   checkBoats(){
-    this.boatsService.apiBoatsGet().subscribe((barcos: BoatOutputDTOGenericResponseDTO)=>{
-      if(barcos)
-        this.boats = barcos.items;
-    });
+    if(this.userData.userId != undefined){
+      this.boatsService.apiBoatsGet(undefined, undefined, undefined,undefined,  undefined, undefined,undefined,undefined, this.userData?.userId).subscribe((barcos: BoatOutputDTOGenericResponseDTO)=>{
+        if(barcos)
+          this.boats = barcos.items;
+      });
+    }
   }
 }
