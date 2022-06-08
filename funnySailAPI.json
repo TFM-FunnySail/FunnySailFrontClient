@@ -3458,6 +3458,14 @@
             }
           },
           {
+            "name": "BoatId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
             "name": "MinPrice",
             "in": "query",
             "schema": {

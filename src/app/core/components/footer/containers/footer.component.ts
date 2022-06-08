@@ -27,8 +27,8 @@ export class FooterComponent implements OnInit {
 
     // (document.getElementById('credits') as HTMLDivElement).w
 
-    (document.getElementById('credits') as HTMLDivElement).style.marginLeft = ((screen.width/2)-100).toString() + "px";
-    (document.getElementById('copyRight') as HTMLDivElement).style.marginLeft = ((screen.width/2)-120).toString() + "px";
+    (document.getElementById('credits') as HTMLDivElement).style.marginLeft = (46.5 + "%");
+    (document.getElementById('copyRight') as HTMLDivElement).style.marginLeft = (45 + "%");
 
 
   }

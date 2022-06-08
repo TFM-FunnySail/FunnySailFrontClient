@@ -1,13 +1,20 @@
-import {Component, Input, OnInit } from '@angular/core';
-import {BoatOutputDTO, BoatsService} from "../../../../shared/sdk";
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {
+  BoatOutputDTO,
+  BoatsService, ScheduleTechnicalServiceDTO, TechnicalServiceOutputDTO,
+  TechnicalServiceOutputDTOGenericResponseDTO,
+  TechnicalServiceService
+} from "../../../../shared/sdk";
 import {Router} from "@angular/router";
 import {StorageService} from "../../../../shared/services/storage/storage.service";
 import {TranslateService} from "@ngx-translate/core";
+import {FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'users-boat-card',
   templateUrl: './users-boat-card.component.html',
-  styleUrls: ['./users-boat-card.component.scss']
+  styleUrls: ['./users-boat-card.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class UsersBoatCardComponent implements OnInit {
   @Input()
@@ -15,21 +22,27 @@ export class UsersBoatCardComponent implements OnInit {
   type: string;
   port: string;
   mooring: string;
-  requiredFileType: string | undefined;
   file: File | undefined;
   fileName: string = '';
+  tcForm: any;
+  newTS: ScheduleTechnicalServiceDTO | any;
+  techServs: TechnicalServiceOutputDTO[] = [];
+  assignedTechnicalServices: TechnicalServiceOutputDTO[] = [];
+  price: number = 0;
 
   constructor(private router: Router,
               private storageService: StorageService,
               private boatsService: BoatsService,
-              private translate: TranslateService) {
+              private translate: TranslateService,
+              private technicalService: TechnicalServiceService,
+              private formBuilder: FormBuilder,) {
     this.type = '';
     this.port = '';
     this.mooring = '';
+
   }
 
   ngOnInit(): void {
-    console.log(this.boat);
     let imagen = document.createElement('img');
     imagen.className = 'card-img-top';
     if(this.boat)
@@ -76,6 +89,20 @@ export class UsersBoatCardComponent implements OnInit {
       }
     }
 
+    //El technical services hay que pedirlo a parte
+    //this.technicalService.
+    this.technicalService.apiTechnicalServiceGet(undefined, this.boat.id).subscribe((resp: TechnicalServiceOutputDTOGenericResponseDTO) => {
+      if(resp.items){
+        for(let R of  resp.items){
+            this.assignedTechnicalServices.push(R);
+        }
+      }
+    });
+
+    this.tcForm = this.formBuilder.group({
+      techServ: [Validators.required]
+    });
+
   }
 
   editBoat() {
@@ -100,4 +127,47 @@ export class UsersBoatCardComponent implements OnInit {
     }
   }
 
+  bookTechnicalService() {
+
+  }
+
+  Alert() {
+    (document.getElementById('serviceBoat') as HTMLDivElement).style.display = 'block';
+    (document.getElementById('boatData') as HTMLDivElement).style.display = 'none';
+
+    this.technicalService.apiTechnicalServiceGet().subscribe((resp: TechnicalServiceOutputDTOGenericResponseDTO) => {
+      if(resp.items){
+        for(let R of  resp.items){
+          if(R.active == true)
+            this.techServs.push(R);
+        }
+      }
+    });
+  }
+
+  Back(){
+    (document.getElementById('serviceBoat') as HTMLDivElement).style.display = 'none';
+    (document.getElementById('boatData') as HTMLDivElement).style.display = 'block';
+  }
+
+  onSubmit() {
+    this.technicalService.apiTechnicalServiceSchedulePost(this.newTS).subscribe((resp:any)=>{});
+
+  }
+
+  updatePrice() {
+    if(this.techServs)
+      this.newTS = this.techServs.filter(a => a.id == this.tcForm.get('techServ')?.value)[0];
+
+    let today = new Date();
+    let dd = today.getDate() + 7;
+    today.setDate(dd);
+    this.newTS = {
+      boatId: this.boat.id,
+      technicalServiceId: parseInt(this.tcForm.get('techServ')?.value),
+      price: this.newTS.price,
+      serviceDate: today
+    }
+    this.price = this.newTS.price;
+  }
 }
