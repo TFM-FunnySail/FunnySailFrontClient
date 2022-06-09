@@ -8,7 +8,7 @@ import { NgbSlideEvent, NgbSlideEventSource } from "@ng-bootstrap/ng-bootstrap";
   styleUrls: ['./carousel.component.scss']
 })
 export class CarouselComponent {
-  images = [62, 83, 466, 965, 982, 1043, 738].map((n) => `https://picsum.photos/id/${n}/1920/1080`);
+  images = ['assets/images/home1.jpg','assets/images/home2.jpg', 'assets/images/home3.jpg', 'assets/images/home4.jpg' ];
 
   paused = false;
   unpauseOnArrow = false;

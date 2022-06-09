@@ -29,10 +29,10 @@
     },
     "section": {
       "title": "Community selection",
-      "title1": "Title 1",
-      "title2": "Title 2",
-      "title3": "Title 3",
-      "title4": "Title 4"
+      "title1": "Enjoy our sailboats!",
+      "title2": "Enjoy the sea!",
+      "title3": "Enjoy the activities!",
+      "title4": "Enjoy your life!"
     },
     "aboutUs": {
       "owner": {
@@ -59,8 +59,14 @@
       "boatRental": "Boat rental"
     },
     "comments": {
-      "user": "Random user",
-      "comment": "Random comment"
+      "user1": "MONTSE",
+      "comment1": "Gracias Lauren! Decision acertada la que tuvisteis de celebrar el cumpleaños en el puerto, buena música, baile y buena actitud hicieron un dia inolvidable! Nos vemos navegando por Marbella!",
+      "user2": "JOSE",
+      "comment2": "Buena experiencia, en todo momento nos informaron de su situación, facilitando así la entrega y devolución de la embarcación y nuestra tranquilidad como propietarios.",
+      "user3": "Gerard",
+      "comment3": "Estuvimos dos días en el velero sin patrón, y lo disfrutamos mucho.",
+      "user4": "Daniel",
+      "comment4": "Foram 4 dias muito bem passados. Com muita diversão, conforto e espaço a bordo do barco. Cama confortável, sala grande e zona de tomar sol também muito boa. Voltarei a repetir. Obrigado."
     }
   },
   "login": {

@@ -3,6 +3,7 @@ import { ActivitiesService, ActivityOutputDTO, ActivityOutputDTOGenericResponseD
 import { HttpClient } from "@angular/common/http";
 import { Router } from '@angular/router';
 import {FormBuilder, Validators} from "@angular/forms";
+import {SnackbarService} from "../../../core/components/snackbar/snackbar.service";
 
 @Component({
   selector: 'activities',
@@ -19,7 +20,8 @@ export class ActivitiesComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               protected activitiesService: ActivitiesService,
               protected http: HttpClient,
-              protected router: Router) {
+              protected router: Router,
+              private snackService: SnackbarService) {
     window.scroll({
       top: 0,
       left: 0,

@@ -29,10 +29,10 @@
     },
     "section": {
       "title": "Selección de la comunidad",
-      "title1": "Título 1",
-      "title2": "Título 2",
-      "title3": "Título 3",
-      "title4": "Título 4"
+      "title1": "Disfruta de nuestros veleros!",
+      "title2": "Disfruta del mar!",
+      "title3": "Disfruta de nuestras actividades!",
+      "title4": "Disfruta tu vida!"
     },
     "aboutUs": {
       "owner": {
@@ -59,8 +59,14 @@
       "boatRental": "Alquiler de barcos"
     },
     "comments": {
-      "user": "Usuario aleatorio",
-      "comment": "Comentario aleatorio"
+      "user1": "MONTSE",
+      "comment1": "Gracias Lauren! Decision acertada la que tuvisteis de celebrar el cumpleaños en el puerto, buena música, baile y buena actitud hicieron un dia inolvidable y finak8zar con un bonito atardecer fue un dia perfecto! Nos vemos navegando por Marbella!",
+      "user2": "JOSE",
+      "comment2": "Buena experiencia, en todo momento nos informaron de su situación, facilitando así la entrega y devolución de la embarcación y nuestra tranquilidad como propietarios.",
+      "user3": "Gerard",
+      "comment3": "Estuvimos dos días en el velero sin patrón, y lo disfrutamos mucho.",
+      "user4": "Daniel",
+      "comment4": "Foram 4 dias muito bem passados. Com muita diversão, conforto e espaço a bordo do barco. Cama confortável, sala grande e zona de tomar sol também muito boa. O capitão Adolfo muito muito fantástico e importante na nossa semana no barco, muito acessível e simpático. Rita, hoster, igualmente muito simpática e super competente e profissional. Voltarei a repetir. Obrigado."
     }
   },
   "login": {

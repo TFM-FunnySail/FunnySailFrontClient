@@ -8,6 +8,7 @@ import {CardMenuModule} from "./card-menu/card-menu.module";
 import {ChangePasswordCardModule} from "./change-password-card/change-password-card.module";
 import {RefundsModule} from "./refunds/refunds.module";
 import {LoadingModule} from "./loading/loading.module";
+import {SnackbarModule} from "./snackbar/snackbar.module";
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import {LoadingModule} from "./loading/loading.module";
     CardMenuModule,
     ChangePasswordCardModule,
     RefundsModule,
-    LoadingModule
+    LoadingModule,
+    SnackbarModule
   ],
   exports: [
     FooterModule,
@@ -30,7 +32,8 @@ import {LoadingModule} from "./loading/loading.module";
     CardMenuModule,
     ChangePasswordCardModule,
     RefundsModule,
-    LoadingModule
+    LoadingModule,
+    SnackbarModule
   ]
 })
 export class ComponentsModule {

@@ -29,7 +29,12 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-12 col-md-4 col-lg-3" *ngFor="let linkMenu of linksMenus">
+      <card-menu [linkMenu]="linkMenu" [link]="linkMenu.linkPage" [image]="linkMenu.image"></card-menu>
+    </div>
+  </div>
+  <div class="row m-5 ">
     <div class="col-12 justify-content-center" style="text-align: center">
       <h1>{{'home.section.title' | translate}}</h1>
     </div>
@@ -38,39 +43,35 @@
         <mat-grid-tile [colspan] = "3"
                        [rowspan] = "1">
           <mat-grid-tile-footer style="background: none;"><strong>{{'home.section.title1' | translate}}</strong></mat-grid-tile-footer>
-          <img class="card-img-top img-card" src="https://picsum.photos/id/62/500/500" alt="Card image cap">
+          <img class="card-img-top img-card" src="assets/images/sailing-boat.jpg" alt="Card image cap">
         </mat-grid-tile>
         <mat-grid-tile [colspan] = "1"
                        [rowspan] = "2">
-          <img class="card-img-top img-card" src="https://picsum.photos/id/64/500/500" alt="Card image cap">
+          <img class="card-img-top img-card" src="assets/images/water.jpg" alt="Card image cap">
           <mat-grid-tile-footer style="background: none;"><strong>{{'home.section.title2' | translate}}</strong></mat-grid-tile-footer>
         </mat-grid-tile>
         <mat-grid-tile [colspan] = "1"
                        [rowspan] = "1">
           <mat-grid-tile-footer style="background: none;"><strong>{{'home.section.title3' | translate}}</strong></mat-grid-tile-footer>
-          <img class="card-img-top img-card" src="https://picsum.photos/id/65/500/500" alt="Card image cap">
+          <img class="card-img-top img-card" src="assets/images/sea.jpg" alt="Card image cap">
         </mat-grid-tile>
         <mat-grid-tile [colspan] = "2"
                        [rowspan] = "1">
           <mat-grid-tile-footer style="background: none;"><strong>{{'home.section.title4' | translate}}</strong></mat-grid-tile-footer>
-          <img class="card-img-top img-card" src="https://picsum.photos/id/66/500/500" alt="Card image cap">
+          <img class="card-img-top img-card" src="assets/images/sport.jpg" alt="Card image cap">
         </mat-grid-tile>
       </mat-grid-list>
     </div>
   </div>
-  <div class="row justify-content-center">
-    <div class="col-12 col-sm-12 col-md-4 col-lg-3" *ngFor="let linkMenu of linksMenus">
-      <card-menu [linkMenu]="linkMenu" [link]="linkMenu.linkPage"></card-menu>
-    </div>
-  </div>
 
-  <div class="row justify-content-center">
+
+  <div class="row m-5 p-5 justify-content-center">
     <div class="col-12 col-sm-12 col-md-6 col-lg-4"  *ngFor="let comment of comments">
       <comment [comment]="comment"></comment>
     </div>
   </div>
 
-  <div class="row mt-5" style="border-top-color: #555555; border-top-style:solid; border-top-width: 1px;">
+  <div class="row m-5" style="border-top-color: #555555; border-top-style:solid; border-top-width: 1px;">
     <div class="col-12 col-sm-12 col-md-6 p-5">
       <div style="text-align: center;">
         <h1>{{'home.aboutUs.owner.title' | translate}}</h1>
@@ -139,6 +140,4 @@
         <img class="card-img-top img-card" src="https://www.allianz-partners.es/content/dam/onemarketing/awp/allianz-partners-es/Allianz_Partners_Spain.png" alt="Card image cap" style="max-height: 250px; max-width: 500px;">
     </div>
   </div>
-
-
 </div>
