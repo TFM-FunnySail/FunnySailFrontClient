@@ -1,6 +1,8 @@
 {
   "header": {
     "home": "Home",
+    "profileH": "Profile",
+    "login": "Login",
     "contactUs": "Contact Us",
     "boats": "Boats",
     "services": "Services",

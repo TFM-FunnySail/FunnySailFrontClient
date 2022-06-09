@@ -11,6 +11,7 @@ import {
   PortService, UpdateBoatInputDTO
 } from "../../../shared/sdk";
 import {StorageService} from "../../../shared/services/storage/storage.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'create-boat',
@@ -35,18 +36,23 @@ export class CreateBoatComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private boatsApiService: BoatsService,
               private portService: PortService,
-              private storageService: StorageService) {
+              private storageService: StorageService,
+              private router: Router) {
     this.boatForm = this.formBuilder.group({});
     this.buildForm();
+    if(this.storageService.getItem("boatId") && this.router.url != "/create-boat"){
+      this.fillForm()
     if(this.storageService.getItem("boatId")){
       this.fillForm();
       this.loading = false;
     }else{
       this.updateMoorings();
+      this.header = true;
+      this.boatForm.reset();
       this.loading = false;
     }
 
-  }
+  }}
 
   ngOnInit(): void {
   }

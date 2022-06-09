@@ -22,10 +22,10 @@ export class HeaderComponent implements OnInit {
       this.adminRole = 'admin';
       this.userLogged = null;
       this.perfil = "";
-      this.login = "Log in";
+      this.login = "1";
     }else{
       this.login = "";
-      this.perfil = "Perfil";
+      this.perfil = "1";
       this.adminRole = 'admin';
     }
 

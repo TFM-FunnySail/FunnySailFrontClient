@@ -1,12 +1,13 @@
 {
   "header": {
     "home": "Inicio",
+    "profileH": "Perfil",
+    "login": "Iniciar sesión",
     "contactUs": "Contacto",
     "boats": "Barcos",
     "services": "Servicios",
     "activities": "Actividades",
     "refundsOrders": "Devoluciones y Pedidos"
-
   },
   "language": {
     "language": "Idioma",
